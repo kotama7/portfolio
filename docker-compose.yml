@@ -1,0 +1,17 @@
+version: "3.10"
+
+services:
+  portfolio: #サービス名
+    build:
+      context: ./portfolio #Dockerfileのあるディレクトリ
+      dockerfile: Dockerfile #Dockerfileのファイル名
+    volumes: #バインドマウント
+      - type: bind
+        source: ./portfolio/src
+        target: /usr/src/app/src
+      - type: bind
+        source: ./portfolio/public
+        target: /usr/src/app/public
+    command: yarn start
+    ports:
+      - "3000:3000"

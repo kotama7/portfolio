@@ -1,20 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import Home from './components/home/home';
+import Header from './components/header/header';
+import { useState } from 'react';
+
 import './App.css';
 
-import Home from './components/home/home';
 
 function App() {
 
+  const [lang, setLang] = useState<string>('ja');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-      <body>
-        <Home />
-      </body>
-    </div>
+    <>
+      <Header
+        lang={lang}
+        setLang={setLang} 
+      />
+      <Home 
+        lang={lang}
+      />
+    </>
   );
 }
 

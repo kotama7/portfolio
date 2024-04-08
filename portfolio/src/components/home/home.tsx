@@ -21,7 +21,10 @@ export default function Home(props: {lang: string}) {
         setTimeout(
             FirstReply,
             1750,
-            [setMessages, props.lang]
+            {
+                seter: setMessages, 
+                lang: props.lang
+            }
         )
     }
 

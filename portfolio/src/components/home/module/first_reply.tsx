@@ -1,10 +1,10 @@
 import MessageFormProps from "./massage_form"
 
-export default function FirstReply(seter:(args:[MessageFormProps]) => void, lang:string) {
+export default function FirstReply(props: {seter: Function, lang: string}) {
 
     const first_message: [MessageFormProps] = [
         {
-            text: (lang === 'en' ? "Please introduce yourself." : "あなたのことを教えてください"),
+            text: (props.lang === 'en' ? "Please introduce yourself." : "あなたのことを教えてください"),
             id: 1,
             sender: {
                 uid: "Guest",
@@ -14,7 +14,7 @@ export default function FirstReply(seter:(args:[MessageFormProps]) => void, lang
         }
     ]
 
-    seter(first_message)
+    props.seter(first_message)
 
     // first_message.push()
 }

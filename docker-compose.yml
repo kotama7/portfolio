@@ -12,6 +12,6 @@ services:
       - type: bind
         source: ./portfolio/public
         target: /usr/src/app/public
-    command: yarn start
+    command: yarn build && yarn firebase deploy
     ports:
       - "3000:3000"

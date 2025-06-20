@@ -16,7 +16,7 @@ jobs:
           node-version: '18'
       - run: corepack prepare yarn@1.22.22 --activate
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
         working-directory: ./portfolio
       - name: Build
         run: yarn build

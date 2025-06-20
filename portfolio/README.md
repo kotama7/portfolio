@@ -37,13 +37,13 @@ Example request using `curl`:
 ```bash
 curl -X POST https://<your-region>-<your-project>.cloudfunctions.net/selectFunction \
      -H "Content-Type: application/json" \
-     -d '{"text": "Please give me your bio graph"}'
+     -d '{"text": "Show me your interests"}'
 ```
 
 This will return a JSON response similar to:
 
 ```json
-{ "function": "bioGraph" }
+{ "function": "interestGraph" }
 ```
 
 Set the environment variables `FIREBASE_WEB_API_KEY` and `FIREBASE_APP_ID` in your Firebase project to enable the Firebase AI integration.

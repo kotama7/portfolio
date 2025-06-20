@@ -23,7 +23,7 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
     return;
   }
 
-  const prompt = `You are a helpful assistant that maps user requests to function names.\nPossible functions include:\n- bioGraph: returns the biography graph.\n- contactInfo: returns contact information.\n- portfolioSummary: gives a summary of the portfolio.\nRespond with only the function name that best matches the user's request.`;
+  const prompt = `You are a helpful assistant that maps user requests to function names.\nPossible functions include:\n- bioGraph: returns the biography graph.\n- skillTree: returns the skill hierarchy.\n- interestGraph: returns an interest graph.\n- personalityRadar: shows a personality radar chart.\n- contactInfo: returns contact information.\n- portfolioSummary: gives a summary of the portfolio.\nRespond with only the function name that best matches the user's request.`;
 
   try {
     const result = await model.generateContent({

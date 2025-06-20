@@ -10,13 +10,13 @@ import './home.css';
 
 export default function Home(props: {lang: string}) {
 
-    const [messages, setMessages] = useState<[MessageFormProps]>()
+    const [messages, setMessages] = useState<MessageFormProps[]>([])
 
     const user = {
         "uid" : "Guest"
     }
 
-    if (messages === undefined) {
+    if (messages.length === 0) {
         setTimeout(
             FirstReply,
             1750,

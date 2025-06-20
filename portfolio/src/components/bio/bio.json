@@ -8,13 +8,37 @@
   {
     "title": "2022",
     "cardTitle": "Nagoya University",
-    "cardSubtitle": "Computer Science major",
-    "cardDetailedText": "Enrolled at Nagoya University majoring in Computer Science."
+    "cardSubtitle": "School of Informatics, Computer Science and Information Systems",
+    "cardDetailedText": "Enrolled at Nagoya University as a Computer Science and Information Systems major."
   },
   {
-    "title": "2024",
-    "cardTitle": "AI App Development",
-    "cardSubtitle": "React and TypeScript",
-    "cardDetailedText": "Started developing AI-powered applications using React and TypeScript."
+    "title": "2022–present",
+    "cardTitle": "Vice-President",
+    "cardSubtitle": "App-development group \u201cjack\u201d",
+    "cardDetailedText": "Leads projects turning sensor streams into fast surrogate simulations for industry partners."
+  },
+  {
+    "title": "2023–2024",
+    "cardTitle": "Web Chief",
+    "cardSubtitle": "Nagoya University Festival Executive Committee",
+    "cardDetailedText": "Built and maintained the official festival website."
+  },
+  {
+    "title": "Mar 2024",
+    "cardTitle": "JENESYS 2024 Korea Exchange",
+    "cardSubtitle": "Participant",
+    "cardDetailedText": "Represented Nagoya University in a cultural and academic exchange program."
+  },
+  {
+    "title": "Summer 2024",
+    "cardTitle": "AI Internship",
+    "cardSubtitle": "Panasonic",
+    "cardDetailedText": "Analyzed large-scale production data to streamline manufacturing workflows with AI."
+  },
+  {
+    "title": "Jul–Aug 2024",
+    "cardTitle": "FuSEP Summer Researcher",
+    "cardSubtitle": "University of Science and Technology of China (USTC)",
+    "cardDetailedText": "Developed a GNN that achieved near-benchmark accuracy in predicting formation energies of Mb-Nb-Ta-W high-entropy alloys."
   }
 ]

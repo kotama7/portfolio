@@ -1,6 +1,30 @@
 
+
+body {
+  background-color: #343541;
+  color: #ececf1;
+}
+
 .chatbox {
-  max-width: 600px;
+  max-width: 700px;
   margin: 2rem auto;
+}
+
+/* ChatGPT like styling overrides for react-chatbox-component */
+.chatbox .chat-box {
+  background-color: #444654;
+  border-radius: 8px;
+  padding: 1rem;
+  border: none;
+}
+
+.chatbox .chat-bubble.is-user {
+  background-color: #3b82f6;
+  color: #fff;
+}
+
+.chatbox .chat-bubble.is-other {
+  background-color: #3f3f46;
+  color: #fff;
 }
 

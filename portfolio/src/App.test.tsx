@@ -13,5 +13,5 @@ test('renders header text and skill tree', () => {
   const heading = screen.getByText(/樹神 宇徳/i);
   expect(heading).toBeInTheDocument();
   render(<SkillTree />);
-  expect(screen.getByText(/Frontend/i)).toBeInTheDocument();
+  expect(screen.getAllByText(/Frontend/i)[0]).toBeInTheDocument();
 });

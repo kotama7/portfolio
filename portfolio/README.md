@@ -47,3 +47,19 @@ This will return a JSON response similar to:
 ```
 
 Set the environment variables `FIREBASE_WEB_API_KEY` and `FIREBASE_APP_ID` in your Firebase project to enable the Firebase AI integration.
+
+### `autoReply` function
+
+This function returns the introductory message that appears in the chat when the
+page first loads. Send a JSON payload with a `lang` field (`en` or `ja`) and the
+function will respond with the corresponding message.
+
+Example:
+
+```bash
+curl -X POST https://<your-region>-<your-project>.cloudfunctions.net/autoReply \
+     -H "Content-Type: application/json" \
+     -d '{"lang": "en"}'
+```
+
+This will return a JSON response containing the introduction text.

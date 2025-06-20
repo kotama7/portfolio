@@ -8,7 +8,7 @@ interface FirstReplyProps {
     lang: string;
 }
 
-const FirstReply: React.FC<FirstReplyProps> = (props) => {
+export default function FirstReply(props: FirstReplyProps) {
 
     let message:string = "あなたのことを教えてください"
     let next_message:string = default_second_message_ja
@@ -36,14 +36,10 @@ const FirstReply: React.FC<FirstReplyProps> = (props) => {
 
     props.seter(first_messages)
 
-
     Reply({
         seter: props.seter,
         messages: first_messages,
-        next_message: next_message
+        next_message: next_message,
     })
-
-    return null;
 }
 
-export default FirstReply;

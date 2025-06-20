@@ -1,9 +1,7 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import SkillTree from './components/skills/SkillTree';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('renders skill tree from JSON', () => {
+  render(<SkillTree />);
+  expect(screen.getByText('Frontend')).toBeInTheDocument();
 });

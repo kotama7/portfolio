@@ -11,7 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: serve -s build
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - run: corepack prepare yarn@1.22.22 --activate
+      - name: Install dependencies
+        run: yarn install
+        working-directory: ./portfolio
+      - name: Build
+        run: yarn build
+        working-directory: ./portfolio
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'

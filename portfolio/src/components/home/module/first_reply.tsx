@@ -1,4 +1,4 @@
-import MessageFormProps from "./massage_form"
+import MessageFormProps from "./message_form"
 import Reply from "./return_respond"
 import { default_second_message_ja, default_second_message_en } from "./data"
 

@@ -1,6 +1,7 @@
 import Home from './components/home/home';
 import Header from './components/header/header';
 import BioTree from './components/bio/BioTree';
+import SkillTree from './components/skills/SkillTree';
 
 import { useState } from 'react';
 
@@ -21,6 +22,7 @@ function App() {
         lang={lang}
       />
       <BioTree />
+      <SkillTree />
     </>
   );
 }

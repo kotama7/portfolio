@@ -7,11 +7,10 @@ interface AiMessage {
 }
 
 async function callSelectFunction(text: string): Promise<string | undefined> {
-  const url = process.env.REACT_APP_SELECT_FUNCTION_URL;
-  if (!url) {
-    console.error('REACT_APP_SELECT_FUNCTION_URL not set');
-    return undefined;
-  }
+  // Default to calling the Cloud Function via a relative path when no
+  // environment variable is provided. This allows the app to work even if the
+  // build-time variable is missing (e.g. in preview deployments).
+  const url = process.env.REACT_APP_SELECT_FUNCTION_URL || '/selectFunction';
   try {
     const res = await fetch(url, {
       method: 'POST',

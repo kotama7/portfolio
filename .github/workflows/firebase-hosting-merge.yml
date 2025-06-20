@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
       - run: corepack prepare yarn@1.22.22 --activate
       - name: Install dependencies
         run: yarn install
@@ -27,3 +27,4 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_FIR_939F3 }}'
           channelId: live
           projectId: fir-939f3
+          entryPoint: ./portfolio

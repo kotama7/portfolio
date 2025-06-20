@@ -8,6 +8,10 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      { "source": "/selectFunction", "function": "selectFunction" },
+      { "source": "/autoReply", "function": "autoReply" }
     ]
   }
 }

@@ -1,9 +1,5 @@
 import Home from './components/home/home';
 import Header from './components/header/header';
-import BioTree from './components/bio/BioTree';
-import SkillTree from './components/skills/SkillTree';
-import InterestGraph from './components/interests/InterestGraph';
-import PersonalityRadar from './components/personality/PersonalityRadar';
 
 import { useState } from 'react';
 
@@ -23,10 +19,6 @@ function App() {
       <Home
         lang={lang}
       />
-      <BioTree />
-      <SkillTree />
-      <InterestGraph />
-      <PersonalityRadar />
     </>
   );
 }

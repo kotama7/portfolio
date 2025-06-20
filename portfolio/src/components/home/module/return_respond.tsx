@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react';
 import MessageFormProps from './message_form';
 
-import { default_second_message_ja, default_second_message_en } from './data';
 
 interface ReplyProps {
     seter: Function;
-    lang: string;
     messages: MessageFormProps[];
     next_message: string;
 }
 
 const Reply: React.FC<ReplyProps> = (props) => {
-    const { seter, lang, messages } = props;
+    const { seter, messages, next_message } = props;
 
     useEffect(() => {
         const append_message: MessageFormProps = {
@@ -25,7 +23,7 @@ const Reply: React.FC<ReplyProps> = (props) => {
         };
 
         let i = 0;
-        let append_message_text = lang === 'en' ? default_second_message_en : default_second_message_ja;
+        let append_message_text = next_message;
         const append_message_length = append_message_text.length;
 
         const message_adder = () => {

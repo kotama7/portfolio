@@ -41,7 +41,6 @@ const FirstReply: React.FC<FirstReplyProps> = (props) => {
 
     Reply({
         seter: props.seter,
-        lang: props.lang,
         messages: first_messages,
         next_message: next_message
     })

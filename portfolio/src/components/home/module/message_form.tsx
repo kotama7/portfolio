@@ -7,3 +7,4 @@ export default interface MessageFormProps {
         avatar: string;
     }
 }
+

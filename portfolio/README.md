@@ -27,3 +27,23 @@ Builds the app for production to the `build` folder.
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+## Firebase Cloud Functions
+
+The project includes a Cloud Function named `selectFunction` that uses Firebase AI to determine which internal function should handle a user's request. It expects a JSON body with a `text` field and responds with the selected function name.
+
+Example request using `curl`:
+
+```bash
+curl -X POST https://<your-region>-<your-project>.cloudfunctions.net/selectFunction \
+     -H "Content-Type: application/json" \
+     -d '{"text": "Please give me your bio graph"}'
+```
+
+This will return a JSON response similar to:
+
+```json
+{ "function": "bioGraph" }
+```
+
+Set the environment variables `FIREBASE_WEB_API_KEY` and `FIREBASE_APP_ID` in your Firebase project to enable the Firebase AI integration.

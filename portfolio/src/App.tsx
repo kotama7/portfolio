@@ -1,5 +1,6 @@
 import Home from './components/home/home';
 import Header from './components/header/header';
+import BioTree from './components/bio/BioTree';
 
 import { useState } from 'react';
 
@@ -16,9 +17,10 @@ function App() {
         lang={lang}
         setLang={setLang} 
       />
-      <Home 
+      <Home
         lang={lang}
       />
+      <BioTree />
     </>
   );
 }

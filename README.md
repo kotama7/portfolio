@@ -6,6 +6,7 @@ This repository contains the source code for my personal portfolio website. The 
 
 - `portfolio/` – React application created with Create React App. See `portfolio/README.md` for details on available scripts.
 - `docker-compose.yml` – Example compose file that builds the app and deploys it using Firebase.
+- `portfolio/functions/` – Firebase Cloud Functions used for the AI features.
 
 ## Getting started
 
@@ -36,4 +37,14 @@ docker-compose up --build
 ```
 
 You will need valid Firebase credentials configured in your environment for the deployment to succeed.
+
+### Cloud Functions
+
+AI-powered features live in the `portfolio/functions` directory. To deploy them separately run:
+
+```bash
+firebase deploy --only functions
+```
+
+Ensure `FIREBASE_WEB_API_KEY` and `FIREBASE_APP_ID` are set in your project before deploying.
 

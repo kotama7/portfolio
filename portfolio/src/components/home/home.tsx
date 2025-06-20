@@ -1,12 +1,31 @@
 import { useState } from 'react';
 import { ChatBox } from 'react-chatbox-component';
-import AiChatBox from './AiChatBox';
 
 import MessageFormProps from './module/message_form';
 import FirstReply from './module/first_reply';
 
 import 'react-chatbox-component/dist/style.css';
 import './home.css';
+
+async function callSelectFunction(text: string): Promise<string | undefined> {
+    const url = process.env.REACT_APP_SELECT_FUNCTION_URL;
+    if (!url) {
+        console.error('REACT_APP_SELECT_FUNCTION_URL not set');
+        return undefined;
+    }
+    try {
+        const res = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text })
+        });
+        const data = await res.json();
+        return data.function as string;
+    } catch (err) {
+        console.error('Failed to call selectFunction', err);
+        return undefined;
+    }
+}
 
 
 export default function Home(props: {lang: string}) {
@@ -22,11 +41,37 @@ export default function Home(props: {lang: string}) {
             FirstReply,
             1750,
             {
-                seter: setMessages, 
+                seter: setMessages,
                 lang: props.lang
             }
         )
     }
+
+    const sendMessage = async (text: string) => {
+        if (!text.trim()) return;
+        const userMsg: MessageFormProps = {
+            text,
+            id: messages.length + 1,
+            sender: {
+                uid: 'Guest',
+                name: 'Guest',
+                avatar: 'https://www.w3schools.com/howto/img_avatar.png'
+            }
+        };
+        setMessages(prev => [...prev, userMsg]);
+
+        const func = await callSelectFunction(text);
+        const botMsg: MessageFormProps = {
+            text: func ? `Function selected: ${func}` : 'Failed to get response',
+            id: userMsg.id + 1,
+            sender: {
+                uid: 'Takanori Kotama',
+                name: 'Takanori Kotama',
+                avatar: `${process.env.PUBLIC_URL}/kotama_icon.jpg`
+            }
+        };
+        setMessages(prev => [...prev, botMsg]);
+    };
 
     return (
         <div>
@@ -34,9 +79,9 @@ export default function Home(props: {lang: string}) {
                 <ChatBox
                     messages={messages}
                     user={user}
+                    onSubmit={sendMessage}
                 />
             </div>
-            <AiChatBox />
         </div>
     );
 }

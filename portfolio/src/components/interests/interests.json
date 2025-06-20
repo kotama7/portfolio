@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Technology",
+    "children": [
+      {"title": "Artificial Intelligence"},
+      {"title": "Web Development"}
+    ]
+  },
+  {
+    "title": "Hobbies",
+    "children": [
+      {"title": "Photography"},
+      {"title": "Travel"}
+    ]
+  }
+]

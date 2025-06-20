@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Frontend",
+    "children": [
+      {"title": "React"},
+      {"title": "TypeScript"},
+      {"title": "Bootstrap"}
+    ]
+  },
+  {
+    "title": "Backend",
+    "children": [
+      {"title": "Node.js"},
+      {"title": "Firebase"}
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "title": "2003",
+    "cardTitle": "Born",
+    "cardSubtitle": "Japan",
+    "cardDetailedText": "Born in Japan."
+  },
+  {
+    "title": "2022",
+    "cardTitle": "Nagoya University",
+    "cardSubtitle": "Computer Science major",
+    "cardDetailedText": "Enrolled at Nagoya University majoring in Computer Science."
+  },
+  {
+    "title": "2024",
+    "cardTitle": "AI App Development",
+    "cardSubtitle": "React and TypeScript",
+    "cardDetailedText": "Started developing AI-powered applications using React and TypeScript."
+  }
+]

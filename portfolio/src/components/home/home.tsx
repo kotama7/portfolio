@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ChatBox } from 'react-chatbox-component';
 
-import MessageFormProps from './module/massage_form';
+import MessageFormProps from './module/message_form';
 import FirstReply from './module/first_reply';
 
 import 'react-chatbox-component/dist/style.css';

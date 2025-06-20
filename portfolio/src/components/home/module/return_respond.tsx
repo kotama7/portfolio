@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import MessageFormProps from './massage_form';
+import MessageFormProps from './message_form';
 
 
 interface ReplyProps {

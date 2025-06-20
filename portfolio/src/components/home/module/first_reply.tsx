@@ -1,7 +1,4 @@
-import { useEffect, useState } from "react"
-
 import MessageFormProps from "./massage_form"
-
 import Reply from "./return_respond"
 import { default_second_message_ja, default_second_message_en } from "./data"
 
@@ -41,7 +38,6 @@ const FirstReply: React.FC<FirstReplyProps> = (props) => {
 
     Reply({
         seter: props.seter,
-        lang: props.lang,
         messages: first_messages,
         next_message: next_message
     })

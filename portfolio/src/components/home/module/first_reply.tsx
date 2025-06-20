@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react"
-
 import MessageFormProps from "./message_form"
 
 import Reply from "./return_respond"

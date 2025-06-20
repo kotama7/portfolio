@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import MessageFormProps from './message_form';
 
 
@@ -8,42 +7,43 @@ interface ReplyProps {
     next_message: string;
 }
 
-const Reply: React.FC<ReplyProps> = (props) => {
+export default function Reply(props: ReplyProps) {
     const { seter, messages, next_message } = props;
 
-    useEffect(() => {
-        const append_message: MessageFormProps = {
-            text: "",
-            id: messages.length + 1,
-            sender: {
-                uid: "Takanori Kotama",
-                name: "Takanori Kotama",
-                avatar: `${process.env.PUBLIC_URL}/kotama_icon.jpg`
-            }
-        };
+    const append_message_base: MessageFormProps = {
+        text: "",
+        id: messages.length + 1,
+        sender: {
+            uid: "Takanori Kotama",
+            name: "Takanori Kotama",
+            avatar: `${process.env.PUBLIC_URL}/kotama_icon.jpg`
+        }
+    };
 
-        let i = 0;
-        let append_message_text = next_message;
-        const append_message_length = append_message_text.length;
+    let i = 0;
+    const append_message_text = next_message;
+    const append_message_length = append_message_text.length;
+    const current_messages = [...messages];
 
-        const message_adder = () => {
-            if (i < append_message_length) {
-                append_message.text = append_message_text.slice(0, i + 1);
-                seter([...messages, append_message]); // Avoid direct mutation
-                i += 1;
-                setTimeout(message_adder, 50);
-            } else {
-                append_message.text = append_message_text;
-                seter([...messages, append_message]); // Avoid direct mutation
-            }
-        };
+    const message_adder = () => {
+        if (i < append_message_length) {
+            const newMessage = {
+                ...append_message_base,
+                text: append_message_text.slice(0, i + 1),
+            };
+            current_messages[current_messages.length - 1] = newMessage;
+            seter([...current_messages]);
+            i += 1;
+            setTimeout(message_adder, 50);
+        } else {
+            const newMessage = { ...append_message_base, text: append_message_text };
+            current_messages[current_messages.length - 1] = newMessage;
+            seter([...current_messages]);
+        }
+    };
 
-        message_adder();
+    current_messages.push(append_message_base);
+    seter([...current_messages]);
+    message_adder();
+}
 
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []); // Run only once when component mounts
-
-    return null; // Adjust the return value as needed
-};
-
-export default Reply;

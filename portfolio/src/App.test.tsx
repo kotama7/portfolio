@@ -11,10 +11,11 @@ jest.mock('react-chartjs-2', () => ({
   Radar: () => <div data-testid="radar-chart" />,
 }));
 
-test('renders header text and skill tree', () => {
+test('renders header and chatbox', () => {
   render(<App />);
-  // Default language is Japanese, so check for the Japanese header text
+  // Default language is Japanese, so the header shows the Japanese name
   const heading = screen.getByText(/樹神 宇徳/i);
   expect(heading).toBeInTheDocument();
-  expect(screen.getAllByText(/Frontend/i).length).toBeGreaterThan(0);
+  // Chatbox placeholder should be rendered
+  expect(screen.getByTestId('chatbox')).toBeInTheDocument();
 });

@@ -26,12 +26,3 @@ body {
   color: #fff;
 }
 
-.msg-user {
-  text-align: right;
-  margin: 0.25rem 0;
-}
-
-.msg-bot {
-  text-align: left;
-  margin: 0.25rem 0;
-}

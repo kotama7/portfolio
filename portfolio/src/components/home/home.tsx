@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { ChatBox } from 'react-chatbox-component';
-import AiChatBox from './AiChatBox';
 
 import MessageFormProps from './module/message_form';
 import FirstReply from './module/first_reply';
@@ -36,7 +35,6 @@ export default function Home(props: {lang: string}) {
                     user={user}
                 />
             </div>
-            <AiChatBox />
         </div>
     );
 }

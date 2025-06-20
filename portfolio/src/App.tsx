@@ -2,6 +2,7 @@ import Home from './components/home/home';
 import Header from './components/header/header';
 import BioTree from './components/bio/BioTree';
 import SkillTree from './components/skills/SkillTree';
+import InterestGraph from './components/interests/InterestGraph';
 
 import { useState } from 'react';
 
@@ -23,6 +24,7 @@ function App() {
       />
       <BioTree />
       <SkillTree />
+      <InterestGraph />
     </>
   );
 }

@@ -34,6 +34,9 @@ beforeAll(() => {
     writable: true,
     value: MockObserver,
   });
+  Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
+    value: jest.fn(),
+  });
 });
 
 test('renders main sections including other site links', () => {

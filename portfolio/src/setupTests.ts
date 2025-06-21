@@ -3,33 +3,36 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
-
-// Polyfill window.matchMedia used by react-chrono
+// Polyfill matchMedia for tests
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
-  value: jest.fn().mockImplementation((query) => ({
+  value: (query: string) => ({
     matches: false,
     media: query,
     onchange: null,
-    addListener: jest.fn(),
-    removeListener: jest.fn(),
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn(),
-  })),
+    addListener: () => {},
+    removeListener: () => {},
+    addEventListener: () => {},
+    removeEventListener: () => {},
+    dispatchEvent: () => false,
+  }),
 });
 
-// Provide a basic crypto.getRandomValues implementation for libraries that rely on it
+// Provide a minimal crypto implementation for libraries requiring getRandomValues
 Object.defineProperty(global, 'crypto', {
   value: {
-    getRandomValues: (arr: any) => require('crypto').randomFillSync(arr),
+    getRandomValues: (arr: Uint8Array) => require('crypto').randomFillSync(arr),
   },
 });
 
-// Basic IntersectionObserver mock used by react-chrono
-(global as any).IntersectionObserver = class {
-  constructor() {}
+// Mock IntersectionObserver
+class MockIntersectionObserver {
   observe() {}
   unobserve() {}
   disconnect() {}
-};
+}
+
+Object.defineProperty(window, 'IntersectionObserver', {
+  writable: true,
+  value: MockIntersectionObserver,
+});

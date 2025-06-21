@@ -19,16 +19,17 @@ function App() {
     <>
       <Header
         lang={lang}
-        setLang={setLang} 
+        setLang={setLang}
       />
       <Home
         lang={lang}
+        setLang={setLang}
       />
-      <BioTree />
-      <SkillTree />
-      <InterestGraph />
-      <PersonalityRadar />
-      <OtherSiteLinks />
+      <BioTree lang={lang} setLang={setLang} />
+      <SkillTree lang={lang} setLang={setLang} />
+      <InterestGraph lang={lang} setLang={setLang} />
+      <PersonalityRadar lang={lang} setLang={setLang} />
+      <OtherSiteLinks lang={lang} setLang={setLang} />
     </>
   );
 }

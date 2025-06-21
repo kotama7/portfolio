@@ -1,5 +1,6 @@
 import React from 'react';
 import interests from './interests.json';
+import LanguageSwitch, { LangProps } from '../LanguageSwitch';
 
 export interface InterestItem {
   title: string;
@@ -19,9 +20,14 @@ export const createInterestGraph = (data: InterestItem[]): JSX.Element => {
   );
 };
 
-const InterestGraph: React.FC = () => {
+const InterestGraph: React.FC<LangProps> = ({ lang, setLang }) => {
   const data = interests as InterestItem[];
-  return <div>{createInterestGraph(data)}</div>;
+  return (
+    <div>
+      <LanguageSwitch lang={lang} setLang={setLang} />
+      {createInterestGraph(data)}
+    </div>
+  );
 };
 
 export default InterestGraph;

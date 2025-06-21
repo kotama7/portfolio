@@ -1,13 +1,13 @@
 import Home from './components/home/home';
 import Header from './components/header/header';
 import FunctionSidebar from './components/sidebar/FunctionSidebar';
-
 import BioTree from './components/bio/BioTree';
 import SkillTree from './components/skills/SkillTree';
 import InterestGraph from './components/interests/InterestGraph';
 import PersonalityRadar from './components/personality/PersonalityRadar';
 import ContactInfo from './components/contact/ContactInfo';
 import PortfolioSummary from './components/summary/PortfolioSummary';
+
 
 import { useState } from 'react';
 
@@ -48,6 +48,7 @@ function App() {
       />
       <Home
         lang={lang}
+        setLang={setLang}
       />
       <FunctionSidebar
         open={sidebarOpen}

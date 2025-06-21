@@ -1,6 +1,8 @@
 import React from 'react';
 import qualifications from './qualifications.json';
+
 import LanguageSwitch, { LangProps } from '../LanguageSwitch';
+
 
 export interface QualificationItem {
   title: string;

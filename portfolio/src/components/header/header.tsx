@@ -10,6 +10,16 @@ interface HeaderProps {
 }
 
 export default function Header(props: HeaderProps){
+
+    const changeLanguage = () => {
+        if (props.lang === 'en') {
+            props.setLang('ja');
+        } else {
+            props.setLang('en');
+        }
+    }    
+
+export default function Header(props: HeaderProps){
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">

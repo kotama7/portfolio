@@ -1,4 +1,5 @@
 import Home from './components/home/home';
+import Header from './components/header/header';
 
 import { useState } from 'react';
 
@@ -11,6 +12,7 @@ function App() {
 
   return (
     <>
+      <Header lang={lang} setLang={setLang} />
       <Home lang={lang} setLang={setLang} />
     </>
   );

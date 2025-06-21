@@ -8,9 +8,9 @@ jest.mock('react-chatbox-component', () => ({
 
 beforeAll(() => {
   if (!globalThis.crypto) {
-    Object.defineProperty(globalThis, 'crypto', {
+    Object.defineProperty(globalThis, "crypto", {
       value: {
-        getRandomValues: (arr: Uint8Array) => require('crypto').randomFillSync(arr)
+        getRandomValues: (arr: Uint8Array) => require("crypto").randomFillSync(arr)
       }
     });
   }
@@ -41,6 +41,12 @@ beforeAll(() => {
   });
 });
 
+
+test('shows a single language switch in the header', () => {
+  render(<App />);
+  const toggle = screen.getAllByRole('button', { name: 'English' });
+  expect(toggle).toHaveLength(1);
+});
 test('renders chatbox', () => {
   render(<App />);
   expect(screen.getByTestId('chatbox')).toBeInTheDocument();

@@ -4,7 +4,13 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
-export default function Header(props: {lang: string, setLang: (lang: string) => void}){
+interface HeaderProps {
+  lang: string;
+  setLang: (lang: string) => void;
+  openSidebar: () => void;
+}
+
+export default function Header(props: HeaderProps){
 
     const changeLanguage = () => {
         if (props.lang === 'en') {
@@ -18,13 +24,14 @@ export default function Header(props: {lang: string, setLang: (lang: string) => 
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar variant="dense">
-                    <Typography variant="h6" color="inherit" component="div">
+                    <Typography variant="h6" color="inherit" component="div" sx={{ flexGrow: 1 }}>
                         Takanori Kotama
                     </Typography>
+                    <Button color="inherit" onClick={props.openSidebar}>Menu</Button>
+                    <Button color="inherit" onClick={changeLanguage}>
+                        {props.lang === 'en' ? '日本語' : 'English'}
+                    </Button>
                 </Toolbar>
-                <Button onClick={changeLanguage}>
-                    {props.lang === 'en' ? '日本語' : 'English'}
-                </Button>
             </AppBar>
         </Box>
     );

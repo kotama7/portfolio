@@ -41,9 +41,7 @@ beforeAll(() => {
   });
 });
 
-test('renders main sections including other site links', () => {
+test('renders chatbox', () => {
   render(<App />);
-  expect(screen.getByText(/樹神 宇徳/i)).toBeInTheDocument();
-  expect(screen.getByText(/Frontend/i)).toBeInTheDocument();
-  expect(screen.getByText('Other Sites')).toBeInTheDocument();
+  expect(screen.getByTestId('chatbox')).toBeInTheDocument();
 });

@@ -16,8 +16,4 @@
   margin: 0.25rem 0;
 }
 
-/* Hide built-in ChatBox input so only one text box appears */
-.chatbox .msg-footer {
-  display: none;
-}
 

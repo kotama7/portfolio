@@ -6,6 +6,8 @@ export function respondToIrregularInput(text: string): string | null {
     'personality',
     'contact',
     'portfolio',
+    'link',
+    'external',
   ];
 
   const normalized = text.toLowerCase();

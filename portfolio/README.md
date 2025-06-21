@@ -30,6 +30,8 @@ corepack prepare yarn@1.22.19 --activate
 ```
 
 Run `yarn install` again afterward to ensure dependencies are linked correctly.
+If you want to verify installs without touching the lockfile, use
+`yarn install --frozen-lockfile`.
 
 ### `yarn eject`
 

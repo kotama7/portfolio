@@ -34,7 +34,25 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
     res.json({ function: functionName });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Failed to select function' });
+    const normalized = text.toLowerCase();
+    const fallbackMap = [
+      { keyword: 'bio', func: 'bioGraph' },
+      { keyword: 'skill', func: 'skillTree' },
+      { keyword: 'interest', func: 'interestGraph' },
+      { keyword: 'personality', func: 'personalityRadar' },
+      { keyword: 'contact', func: 'contactInfo' },
+      { keyword: 'portfolio', func: 'portfolioSummary' },
+      { keyword: 'link', func: 'otherSiteLinks' },
+      { keyword: 'external', func: 'otherSiteLinks' },
+    ];
+    const matched = fallbackMap.find(({ keyword }) =>
+      normalized.includes(keyword)
+    );
+    if (matched) {
+      res.json({ function: matched.func, fallback: true });
+    } else {
+      res.status(500).json({ error: 'Failed to select function' });
+    }
   }
 });
 

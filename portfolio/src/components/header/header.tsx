@@ -4,7 +4,11 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
-export default function Header(props: {lang: string, setLang: (lang: string) => void}){
+interface HeaderProps {
+    lang: string;
+    setLang: (lang: string) => void;
+}
+export default function Header(props: HeaderProps){
 
     const changeLanguage = () => {
         if (props.lang === 'en') {

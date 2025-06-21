@@ -5,9 +5,7 @@ export interface LangProps {
   setLang: (lang: string) => void;
 }
 
-export interface LangOnlyProps {
-  lang: string;
-}
+export type LangOnlyProps = Pick<LangProps, 'lang'>;
 
 export default function LanguageSwitch({ lang, setLang }: LangProps) {
   const toggleLang = () => setLang(lang === 'en' ? 'ja' : 'en');

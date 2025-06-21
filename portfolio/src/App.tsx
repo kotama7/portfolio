@@ -24,10 +24,11 @@ function App() {
       <Home
         lang={lang}
         setLang={setLang}
-      />
       <BioTree lang={lang} setLang={setLang} />
       <SkillTree lang={lang} setLang={setLang} />
       <InterestGraph lang={lang} setLang={setLang} />
+      <PersonalityRadar lang={lang} setLang={setLang} />
+      <OtherSiteLinks lang={lang} setLang={setLang} />
       <PersonalityRadar lang={lang} setLang={setLang} />
       <OtherSiteLinks lang={lang} setLang={setLang} />
     </>

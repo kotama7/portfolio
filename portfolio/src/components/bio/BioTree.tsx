@@ -1,7 +1,13 @@
 import React from 'react';
 import { Chrono } from 'react-chrono';
 import LanguageSwitch, { LangProps } from '../LanguageSwitch';
-import items from './bio.json';
+const BioTree: React.FC<LangProps> = ({ lang, setLang }) => {
+  return (
+    <div>
+      <LanguageSwitch lang={lang} setLang={setLang} />
+      <Chrono items={data} mode="VERTICAL_ALTERNATING" />
+    </div>
+  );
 
 export interface BioItem {
   title: string;

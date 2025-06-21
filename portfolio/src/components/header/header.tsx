@@ -8,18 +8,8 @@ interface HeaderProps {
     lang: string;
     setLang: (lang: string) => void;
 }
-
 export default function Header(props: HeaderProps){
-
-    const changeLanguage = () => {
-        if (props.lang === 'en') {
-            props.setLang('ja');
-        } else {
-            props.setLang('en');
-        }
-    }    
-
-export default function Header(props: HeaderProps){
+                    <LanguageSwitch lang={props.lang} setLang={props.setLang} />
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">

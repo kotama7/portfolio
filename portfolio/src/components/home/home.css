@@ -23,6 +23,23 @@ body {
   margin: 0.25rem 0;
 }
 
+/* Hide built-in ChatBox input so only one text box appears */
+.chatbox .msg-footer {
+  display: none;
+  height: 400px;
+  overflow-y: auto;
+}
+
+.msg-user {
+  text-align: right;
+  margin: 0.25rem 0;
+}
+
+.msg-bot {
+  text-align: left;
+  margin: 0.25rem 0;
+}
+
 /* ChatGPT like styling overrides for react-chatbox-component */
 .chatbox .chat-box {
   background-color: #444654;

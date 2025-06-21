@@ -1,5 +1,7 @@
 import React from 'react';
 import LanguageSwitch, { LangProps } from '../LanguageSwitch';
+const OtherSiteLinks: React.FC<LangProps> = ({ lang, setLang }) => (
+    <LanguageSwitch lang={lang} setLang={setLang} />
 
 export interface SiteLink {
   name: string;

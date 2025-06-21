@@ -7,11 +7,13 @@ jest.mock('react-chatbox-component', () => ({
 }));
 
 beforeAll(() => {
-  Object.defineProperty(globalThis, 'crypto', {
-    value: {
-      getRandomValues: (arr: Uint8Array) => require('crypto').randomFillSync(arr)
-    }
-  });
+  if (!globalThis.crypto) {
+    Object.defineProperty(globalThis, 'crypto', {
+      value: {
+        getRandomValues: (arr: Uint8Array) => require('crypto').randomFillSync(arr)
+      }
+    });
+  }
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
     value: jest.fn().mockImplementation((query) => ({

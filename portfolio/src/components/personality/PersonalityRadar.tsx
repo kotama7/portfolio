@@ -1,5 +1,5 @@
 import React from 'react';
-import LanguageSwitch, { LangProps } from '../LanguageSwitch';
+import { LangOnlyProps } from '../LanguageSwitch';
 import { Radar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -19,7 +19,7 @@ export interface PersonalityData {
   values: number[];
 }
 
-const PersonalityRadar: React.FC<LangProps> = ({ lang, setLang }) => {
+const PersonalityRadar: React.FC<LangOnlyProps> = ({ lang }) => {
   const personality = data as PersonalityData;
   const chartData = {
     labels: personality.labels,
@@ -36,7 +36,6 @@ const PersonalityRadar: React.FC<LangProps> = ({ lang, setLang }) => {
 
   return (
     <div>
-      <LanguageSwitch lang={lang} setLang={setLang} />
       <h3>Personality Radar Chart</h3>
       <Radar data={chartData} />
     </div>

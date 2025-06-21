@@ -21,15 +21,12 @@ function App() {
         lang={lang}
         setLang={setLang}
       />
-      <Home
-        lang={lang}
-        setLang={setLang}
-      />
-      <BioTree lang={lang} setLang={setLang} />
-      <SkillTree lang={lang} setLang={setLang} />
-      <InterestGraph lang={lang} setLang={setLang} />
-      <PersonalityRadar lang={lang} setLang={setLang} />
-      <OtherSiteLinks lang={lang} setLang={setLang} />
+      <Home lang={lang} />
+      <BioTree lang={lang} />
+      <SkillTree lang={lang} />
+      <InterestGraph lang={lang} />
+      <PersonalityRadar lang={lang} />
+      <OtherSiteLinks lang={lang} />
     </>
   );
 }

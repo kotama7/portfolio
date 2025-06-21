@@ -1,5 +1,5 @@
 import React from 'react';
-import LanguageSwitch, { LangProps } from '../LanguageSwitch';
+import { LangOnlyProps } from '../LanguageSwitch';
 
 export interface SiteLink {
   name: string;
@@ -12,9 +12,8 @@ const links: SiteLink[] = [
   { name: 'Qiita', url: 'https://qiita.com/kotama7' }
 ];
 
-const OtherSiteLinks: React.FC<LangProps> = ({ lang, setLang }) => (
+const OtherSiteLinks: React.FC<LangOnlyProps> = ({ lang }) => (
   <div>
-    <LanguageSwitch lang={lang} setLang={setLang} />
     <h3>Other Sites</h3>
     <ul>
       {links.map(link => (

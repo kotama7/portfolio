@@ -1,6 +1,6 @@
 import React from 'react';
 import qualifications from './qualifications.json';
-import LanguageSwitch, { LangProps } from '../LanguageSwitch';
+import { LangOnlyProps } from '../LanguageSwitch';
 
 export interface QualificationItem {
   title: string;
@@ -22,11 +22,10 @@ export const createQualificationList = (data: QualificationItem[]): JSX.Element 
   );
 };
 
-const QualificationList: React.FC<LangProps> = ({ lang, setLang }) => {
+const QualificationList: React.FC<LangOnlyProps> = ({ lang }) => {
   const data = qualifications as QualificationItem[];
   return (
     <div>
-      <LanguageSwitch lang={lang} setLang={setLang} />
       {createQualificationList(data)}
     </div>
   );

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import LanguageSwitch, { LangProps } from '../LanguageSwitch';
+import { LangOnlyProps } from '../LanguageSwitch';
 import { ChatBox } from 'react-chatbox-component';
 import AiChatBox from './AiChatBox';
 
@@ -10,7 +10,7 @@ import 'react-chatbox-component/dist/style.css';
 import './home.css';
 
 
-export default function Home(props: LangProps) {
+export default function Home(props: LangOnlyProps) {
 
     const [messages, setMessages] = useState<MessageFormProps[]>([])
 
@@ -31,7 +31,6 @@ export default function Home(props: LangProps) {
 
     return (
         <div>
-            <LanguageSwitch lang={props.lang} setLang={props.setLang} />
             <div className='chatbox'>
                 <ChatBox
                     messages={messages}

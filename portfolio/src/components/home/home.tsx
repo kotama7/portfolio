@@ -40,7 +40,7 @@ export default function Home(props: LangProps) {
                     user={user}
                 />
             </div>
-            <AiChatBox />
+            <AiChatBox messages={messages} setMessages={setMessages} />
         </div>
     );
 }

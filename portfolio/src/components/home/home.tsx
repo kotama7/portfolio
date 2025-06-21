@@ -1,5 +1,6 @@
-import { useState } from 'react';
 import { LangOnlyProps } from '../LanguageSwitch';
+import { useState, useEffect } from 'react';
+import LanguageSwitch, { LangProps } from '../LanguageSwitch';
 import { ChatBox } from 'react-chatbox-component';
 import AiChatBox from './AiChatBox';
 
@@ -18,16 +19,18 @@ export default function Home(props: LangOnlyProps) {
         "uid" : "Guest"
     }
 
-    if (messages.length === 0) {
-        setTimeout(
-            FirstReply,
-            1750,
-            {
-                seter: setMessages, 
-                lang: props.lang
-            }
-        )
-    }
+    useEffect(() => {
+        if (messages.length === 0) {
+            const timer = setTimeout(() =>
+                FirstReply({
+                    seter: setMessages,
+                    lang: props.lang
+                }),
+                1750
+            );
+            return () => clearTimeout(timer);
+        }
+    }, [messages.length, props.lang]);
 
     return (
         <div>

@@ -19,7 +19,7 @@ export default function Header(props: {lang: string, setLang: (lang: string) => 
             <AppBar position="static">
                 <Toolbar variant="dense">
                     <Typography variant="h6" color="inherit" component="div">
-                        {props.lang === 'en' ? 'Takanori Kotama' : '樹神 宇徳'}
+                        Takanori Kotama
                     </Typography>
                 </Toolbar>
                 <Button onClick={changeLanguage}>

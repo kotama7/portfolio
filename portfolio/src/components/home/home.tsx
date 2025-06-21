@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChatBox } from 'react-chatbox-component';
 
 import MessageFormProps from './module/message_form';
@@ -36,18 +36,17 @@ export default function Home(props: {lang: string}) {
         "uid" : "Guest"
     }
 
-    if (messages.length === 0) {
-        setTimeout(
-            FirstReply,
-            1750,
-            {
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            FirstReply({
                 seter: setMessages,
                 lang: props.lang
-            }
-        )
-    }
+            });
+        }, 1750);
+        return () => clearTimeout(timer);
+    }, [props.lang]);
 
-    const sendMessage = async (text: string) => {
+    const sendMessage = async (text: string): Promise<void> => {
         if (!text.trim()) return;
         const userMsg: MessageFormProps = {
             text,

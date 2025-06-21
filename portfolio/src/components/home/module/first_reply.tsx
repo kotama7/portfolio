@@ -8,10 +8,10 @@ interface FirstReplyProps {
     lang: string;
 }
 
-export default function FirstReply(props: FirstReplyProps) {
+export default function FirstReply({ seter, lang }: FirstReplyProps) {
 
     useEffect(() => {
-        const message = props.lang === 'en'
+        const message = lang === 'en'
             ? 'Tell me about yourself'
             : 'あなたのことを教えてください';
 
@@ -27,17 +27,17 @@ export default function FirstReply(props: FirstReplyProps) {
             }
         ];
 
-        props.seter(first_messages);
+        seter(first_messages);
 
         fetch('/autoReply', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ lang: props.lang })
+            body: JSON.stringify({ lang })
         })
             .then(res => res.json())
             .then(data => {
                 Reply({
-                    seter: props.seter,
+                    seter,
                     messages: first_messages,
                     next_message: data.message
                 });
@@ -45,7 +45,7 @@ export default function FirstReply(props: FirstReplyProps) {
             .catch(err => {
                 console.error('autoReply failed', err);
             });
-    }, [props.lang, props.seter]);
+    }, [lang, seter]);
 
     return null;
 }

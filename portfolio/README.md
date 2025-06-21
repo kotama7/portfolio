@@ -20,6 +20,17 @@ Launches the test runner in the interactive watch mode.
 
 Builds the app for production to the `build` folder.
 
+This repository uses **Yarn Classic (1.x)**. If a newer Yarn version is active,
+the lockfile may be rewritten and build commands can fail with messages like
+`This package doesn't seem to be present in your lockfile`. You can switch back
+to Yarn Classic with:
+
+```bash
+corepack prepare yarn@1.22.19 --activate
+```
+
+Run `yarn install` again afterward to ensure dependencies are linked correctly.
+
 ### `yarn eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**

@@ -5,6 +5,6 @@ it('renders defined functions', () => {
   render(
     <FunctionSidebar open={true} onClose={() => {}} onSelect={() => {}} />
   );
-  expect(screen.getByText('bioGraph')).toBeInTheDocument();
-  expect(screen.getByText('portfolioSummary')).toBeInTheDocument();
+  expect(screen.getByText('Biography Graph')).toBeInTheDocument();
+  expect(screen.getByText('Portfolio Summary')).toBeInTheDocument();
 });

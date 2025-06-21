@@ -5,13 +5,18 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 
-const functions = [
-  'bioGraph',
-  'skillTree',
-  'interestGraph',
-  'personalityRadar',
-  'contactInfo',
-  'portfolioSummary',
+interface FuncInfo {
+  key: string;
+  label: string;
+}
+
+const functions: FuncInfo[] = [
+  { key: 'bioGraph', label: 'Biography Graph' },
+  { key: 'skillTree', label: 'Skill Tree' },
+  { key: 'interestGraph', label: 'Interest Graph' },
+  { key: 'personalityRadar', label: 'Personality Radar' },
+  { key: 'contactInfo', label: 'Contact Info' },
+  { key: 'portfolioSummary', label: 'Portfolio Summary' },
 ];
 
 interface FunctionSidebarProps {
@@ -30,9 +35,9 @@ const FunctionSidebar: React.FC<FunctionSidebarProps> = ({ open, onClose, onSele
     <Drawer anchor="left" open={open} onClose={onClose}>
       <List sx={{ width: 250 }}>
         {functions.map((func) => (
-          <ListItem key={func} disablePadding>
-            <ListItemButton onClick={() => handleSelect(func)}>
-              <ListItemText primary={func} />
+          <ListItem key={func.key} disablePadding>
+            <ListItemButton onClick={() => handleSelect(func.key)}>
+              <ListItemText primary={func.label} />
             </ListItemButton>
           </ListItem>
         ))}

@@ -38,13 +38,16 @@ export default function Home(props: {lang: string}) {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            FirstReply({
-                seter: setMessages,
-                lang: props.lang
-            });
+            // Only auto reply if the user hasn't started chatting yet
+            if (messages.length === 0) {
+                FirstReply({
+                    seter: setMessages,
+                    lang: props.lang
+                });
+            }
         }, 1750);
         return () => clearTimeout(timer);
-    }, [props.lang]);
+    }, [props.lang, messages.length]);
 
     const sendMessage = async (text: string): Promise<void> => {
         if (!text.trim()) return;

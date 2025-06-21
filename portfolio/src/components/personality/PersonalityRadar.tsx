@@ -1,5 +1,7 @@
 import React from 'react';
 import LanguageSwitch, { LangProps } from '../LanguageSwitch';
+const PersonalityRadar: React.FC<LangProps> = ({ lang, setLang }) => {
+      <LanguageSwitch lang={lang} setLang={setLang} />
 import { Radar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,

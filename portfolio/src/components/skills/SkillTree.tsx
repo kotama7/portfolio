@@ -1,7 +1,13 @@
 import React from 'react';
 import skills from './skills.json';
 import LanguageSwitch, { LangProps } from '../LanguageSwitch';
-
+const SkillTree: React.FC<LangProps> = ({ lang, setLang }) => {
+  return (
+    <div>
+      <LanguageSwitch lang={lang} setLang={setLang} />
+      {createSkillTree(data)}
+    </div>
+  );
 export interface SkillItem {
   title: string;
   children?: SkillItem[];

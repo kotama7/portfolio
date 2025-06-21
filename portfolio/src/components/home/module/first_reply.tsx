@@ -1,7 +1,7 @@
-import MessageFormProps from "./message_form"
+import { useEffect } from 'react';
+import MessageFormProps from './message_form';
 
-import Reply from "./return_respond"
-import { default_second_message_ja, default_second_message_en } from "./data"
+import Reply from './return_respond';
 
 interface FirstReplyProps {
     seter: Function;
@@ -42,4 +42,3 @@ export default function FirstReply(props: FirstReplyProps) {
         next_message: next_message,
     })
 }
-

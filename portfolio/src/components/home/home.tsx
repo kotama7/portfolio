@@ -31,6 +31,7 @@ async function callSelectFunction(text: string): Promise<string | undefined> {
 export default function Home(props: {lang: string}) {
 
     const [messages, setMessages] = useState<MessageFormProps[]>([])
+    const [loading, setLoading] = useState(false)
 
     const user = {
         "uid" : "Guest"
@@ -51,6 +52,7 @@ export default function Home(props: {lang: string}) {
 
     const sendMessage = async (text: string): Promise<void> => {
         if (!text.trim()) return;
+        setLoading(true)
         const userMsg: MessageFormProps = {
             text,
             id: messages.length + 1,
@@ -73,6 +75,7 @@ export default function Home(props: {lang: string}) {
             }
         };
         setMessages(prev => [...prev, botMsg]);
+        setLoading(false)
     };
 
     return (
@@ -82,6 +85,7 @@ export default function Home(props: {lang: string}) {
                     messages={messages}
                     user={user}
                     onSubmit={sendMessage}
+                    isLoading={loading}
                 />
             </div>
         </div>

@@ -10,6 +10,7 @@ export default function Header(props: {lang: string, setLang: (lang: string) => 
                 <Button onClick={changeLanguage}>
                     {props.lang === 'en' ? '日本語' : 'English'}
                 </Button>
+
     }    
 
 }

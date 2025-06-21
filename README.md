@@ -10,11 +10,17 @@ This repository contains the source code for my personal portfolio website. The 
 
 ## Getting started
 
-To develop locally you will need [Node.js](https://nodejs.org/) and [Yarn](https://yarnpkg.com/). After cloning the repository, install dependencies and start the development server:
+To develop locally you will need [Node.js](https://nodejs.org/) and [Yarn](https://yarnpkg.com/). This project relies on **Yarn Classic (1.x)**. If a newer Yarn version is active, prepare Yarn Classic with:
+
+```bash
+corepack prepare yarn@1.22.19 --activate
+```
+
+After cloning the repository, install dependencies and start the development server:
 
 ```bash
 cd portfolio
-yarn install
+yarn install        # use `--frozen-lockfile` to avoid rewriting the lockfile
 yarn start
 ```
 

@@ -16,6 +16,13 @@ To develop locally you will need [Node.js](https://nodejs.org/) and [Yarn](https
 corepack prepare yarn@1.22.19 --activate
 ```
 
+If another Yarn version was active previously, run the install command again so
+dependencies link correctly:
+
+```bash
+yarn install
+```
+
 After cloning the repository, install dependencies and start the development server:
 
 ```bash

@@ -8,44 +8,37 @@ interface FirstReplyProps {
     lang: string;
 }
 
-export default function FirstReply({ seter, lang }: FirstReplyProps) {
+export default function FirstReply(props: FirstReplyProps) {
 
-    useEffect(() => {
-        const message = lang === 'en'
-            ? 'Tell me about yourself'
-            : 'あなたのことを教えてください';
+    let message:string = "あなたのことを教えてください"
+    let next_message:string = default_second_message_ja
 
-        const first_messages: [MessageFormProps] = [
-            {
-                text: message,
-                id: 1,
-                sender: {
-                    uid: 'Guest',
-                    name: 'Guest',
-                    avatar: 'https://www.w3schools.com/howto/img_avatar.png'
-                }
+    if (props.lang === 'en') {
+        message = "Tell me about yourself"
+        next_message = default_second_message_en
+    } else {
+        message = "あなたのことを教えてください"
+        next_message = default_second_message_ja
+    }
+    
+
+    const first_messages: [MessageFormProps] = [
+        {
+            text: message,
+            id: 1,
+            sender: {
+                uid: "Guest",
+                name: "Guest",
+                avatar: "https://www.w3schools.com/howto/img_avatar.png"
             }
-        ];
+        }
+    ]
 
-        seter(first_messages);
+    props.seter(first_messages)
 
-        fetch('/autoReply', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ lang })
-        })
-            .then(res => res.json())
-            .then(data => {
-                Reply({
-                    seter,
-                    messages: first_messages,
-                    next_message: data.message
-                });
-            })
-            .catch(err => {
-                console.error('autoReply failed', err);
-            });
-    }, [lang, seter]);
-
-    return null;
+    Reply({
+        seter: props.seter,
+        messages: first_messages,
+        next_message: next_message,
+    })
 }

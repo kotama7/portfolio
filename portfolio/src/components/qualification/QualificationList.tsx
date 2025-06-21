@@ -1,5 +1,6 @@
 import React from 'react';
 import qualifications from './qualifications.json';
+import LanguageSwitch, { LangProps } from '../LanguageSwitch';
 
 export interface QualificationItem {
   title: string;
@@ -7,7 +8,7 @@ export interface QualificationItem {
   year?: string;
 }
 
-export const renderQualificationList = (data: QualificationItem[]): JSX.Element => {
+export const createQualificationList = (data: QualificationItem[]): JSX.Element => {
   return (
     <ul>
       {data.map((item) => (
@@ -21,12 +22,14 @@ export const renderQualificationList = (data: QualificationItem[]): JSX.Element 
   );
 };
 
-// Temporary alias for backward compatibility while older code is updated
-export const createQualificationList = renderQualificationList;
-
-const QualificationList: React.FC = () => {
+const QualificationList: React.FC<LangProps> = ({ lang, setLang }) => {
   const data = qualifications as QualificationItem[];
-  return <div>{renderQualificationList(data)}</div>;
+  return (
+    <div>
+      <LanguageSwitch lang={lang} setLang={setLang} />
+      {createQualificationList(data)}
+    </div>
+  );
 };
 
 export default QualificationList;

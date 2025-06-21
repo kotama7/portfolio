@@ -7,7 +7,7 @@ export interface QualificationItem {
   year?: string;
 }
 
-export const createQualificationList = (data: QualificationItem[]): JSX.Element => {
+export const renderQualificationList = (data: QualificationItem[]): JSX.Element => {
   return (
     <ul>
       {data.map((item) => (
@@ -23,7 +23,7 @@ export const createQualificationList = (data: QualificationItem[]): JSX.Element 
 
 const QualificationList: React.FC = () => {
   const data = qualifications as QualificationItem[];
-  return <div>{createQualificationList(data)}</div>;
+  return <div>{renderQualificationList(data)}</div>;
 };
 
 export default QualificationList;

@@ -8,7 +8,7 @@ interface FirstReplyProps {
     lang: string;
 }
 
-const FirstReply: React.FC<FirstReplyProps> = (props) => {
+export default function FirstReply(props: FirstReplyProps) {
 
     useEffect(() => {
         const message = props.lang === 'en'
@@ -50,4 +50,3 @@ const FirstReply: React.FC<FirstReplyProps> = (props) => {
     return null;
 }
 
-export default FirstReply;

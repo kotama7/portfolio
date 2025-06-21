@@ -32,6 +32,11 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 The project includes a Cloud Function named `selectFunction` that uses Firebase AI to determine which internal function should handle a user's request. It expects a JSON body with a `text` field and responds with the selected function name.
 
+When running the React app locally, you can set `REACT_APP_SELECT_FUNCTION_URL`
+to the full URL of this function. If the variable is not set, the app falls back
+to calling `/selectFunction`, which works when Firebase Hosting rewrites are
+configured (as in this repository).
+
 Example request using `curl`:
 
 ```bash
@@ -48,9 +53,7 @@ This will return a JSON response similar to:
 
 Set the environment variables `FIREBASE_WEB_API_KEY` and `FIREBASE_APP_ID` in your Firebase project to enable the Firebase AI integration.
 
-### `autoReply` function
 
-This function returns the introductory message that appears in the chat when the page first loads. Send a JSON payload with a `lang` field (`en` or `ja`) and the function will respond with the corresponding message.
 
 Example:
 

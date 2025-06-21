@@ -30,9 +30,9 @@ export default function Home(props: {lang: string}) {
     return (
         <div>
             <div className='chatbox'>
-                <ChatBox 
+                <ChatBox
                     messages={messages}
-                    user={user} 
+                    user={user}
                 />
             </div>
         </div>

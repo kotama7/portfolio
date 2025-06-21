@@ -2,6 +2,8 @@
 .chatbox {
   max-width: 600px;
   margin: 2rem auto;
+  height: 400px;
+  overflow-y: auto;
 }
 
 .msg-user {

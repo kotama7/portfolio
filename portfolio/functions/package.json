@@ -9,5 +9,6 @@
     "firebase-functions": "^3.27.1",
     "@firebase/ai": "^1.4.0",
     "firebase": "^10.11.0"
-  }
+  },
+  "packageManager": "yarn@1.22.22"
 }

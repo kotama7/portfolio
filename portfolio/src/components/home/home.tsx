@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import LanguageSwitch, { LangProps } from '../LanguageSwitch';
 import { ChatBox } from 'react-chatbox-component';
 
+import 'react-chatbox-component/dist/style.css';
+import './home.css';
+
 import MessageFormProps from './module/message_form';
 import FirstReply from './module/first_reply';
 
@@ -20,9 +23,6 @@ async function callSelectFunction(text: string): Promise<string | undefined> {
     return undefined;
   }
 }
-
-import 'react-chatbox-component/dist/style.css';
-import './home.css';
 
 
 export default function Home(props: LangProps) {

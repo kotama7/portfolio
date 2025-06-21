@@ -20,7 +20,7 @@ export default function Header(props: HeaderProps){
         }
     }    
 
-export default function Header(props: HeaderProps){
+}
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">

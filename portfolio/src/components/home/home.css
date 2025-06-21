@@ -1,6 +1,45 @@
+body {
+  background-color: #343541;
+  color: #ececf1;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+}
 
 .chatbox {
-  max-width: 600px;
+  max-width: 720px;
   margin: 2rem auto;
 }
 
+/* ChatGPT like styling overrides for react-chatbox-component */
+.chatbox .chat-box {
+  background-color: #444654;
+  border-radius: 8px;
+  padding: 1rem;
+  border: none;
+  overflow-y: auto;
+}
+
+.chatbox .chat-bubble.is-user {
+  background-color: #3b82f6;
+  color: #fff;
+}
+
+.chatbox .chat-bubble.is-other {
+  background-color: #3f3f46;
+  color: #fff;
+}
+
+.chatbox .chat-bubble {
+  margin-bottom: 1rem;
+}
+
+.msg-user {
+  text-align: right;
+  margin: 0.25rem 0;
+}
+
+.msg-bot {
+  text-align: left;
+  margin: 0.25rem 0;
+}

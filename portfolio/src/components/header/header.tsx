@@ -21,10 +21,10 @@ export default function Header(props: {lang: string, setLang: (lang: string) => 
                     <Typography variant="h6" color="inherit" component="div" sx={{ flexGrow: 1 }}>
                         {props.lang === 'en' ? 'Takanori Kotama' : '樹神 宇徳'}
                     </Typography>
+                    <Button color="inherit" onClick={changeLanguage}>
+                        {props.lang === 'en' ? '日本語' : 'English'}
+                    </Button>
                 </Toolbar>
-                <Button onClick={changeLanguage}>
-                    {props.lang === 'en' ? '日本語' : 'English'}
-                </Button>
             </AppBar>
         </Box>
     );

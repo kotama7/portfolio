@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import MessageFormProps from './module/message_form';
 
-interface AiMessage {
-  id: number;
-  sender: 'user' | 'bot';
-  text: string;
+interface AiChatBoxProps {
+  messages: MessageFormProps[];
+  setMessages: React.Dispatch<React.SetStateAction<MessageFormProps[]>>;
 }
 
 async function callSelectFunction(text: string): Promise<string | undefined> {
@@ -25,29 +25,40 @@ async function callSelectFunction(text: string): Promise<string | undefined> {
   }
 }
 
-const AiChatBox: React.FC = () => {
-  const [messages, setMessages] = useState<AiMessage[]>([]);
+const AiChatBox: React.FC<AiChatBoxProps> = ({ messages, setMessages }) => {
   const [input, setInput] = useState('');
 
   const sendMessage = async () => {
     if (!input.trim()) return;
-    const userMsg: AiMessage = { id: messages.length + 1, sender: 'user', text: input };
+
+    const userMsg: MessageFormProps = {
+      text: input,
+      id: messages.length + 1,
+      sender: {
+        uid: 'Guest',
+        name: 'Guest',
+        avatar: 'https://www.w3schools.com/howto/img_avatar.png'
+      }
+    };
     setMessages(prev => [...prev, userMsg]);
     setInput('');
 
     const func = await callSelectFunction(input);
     const botText = func ? `Function selected: ${func}` : 'Failed to get response';
-    const botMsg: AiMessage = { id: userMsg.id + 1, sender: 'bot', text: botText };
+    const botMsg: MessageFormProps = {
+      text: botText,
+      id: userMsg.id + 1,
+      sender: {
+        uid: 'Takanori Kotama',
+        name: 'Takanori Kotama',
+        avatar: `${process.env.PUBLIC_URL}/kotama_icon.jpg`
+      }
+    };
     setMessages(prev => [...prev, botMsg]);
   };
 
   return (
-    <div>
-      <div className="chatbox">
-        {messages.map(m => (
-          <div key={m.id} className={`msg-${m.sender}`}>{m.text}</div>
-        ))}
-      </div>
+    <div className="ai-input">
       <input
         value={input}
         onChange={e => setInput(e.target.value)}

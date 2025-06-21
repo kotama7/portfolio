@@ -1,10 +1,13 @@
 body {
   background-color: #343541;
   color: #ececf1;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
 }
 
 .chatbox {
-  max-width: 700px;
+  max-width: 720px;
   margin: 2rem auto;
 }
 
@@ -14,6 +17,7 @@ body {
   border-radius: 8px;
   padding: 1rem;
   border: none;
+  overflow-y: auto;
 }
 
 .chatbox .chat-bubble.is-user {
@@ -24,5 +28,9 @@ body {
 .chatbox .chat-bubble.is-other {
   background-color: #3f3f46;
   color: #fff;
+}
+
+.chatbox .chat-bubble {
+  margin-bottom: 1rem;
 }
 

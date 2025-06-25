@@ -4,24 +4,38 @@ export interface FunctionSidebarProps {
   onSelect: (name: string) => void;
   selected?: string | null;
   onClose?: () => void;
+  lang: string;
 }
 
 interface FunctionItem {
   id: string;
-  label: string;
 }
 
 const functions: FunctionItem[] = [
-  { id: 'bioGraph', label: 'Please explain your biography' },
-  { id: 'skillTree', label: 'Show me your skills' },
-  { id: 'interestGraph', label: 'What are your interests?' },
-  { id: 'personalityRadar', label: 'Show your personality traits' },
-  { id: 'contactInfo', label: 'Provide your contact info' },
-  { id: 'portfolioSummary', label: 'Summarize your portfolio' },
-  { id: 'otherSiteLinks', label: 'Share other site links' },
+  { id: 'bioGraph' },
+  { id: 'skillTree' },
+  { id: 'interestGraph' },
+  { id: 'personalityRadar' },
+  { id: 'contactInfo' },
+  { id: 'portfolioSummary' },
+  { id: 'otherSiteLinks' },
 ];
 
-const FunctionSidebar: React.FC<FunctionSidebarProps> = ({ onSelect, selected, onClose }) => (
+const labels: Record<string, { en: string; ja: string }> = {
+  bioGraph: { en: 'Please explain your biography', ja: '経歴を教えてください' },
+  skillTree: { en: 'Show me your skills', ja: 'スキルを見せてください' },
+  interestGraph: { en: 'What are your interests?', ja: '興味を教えてください' },
+  personalityRadar: {
+    en: 'Show your personality traits',
+    ja: '性格の特徴を見せてください',
+  },
+  contactInfo: { en: 'Provide your contact info', ja: '連絡先を教えてください' },
+  portfolioSummary: { en: 'Summarize your portfolio', ja: 'ポートフォリオを要約してください' },
+  otherSiteLinks: { en: 'Share other site links', ja: 'その他のリンクを教えてください' },
+  newChat: { en: 'newChat', ja: '新しいチャット' },
+};
+
+const FunctionSidebar: React.FC<FunctionSidebarProps> = ({ onSelect, selected, onClose, lang }) => (
   <div className="sidebar">
     {onClose && (
       <button className="sidebar-close" onClick={onClose} aria-label="close sidebar">
@@ -30,13 +44,18 @@ const FunctionSidebar: React.FC<FunctionSidebarProps> = ({ onSelect, selected, o
     )}
     <h3>Sample Chat</h3>
     <ul>
-      {functions.map(({ id, label }) => (
+      <li key="newChat">
+        <button className="sidebar-button" onClick={() => onSelect('newChat')}>
+          {labels.newChat[lang]}
+        </button>
+      </li>
+      {functions.map(({ id }) => (
         <li key={id}>
           <button
             className={`sidebar-button ${selected === id ? 'active' : ''}`}
             onClick={() => onSelect(id)}
           >
-            {label}
+            {labels[id][lang]}
           </button>
         </li>
       ))}

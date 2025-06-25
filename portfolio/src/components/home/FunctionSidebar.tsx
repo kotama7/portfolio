@@ -4,7 +4,7 @@ export interface FunctionSidebarProps {
   onSelect: (name: string) => void;
   selected?: string | null;
   onClose?: () => void;
-  lang: string;
+  lang: 'en' | 'ja';
 }
 
 interface FunctionItem {

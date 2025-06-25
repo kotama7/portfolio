@@ -57,7 +57,7 @@ async function callSelectFunction(text: string): Promise<string | undefined> {
 }
 
 
-export default function Home(props: { lang: string }) {
+export default function Home(props: { lang: 'en' | 'ja' }) {
 
     const [messages, setMessages] = useState<MessageFormProps[]>([])
     const [selectedFunc, setSelectedFunc] = useState<string | null>(null)

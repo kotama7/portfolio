@@ -3,6 +3,7 @@ import React from 'react';
 export interface FunctionSidebarProps {
   onSelect: (name: string) => void;
   selected?: string | null;
+  onClose?: () => void;
 }
 
 const functions = [
@@ -15,8 +16,13 @@ const functions = [
   'otherSiteLinks',
 ];
 
-const FunctionSidebar: React.FC<FunctionSidebarProps> = ({ onSelect, selected }) => (
+const FunctionSidebar: React.FC<FunctionSidebarProps> = ({ onSelect, selected, onClose }) => (
   <div className="sidebar">
+    {onClose && (
+      <button className="sidebar-close" onClick={onClose} aria-label="close sidebar">
+        ×
+      </button>
+    )}
     <h3>Functions</h3>
     <ul>
       {functions.map((name) => (

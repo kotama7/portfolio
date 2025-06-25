@@ -44,6 +44,7 @@ export default function Home(props: { lang: string }) {
 
     const [messages, setMessages] = useState<MessageFormProps[]>([])
     const [selectedFunc, setSelectedFunc] = useState<string | null>(null)
+    const [sidebarOpen, setSidebarOpen] = useState<boolean>(true)
 
     const user = {
         "uid" : "Guest"
@@ -113,7 +114,15 @@ export default function Home(props: { lang: string }) {
 
     return (
         <div className='home-container'>
-            <FunctionSidebar onSelect={setSelectedFunc} selected={selectedFunc} />
+            {sidebarOpen ? (
+                <FunctionSidebar
+                    onSelect={setSelectedFunc}
+                    selected={selectedFunc}
+                    onClose={() => setSidebarOpen(false)}
+                />
+            ) : (
+                <button className='sidebar-open' onClick={() => setSidebarOpen(true)}>Open</button>
+            )}
             <div className='chat-container'>
                 <div className='chatbox'>
                     <ChatBox

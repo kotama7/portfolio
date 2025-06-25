@@ -65,7 +65,13 @@ export default function Home(props: { lang: string }) {
         setMessages(prev => [...prev, userMsg]);
 
         const func = await callSelectFunction(input);
-        const botText = func ? `Function selected: ${func}` : 'Failed to get response';
+        const botText = func
+            ? (props.lang === 'en'
+                ? `Function selected: ${func}`
+                : `選択された機能: ${func}`)
+            : props.lang === 'en'
+                ? 'Failed to get response'
+                : '返答を取得できませんでした';
         const botMsg: MessageFormProps = {
             text: botText,
             id: userMsg.id + 1,
@@ -111,6 +117,12 @@ export default function Home(props: { lang: string }) {
             return () => clearTimeout(timer);
         }
     }, [messages.length, props.lang]);
+
+    // Reset conversation when language changes
+    useEffect(() => {
+        setMessages([]);
+        setSelectedFunc(null);
+    }, [props.lang]);
 
     return (
         <div className='home-container'>

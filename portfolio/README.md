@@ -35,7 +35,9 @@ The project includes a Cloud Function named `selectFunction` that uses Firebase 
 When running the React app locally, you can set `REACT_APP_SELECT_FUNCTION_URL`
 to the full URL of this function. If the variable is not set, the app falls back
 to calling `/selectFunction`, which works when Firebase Hosting rewrites are
-configured (as in this repository).
+configured (as in this repository). Running without this variable while using
+`yarn start` will cause the development server to return HTML, leading to a JSON
+parse error in the browser.
 
 Example request using `curl`:
 

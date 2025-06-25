@@ -15,6 +15,16 @@ async function callSelectFunction(text: string): Promise<string | undefined> {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ text })
     });
+
+    if (!res.ok) {
+      throw new Error(`HTTP error ${res.status}`);
+    }
+
+    const contentType = res.headers.get('content-type') || '';
+    if (!contentType.includes('application/json')) {
+      throw new Error('Response is not JSON');
+    }
+
     const data = await res.json();
     return data.function as string;
   } catch (err) {

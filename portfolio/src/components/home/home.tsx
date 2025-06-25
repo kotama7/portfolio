@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ChatBox } from 'react-chatbox-component';
+import { initializeApp, getApps, getApp } from 'firebase/app';
+import { getAI, getGenerativeModel, GoogleAIBackend } from '@firebase/ai';
 
 import 'react-chatbox-component/dist/style.css';
 import './home.css';
@@ -13,26 +15,31 @@ import InterestGraph from '../interests/InterestGraph';
 import PersonalityRadar from '../personality/PersonalityRadar';
 import OtherSiteLinks from '../links/OtherSiteLinks';
 
+let model: ReturnType<typeof getGenerativeModel> | null = null;
+
+function getModel() {
+  if (!model) {
+    const app = getApps().length
+      ? getApp()
+      : initializeApp({
+          apiKey: process.env.REACT_APP_FIREBASE_WEB_API_KEY!,
+          projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID!,
+          appId: process.env.REACT_APP_FIREBASE_APP_ID!,
+        });
+    const ai = getAI(app, { backend: new GoogleAIBackend() });
+    model = getGenerativeModel(ai, { model: 'gemini-1.5-pro' });
+  }
+  return model;
+}
+
 async function callSelectFunction(text: string): Promise<string | undefined> {
-  const url = process.env.REACT_APP_SELECT_FUNCTION_URL || '/selectFunction';
+  const prompt = `You are a helpful assistant that maps user requests to function names.\nPossible functions include:\n- bioGraph: returns the biography graph.\n- skillTree: returns the skill hierarchy.\n- interestGraph: returns an interest graph.\n- personalityRadar: shows a personality radar chart.\n- contactInfo: returns contact information.\n- portfolioSummary: gives a summary of the portfolio.\nRespond with only the function name that best matches the user's request.`;
   try {
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text })
+    const result = await getModel().generateContent({
+      contents: [{ role: 'user', parts: [{ text: `${prompt}\n${text}` }] }],
+      generationConfig: { maxOutputTokens: 10, temperature: 0 },
     });
-
-    if (!res.ok) {
-      throw new Error(`HTTP error ${res.status}`);
-    }
-
-    const contentType = res.headers.get('content-type') || '';
-    if (!contentType.includes('application/json')) {
-      throw new Error('Response is not JSON');
-    }
-
-    const data = await res.json();
-    return data.function as string;
+    return result.response.text().trim();
   } catch (err) {
     console.error('Failed to call selectFunction', err);
     return undefined;
@@ -84,6 +91,15 @@ export default function Home(props: { lang: string }) {
         setMessages(prev => [...prev, botMsg]);
     }
 
+    const handleSidebarSelect = (name: string) => {
+        if (name === 'newChat') {
+            setMessages([]);
+            setSelectedFunc(null);
+        } else {
+            setSelectedFunc(name);
+        }
+    }
+
     const renderFunction = () => {
         switch (selectedFunc) {
             case 'bioGraph':
@@ -128,7 +144,7 @@ export default function Home(props: { lang: string }) {
         <div className='home-container'>
             {sidebarOpen ? (
                 <FunctionSidebar
-                    onSelect={setSelectedFunc}
+                    onSelect={handleSidebarSelect}
                     selected={selectedFunc}
                     onClose={() => setSidebarOpen(false)}
                 />

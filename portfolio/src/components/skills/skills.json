@@ -1,17 +1,59 @@
 [
   {
-    "title": "Frontend",
+    "title": "Programming",
     "children": [
-      {"title": "React"},
-      {"title": "TypeScript"},
-      {"title": "Bootstrap"}
+      { "title": "Python" },
+      { "title": "JavaScript / TypeScript" },
+      { "title": "C" }
     ]
   },
   {
-    "title": "Backend",
+    "title": "AI & ML",
     "children": [
-      {"title": "Node.js"},
-      {"title": "Firebase"}
+      { "title": "TensorFlow" },
+      { "title": "PyTorch" },
+      { "title": "OpenSpiel" },
+      { "title": "Reinforcement Learning (CFR / DeepCFR)" },
+      { "title": "Graph Neural Networks" }
+    ]
+  },
+  {
+    "title": "Materials Science Research",
+    "children": [
+      { "title": "High Entropy Alloys (HEAs)" },
+      { "title": "Energy Estimation Models" },
+      { "title": "GNN Applications to Materials" }
+    ]
+  },
+  {
+    "title": "Web & DevOps",
+    "children": [
+      { "title": "React" },
+      { "title": "Docker" }
+    ]
+  },
+  {
+    "title": "Data Visualization",
+    "children": [
+      { "title": "Matplotlib / EPS Workflow" },
+      { "title": "pandas Data Analysis" },
+      { "title": "Graph & Network Plotting" }
+    ]
+  },
+  {
+    "title": "Languages",
+    "children": [
+      { "title": "Japanese (Native)" },
+      { "title": "English (Business Level)" },
+      { "title": "Chinese (Learning)" }
+    ]
+  },
+  {
+    "title": "Leadership & Communication",
+    "children": [
+      { "title": "Web Chief (University Festival)" },
+      { "title": "Vice President (App Dev Group “jack”)" },
+      { "title": "Internships & International Programs" }
     ]
   }
 ]

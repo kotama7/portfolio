@@ -134,12 +134,6 @@ export default function Home(props: { lang: string }) {
         }
     }, [messages.length, props.lang]);
 
-    // Reset conversation when language changes
-    useEffect(() => {
-        setMessages([]);
-        setSelectedFunc(null);
-    }, [props.lang]);
-
     return (
         <div className='home-container'>
             {sidebarOpen ? (

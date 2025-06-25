@@ -7,6 +7,7 @@ export interface FunctionSidebarProps {
 }
 
 const functions = [
+  'newChat',
   'bioGraph',
   'skillTree',
   'interestGraph',

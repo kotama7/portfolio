@@ -56,7 +56,7 @@ Set the environment variables `FIREBASE_WEB_API_KEY` and `FIREBASE_APP_ID` in yo
 
 This function returns the introductory message that appears in the chat when the
 page first loads. Send a JSON payload with a `lang` field (`en` or `ja`) and the
-function will respond with the corresponding message.
+function will respond with a randomly selected message in that language.
 
 Example:
 

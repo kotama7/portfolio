@@ -61,20 +61,35 @@ exports.autoReply = functions.https.onRequest((req, res) => {
   const lang = (req.body.lang || 'en').toLowerCase();
 
   const replies = {
-    ja: `
+    ja: [
+      `
     名古屋大学情報学部コンピュータ科学科情報システム専攻3年の学生です。\n
     React と TypeScript を中心に、AI を活用したアプリを開発しています。\n
     ポートフォリオにはチャットボット型プロフィールサイトや LLM を利用したアプリなどがあります。\n
     詳細は GitHub (https://github.com/kotama7) をご覧ください。
-    `,
-    en: `
+      `,
+      `
+    名古屋大学3年生で、React と TypeScript を主に使って開発しています。\n
+    AI を取り入れたプロジェクトに取り組んでおり、このサイトもその一つです。\n
+    興味があれば GitHub (https://github.com/kotama7) をご覧ください。
+      `,
+    ],
+    en: [
+      `
     I am a third year student at Nagoya University majoring in Computer Science.\n
     My main stack is React and TypeScript, and I love building apps that leverage AI.\n
     My portfolio includes a chatbot style profile site and several applications powered by large language models.\n
     For more, please visit my GitHub: https://github.com/kotama7
-    `,
+      `,
+      `
+    I'm a junior at Nagoya University focusing on Computer Science.\n
+    I build applications with React and TypeScript and enjoy exploring AI tools.\n
+    Check out more of my projects on GitHub: https://github.com/kotama7
+      `,
+    ],
   };
 
-  const message = replies[lang] || replies.en;
+  const candidates = replies[lang] || replies.en;
+  const message = candidates[Math.floor(Math.random() * candidates.length)];
   res.json({ message });
 });

@@ -17,3 +17,59 @@
 }
 
 
+
+.home-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  padding: 1rem;
+  background-color: #202123;
+  color: #ececf1;
+  border-right: 1px solid #343541;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+.sidebar li {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-button {
+  width: 100%;
+  background: #343541;
+  border: none;
+  border-radius: 6px;
+  color: #ececf1;
+  padding: 0.5rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.sidebar-button:hover {
+  background: #40414f;
+}
+
+.sidebar-button.active {
+  background: #2b2c2f;
+}
+
+.chat-container {
+  flex: 1;
+  background: #ffffff;
+}

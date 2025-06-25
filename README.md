@@ -20,11 +20,9 @@ yarn start
 
 The site will be available at [http://localhost:3000](http://localhost:3000).
 
-The chat interface relies on a Cloud Function named `selectFunction`. When
-developing locally you can set the `REACT_APP_SELECT_FUNCTION_URL` environment
-variable to the function's URL, but if it is omitted the app will automatically
-call `/selectFunction` which is mapped to the function via Firebase Hosting
-rewrites.
+The chat interface uses Firebase AI directly in the browser to determine which
+internal function should handle a request. Previous versions called a
+`selectFunction` Cloud Function for this step.
 
 ### Tests
 

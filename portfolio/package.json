@@ -15,7 +15,7 @@
     "@types/react-dom": "^18.0.0",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.5.0",
-    "firebase": "^10.11.0",
+    "firebase": "^11.9.1",
     "firebase-tools": "^13.7.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",

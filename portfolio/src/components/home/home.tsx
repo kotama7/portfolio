@@ -6,30 +6,57 @@ import './home.css';
 
 import MessageFormProps from './module/message_form';
 import FirstReply from './module/first_reply';
+import { initializeApp, getApp, getApps } from 'firebase/app';
+import { getAI, getGenerativeModel, GoogleAIBackend } from 'firebase/ai';
 
+let generativeModel: ReturnType<typeof getGenerativeModel> | null = null;
 async function callSelectFunction(text: string): Promise<string | undefined> {
-  const url = process.env.REACT_APP_SELECT_FUNCTION_URL || '/selectFunction';
   try {
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text })
+    if (!generativeModel) {
+      const app = getApps().length
+        ? getApp()
+        : initializeApp({
+            apiKey: process.env.REACT_APP_FIREBASE_WEB_API_KEY,
+            projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+            appId: process.env.REACT_APP_FIREBASE_APP_ID,
+          });
+      const ai = getAI(app, { backend: new GoogleAIBackend() });
+      generativeModel = getGenerativeModel(ai, { model: 'gemini-1.5-pro' });
+    }
+
+    const prompt =
+      "You are a helpful assistant that maps user requests to function names.\n" +
+      "Possible functions include:\n" +
+      "- bioGraph: returns the biography graph.\n" +
+      "- skillTree: returns the skill hierarchy.\n" +
+      "- interestGraph: returns an interest graph.\n" +
+      "- personalityRadar: shows a personality radar chart.\n" +
+      "- contactInfo: returns contact information.\n" +
+      "- portfolioSummary: gives a summary of the portfolio.\n" +
+      "Respond with only the function name that best matches the user's request.";
+
+    const result = await generativeModel.generateContent({
+      contents: [{ role: 'user', parts: [{ text: `${prompt}\n${text}` }] }],
+      generationConfig: { maxOutputTokens: 10, temperature: 0 },
     });
-
-    if (!res.ok) {
-      throw new Error(`HTTP error ${res.status}`);
-    }
-
-    const contentType = res.headers.get('content-type') || '';
-    if (!contentType.includes('application/json')) {
-      throw new Error('Response is not JSON');
-    }
-
-    const data = await res.json();
-    return data.function as string;
+    return result.response.text().trim();
   } catch (err) {
-    console.error('Failed to call selectFunction', err);
-    return undefined;
+    console.error('Failed to select function', err);
+    const normalized = text.toLowerCase();
+    const fallbackMap = [
+      { keyword: 'bio', func: 'bioGraph' },
+      { keyword: 'skill', func: 'skillTree' },
+      { keyword: 'interest', func: 'interestGraph' },
+      { keyword: 'personality', func: 'personalityRadar' },
+      { keyword: 'contact', func: 'contactInfo' },
+      { keyword: 'portfolio', func: 'portfolioSummary' },
+      { keyword: 'link', func: 'otherSiteLinks' },
+      { keyword: 'external', func: 'otherSiteLinks' },
+    ];
+    const matched = fallbackMap.find(({ keyword }) =>
+      normalized.includes(keyword)
+    );
+    return matched?.func;
   }
 }
 

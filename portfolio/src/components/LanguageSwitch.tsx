@@ -1,8 +1,8 @@
 import Button from '@mui/material/Button';
 
 export interface LangProps {
-  lang: string;
-  setLang: (lang: string) => void;
+  lang: 'en' | 'ja';
+  setLang: (lang: 'en' | 'ja') => void;
 }
 
 export default function LanguageSwitch({ lang, setLang }: LangProps) {

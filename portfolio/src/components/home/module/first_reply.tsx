@@ -5,7 +5,7 @@ import { default_second_message_ja, default_second_message_en } from "./data"
 
 interface FirstReplyProps {
     seter: Function;
-    lang: string;
+    lang: 'en' | 'ja';
 }
 
 export default function FirstReply(props: FirstReplyProps) {

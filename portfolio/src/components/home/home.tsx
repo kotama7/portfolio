@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ChatBox } from 'react-chatbox-component';
 import { initializeApp, getApps, getApp } from 'firebase/app';
-import { getAI, getGenerativeModel, GoogleAIBackend } from 'firebase/ai';
+import { getAI, getGenerativeModel, GoogleAIBackend } from '@firebase/ai';
 
 import 'react-chatbox-component/dist/style.css';
 import './home.css';

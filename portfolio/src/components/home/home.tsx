@@ -6,6 +6,12 @@ import './home.css';
 
 import MessageFormProps from './module/message_form';
 import FirstReply from './module/first_reply';
+import FunctionSidebar from './FunctionSidebar';
+import BioTree from '../bio/BioTree';
+import SkillTree from '../skills/SkillTree';
+import InterestGraph from '../interests/InterestGraph';
+import PersonalityRadar from '../personality/PersonalityRadar';
+import OtherSiteLinks from '../links/OtherSiteLinks';
 
 async function callSelectFunction(text: string): Promise<string | undefined> {
   const url = process.env.REACT_APP_SELECT_FUNCTION_URL || '/selectFunction';
@@ -27,6 +33,7 @@ async function callSelectFunction(text: string): Promise<string | undefined> {
 export default function Home(props: { lang: string }) {
 
     const [messages, setMessages] = useState<MessageFormProps[]>([])
+    const [selectedFunc, setSelectedFunc] = useState<string | null>(null)
 
     const user = {
         "uid" : "Guest"
@@ -60,6 +67,27 @@ export default function Home(props: { lang: string }) {
         setMessages(prev => [...prev, botMsg]);
     }
 
+    const renderFunction = () => {
+        switch (selectedFunc) {
+            case 'bioGraph':
+                return <BioTree />;
+            case 'skillTree':
+                return <SkillTree />;
+            case 'interestGraph':
+                return <InterestGraph />;
+            case 'personalityRadar':
+                return <PersonalityRadar />;
+            case 'otherSiteLinks':
+                return <OtherSiteLinks />;
+            case 'contactInfo':
+                return <div>Contact: example@example.com</div>;
+            case 'portfolioSummary':
+                return <div>This portfolio showcases my work with React and TypeScript.</div>;
+            default:
+                return null;
+        }
+    };
+
     useEffect(() => {
         if (messages.length === 0) {
             const timer = setTimeout(() =>
@@ -74,13 +102,17 @@ export default function Home(props: { lang: string }) {
     }, [messages.length, props.lang]);
 
     return (
-        <div>
-            <div className='chatbox'>
-                <ChatBox
-                    messages={messages}
-                    user={user}
-                    onSubmit={handleSendMessage}
-                />
+        <div className='home-container'>
+            <FunctionSidebar onSelect={setSelectedFunc} />
+            <div className='chat-container'>
+                <div className='chatbox'>
+                    <ChatBox
+                        messages={messages}
+                        user={user}
+                        onSubmit={handleSendMessage}
+                    />
+                </div>
+                {renderFunction()}
             </div>
         </div>
     );

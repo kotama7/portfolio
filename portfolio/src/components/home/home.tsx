@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 import LanguageSwitch, { LangProps } from '../LanguageSwitch';
 import { ChatBox } from 'react-chatbox-component';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+
+import FunctionSidebar from '../sidebar/FunctionSidebar';
 
 import 'react-chatbox-component/dist/style.css';
 import './home.css';
@@ -28,6 +32,7 @@ async function callSelectFunction(text: string): Promise<string | undefined> {
 export default function Home(props: LangProps) {
 
     const [messages, setMessages] = useState<MessageFormProps[]>([])
+    const [sidebarOpen, setSidebarOpen] = useState(false);
 
     const user = {
         "uid" : "Guest"
@@ -76,6 +81,14 @@ export default function Home(props: LangProps) {
 
     return (
         <div>
+            <IconButton aria-label="menu" onClick={() => setSidebarOpen(true)}>
+                <MenuIcon />
+            </IconButton>
+            <FunctionSidebar
+                open={sidebarOpen}
+                onClose={() => setSidebarOpen(false)}
+                onSelect={handleSendMessage}
+            />
             <LanguageSwitch lang={props.lang} setLang={props.setLang} />
             <div className='chatbox'>
                 <ChatBox

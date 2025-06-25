@@ -14,3 +14,8 @@ test('highlights selected function', () => {
   const activeBtn = screen.getByText('skillTree');
   expect(activeBtn.className).toMatch(/active/);
 });
+
+test('renders newChat button', () => {
+  render(<FunctionSidebar onSelect={() => {}} />);
+  expect(screen.getByText('newChat')).toBeInTheDocument();
+});

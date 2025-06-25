@@ -14,6 +14,7 @@ const functions = [
   'contactInfo',
   'portfolioSummary',
   'otherSiteLinks',
+  'newChat',
 ];
 
 const FunctionSidebar: React.FC<FunctionSidebarProps> = ({ onSelect, selected, onClose }) => (

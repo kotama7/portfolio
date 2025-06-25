@@ -57,6 +57,15 @@ export default function Home(props: { lang: string }) {
         "uid" : "Guest"
     }
 
+    const handleSelect = (name: string) => {
+        if (name === 'newChat') {
+            setSelectedFunc(null)
+            setMessages([])
+        } else {
+            setSelectedFunc(name)
+        }
+    }
+
     const handleSendMessage = async (input: string) => {
         if (!input.trim()) return;
 
@@ -123,7 +132,7 @@ export default function Home(props: { lang: string }) {
         <div className='home-container'>
             {sidebarOpen ? (
                 <FunctionSidebar
-                    onSelect={setSelectedFunc}
+                    onSelect={handleSelect}
                     selected={selectedFunc}
                     onClose={() => setSidebarOpen(false)}
                 />

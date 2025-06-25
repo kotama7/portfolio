@@ -21,6 +21,7 @@
 .home-container {
   display: flex;
   height: 100vh;
+  position: relative;
 }
 
 .sidebar {
@@ -72,4 +73,27 @@
 .chat-container {
   flex: 1;
   background: #ffffff;
+}
+
+.sidebar-close {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  color: #ececf1;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-open {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: #343541;
+  border: none;
+  border-radius: 6px;
+  color: #ececf1;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  z-index: 1000;
 }

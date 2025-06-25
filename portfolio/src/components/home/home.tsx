@@ -51,6 +51,45 @@ export default function Home(props: { lang: string }) {
         "uid" : "Guest"
     }
 
+    const getComponentForFunc = (func?: string | null): ReactNode | undefined => {
+        switch (func) {
+            case 'bioGraph':
+                return <BioTree />;
+            case 'skillTree':
+                return <SkillTree />;
+            case 'interestGraph':
+                return <InterestGraph />;
+            case 'personalityRadar':
+                return <PersonalityRadar />;
+            case 'otherSiteLinks':
+                return <OtherSiteLinks />;
+            case 'contactInfo':
+                return <div>Contact: example@example.com</div>;
+            case 'portfolioSummary':
+                return <div>This portfolio showcases my work with React and TypeScript.</div>;
+            default:
+                return undefined;
+        }
+    };
+
+    const handleSelectFunc = (name: string) => {
+        setSelectedFunc(name);
+        const component = getComponentForFunc(name);
+        if (component) {
+            const botMsg: MessageFormProps = {
+                text: '',
+                id: messages.length + 1,
+                sender: {
+                    uid: 'Takanori Kotama',
+                    name: 'Takanori Kotama',
+                    avatar: `${process.env.PUBLIC_URL}/kotama_icon.jpg`
+                },
+                component
+            };
+            setMessages(prev => [...prev, botMsg]);
+        }
+    };
+
     const renderChatMessage = (message: MessageFormProps) => {
         const isUser = user.uid === message.sender.uid;
         const renderName = isUser ? null : (
@@ -109,32 +148,7 @@ export default function Home(props: { lang: string }) {
 
         const func = await callSelectFunction(input);
         setSelectedFunc(func || null);
-        let component: ReactNode | undefined;
-        switch (func) {
-            case 'bioGraph':
-                component = <BioTree />;
-                break;
-            case 'skillTree':
-                component = <SkillTree />;
-                break;
-            case 'interestGraph':
-                component = <InterestGraph />;
-                break;
-            case 'personalityRadar':
-                component = <PersonalityRadar />;
-                break;
-            case 'otherSiteLinks':
-                component = <OtherSiteLinks />;
-                break;
-            case 'contactInfo':
-                component = <div>Contact: example@example.com</div>;
-                break;
-            case 'portfolioSummary':
-                component = <div>This portfolio showcases my work with React and TypeScript.</div>;
-                break;
-            default:
-                break;
-        }
+        const component = getComponentForFunc(func);
 
         const botMsg: MessageFormProps = component ? {
             text: '',
@@ -157,26 +171,6 @@ export default function Home(props: { lang: string }) {
         setMessages(prev => [...prev, botMsg]);
     }
 
-    const renderFunction = () => {
-        switch (selectedFunc) {
-            case 'bioGraph':
-                return <BioTree />;
-            case 'skillTree':
-                return <SkillTree />;
-            case 'interestGraph':
-                return <InterestGraph />;
-            case 'personalityRadar':
-                return <PersonalityRadar />;
-            case 'otherSiteLinks':
-                return <OtherSiteLinks />;
-            case 'contactInfo':
-                return <div>Contact: example@example.com</div>;
-            case 'portfolioSummary':
-                return <div>This portfolio showcases my work with React and TypeScript.</div>;
-            default:
-                return null;
-        }
-    };
 
     useEffect(() => {
         if (messages.length === 0) {
@@ -195,7 +189,7 @@ export default function Home(props: { lang: string }) {
         <div className='home-container'>
             {sidebarOpen ? (
                 <FunctionSidebar
-                    onSelect={setSelectedFunc}
+                    onSelect={handleSelectFunc}
                     selected={selectedFunc}
                     onClose={() => setSidebarOpen(false)}
                 />
@@ -211,7 +205,6 @@ export default function Home(props: { lang: string }) {
                         renderMessage={renderChatMessage}
                     />
                 </div>
-                {renderFunction()}
             </div>
         </div>
     );

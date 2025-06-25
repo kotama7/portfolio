@@ -8,6 +8,6 @@ beforeAll(() => {
 });
 
 test('renders personality radar chart heading', () => {
-  render(<PersonalityRadar lang="en" setLang={() => {}} />);
+  render(<PersonalityRadar />);
   expect(screen.getByText('Personality Radar Chart')).toBeInTheDocument();
 });

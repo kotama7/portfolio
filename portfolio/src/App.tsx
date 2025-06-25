@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <Header lang={lang} setLang={setLang} />
-      <Home lang={lang} setLang={setLang} />
+      <Home lang={lang} />
     </>
   );
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Chrono } from 'react-chrono';
-import LanguageSwitch, { LangProps } from '../LanguageSwitch';
 import items from './bio.json';
 
 export interface BioItem {
@@ -10,14 +9,9 @@ export interface BioItem {
   cardDetailedText?: string;
 }
 
-const BioTree: React.FC<LangProps> = ({ lang, setLang }) => {
+const BioTree: React.FC = () => {
   const data = items as BioItem[];
-  return (
-    <div>
-      <LanguageSwitch lang={lang} setLang={setLang} />
-      <Chrono items={data} mode="VERTICAL_ALTERNATING" />
-    </div>
-  );
+  return <Chrono items={data} mode="VERTICAL_ALTERNATING" />;
 };
 
 export default BioTree;

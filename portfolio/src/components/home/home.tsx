@@ -84,6 +84,15 @@ export default function Home(props: { lang: string }) {
         setMessages(prev => [...prev, botMsg]);
     }
 
+    const handleSidebarSelect = (name: string) => {
+        if (name === 'newChat') {
+            setMessages([]);
+            setSelectedFunc(null);
+        } else {
+            setSelectedFunc(name);
+        }
+    }
+
     const renderFunction = () => {
         switch (selectedFunc) {
             case 'bioGraph':
@@ -128,7 +137,7 @@ export default function Home(props: { lang: string }) {
         <div className='home-container'>
             {sidebarOpen ? (
                 <FunctionSidebar
-                    onSelect={setSelectedFunc}
+                    onSelect={handleSidebarSelect}
                     selected={selectedFunc}
                     onClose={() => setSidebarOpen(false)}
                 />

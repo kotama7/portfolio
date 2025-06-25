@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import LanguageSwitch, { LangProps } from '../LanguageSwitch';
 import { ChatBox } from 'react-chatbox-component';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -29,7 +28,7 @@ async function callSelectFunction(text: string): Promise<string | undefined> {
 }
 
 
-export default function Home(props: LangProps) {
+export default function Home(props: { lang: string }) {
 
     const [messages, setMessages] = useState<MessageFormProps[]>([])
     const [sidebarOpen, setSidebarOpen] = useState(false);

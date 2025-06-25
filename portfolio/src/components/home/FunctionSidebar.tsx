@@ -23,7 +23,7 @@ const FunctionSidebar: React.FC<FunctionSidebarProps> = ({ onSelect, selected, o
         ×
       </button>
     )}
-    <h3>Functions</h3>
+    <h3>Sample Chat</h3>
     <ul>
       {functions.map((name) => (
         <li key={name}>

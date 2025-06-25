@@ -6,15 +6,19 @@ export interface FunctionSidebarProps {
   onClose?: () => void;
 }
 
-const functions = [
-  'newChat',
-  'bioGraph',
-  'skillTree',
-  'interestGraph',
-  'personalityRadar',
-  'contactInfo',
-  'portfolioSummary',
-  'otherSiteLinks',
+interface FunctionItem {
+  id: string;
+  label: string;
+}
+
+const functions: FunctionItem[] = [
+  { id: 'bioGraph', label: 'Please explain your biography' },
+  { id: 'skillTree', label: 'Show me your skills' },
+  { id: 'interestGraph', label: 'What are your interests?' },
+  { id: 'personalityRadar', label: 'Show your personality traits' },
+  { id: 'contactInfo', label: 'Provide your contact info' },
+  { id: 'portfolioSummary', label: 'Summarize your portfolio' },
+  { id: 'otherSiteLinks', label: 'Share other site links' },
 ];
 
 const FunctionSidebar: React.FC<FunctionSidebarProps> = ({ onSelect, selected, onClose }) => (
@@ -26,13 +30,13 @@ const FunctionSidebar: React.FC<FunctionSidebarProps> = ({ onSelect, selected, o
     )}
     <h3>Sample Chat</h3>
     <ul>
-      {functions.map((name) => (
-        <li key={name}>
+      {functions.map(({ id, label }) => (
+        <li key={id}>
           <button
-            className={`sidebar-button ${selected === name ? 'active' : ''}`}
-            onClick={() => onSelect(name)}
+            className={`sidebar-button ${selected === id ? 'active' : ''}`}
+            onClick={() => onSelect(id)}
           >
-            {name}
+            {label}
           </button>
         </li>
       ))}

@@ -103,7 +103,7 @@ export default function Home(props: { lang: string }) {
 
     return (
         <div className='home-container'>
-            <FunctionSidebar onSelect={setSelectedFunc} />
+            <FunctionSidebar onSelect={setSelectedFunc} selected={selectedFunc} />
             <div className='chat-container'>
                 <div className='chatbox'>
                     <ChatBox

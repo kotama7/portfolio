@@ -8,3 +8,9 @@ test('calls onSelect with function name', () => {
   fireEvent.click(button);
   expect(handler).toHaveBeenCalledWith('bioGraph');
 });
+
+test('highlights selected function', () => {
+  render(<FunctionSidebar onSelect={() => {}} selected="skillTree" />);
+  const activeBtn = screen.getByText('skillTree');
+  expect(activeBtn.className).toMatch(/active/);
+});

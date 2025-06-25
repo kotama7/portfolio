@@ -2,6 +2,7 @@ import React from 'react';
 
 export interface FunctionSidebarProps {
   onSelect: (name: string) => void;
+  selected?: string | null;
 }
 
 const functions = [
@@ -14,13 +15,18 @@ const functions = [
   'otherSiteLinks',
 ];
 
-const FunctionSidebar: React.FC<FunctionSidebarProps> = ({ onSelect }) => (
+const FunctionSidebar: React.FC<FunctionSidebarProps> = ({ onSelect, selected }) => (
   <div className="sidebar">
     <h3>Functions</h3>
     <ul>
       {functions.map((name) => (
         <li key={name}>
-          <button onClick={() => onSelect(name)}>{name}</button>
+          <button
+            className={`sidebar-button ${selected === name ? 'active' : ''}`}
+            onClick={() => onSelect(name)}
+          >
+            {name}
+          </button>
         </li>
       ))}
     </ul>

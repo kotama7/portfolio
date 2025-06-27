@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ChatBox } from 'react-chatbox-component';
+import CustomChatBox from './CustomChatBox';
 import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAI, getGenerativeModel, GoogleAIBackend } from '@firebase/ai';
 
@@ -194,7 +194,7 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
             <div className='chat-container'>
                 <div className='chatbox-wrapper'>
                     <div className='chatbox'>
-                        <ChatBox
+                        <CustomChatBox
                             messages={messages}
                             user={user}
                             onSubmit={handleSendMessage}

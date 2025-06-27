@@ -5,10 +5,12 @@ interface ReplyProps {
     seter: Function;
     messages: MessageFormProps[];
     next_message: string;
+    onStart?: () => void;
+    onEnd?: () => void;
 }
 
 export default function Reply(props: ReplyProps) {
-    const { seter, messages, next_message } = props;
+    const { seter, messages, next_message, onStart, onEnd } = props;
 
     const append_message_base: MessageFormProps = {
         text: "",
@@ -39,11 +41,13 @@ export default function Reply(props: ReplyProps) {
             const newMessage = { ...append_message_base, text: append_message_text };
             current_messages[current_messages.length - 1] = newMessage;
             seter([...current_messages]);
+            onEnd && onEnd();
         }
     };
 
     current_messages.push(append_message_base);
     seter([...current_messages]);
+    onStart && onStart();
     message_adder();
 }
 

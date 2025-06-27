@@ -49,13 +49,31 @@ async function callSelectFunction(text: string): Promise<string | undefined> {
 
 export default function Home(props: { lang: string }) {
 
-    const [messages, setMessages] = useState<MessageFormProps[]>([])
-    const [selectedFunc, setSelectedFunc] = useState<string | null>(null)
+    const [messages, setMessages] = useState<MessageFormProps[]>(() => {
+        const saved = localStorage.getItem('chat_messages');
+        return saved ? JSON.parse(saved) : [];
+    })
+    const [selectedFunc, setSelectedFunc] = useState<string | null>(() => {
+        return localStorage.getItem('selected_func');
+    })
     const [sidebarOpen, setSidebarOpen] = useState<boolean>(true)
 
     const user = {
         "uid" : "Guest"
     }
+
+    // Persist conversation state
+    useEffect(() => {
+        localStorage.setItem('chat_messages', JSON.stringify(messages));
+    }, [messages]);
+
+    useEffect(() => {
+        if (selectedFunc) {
+            localStorage.setItem('selected_func', selectedFunc);
+        } else {
+            localStorage.removeItem('selected_func');
+        }
+    }, [selectedFunc]);
 
     const handleSendMessage = async (input: string) => {
         if (!input.trim()) return;

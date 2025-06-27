@@ -8,7 +8,7 @@ import './App.css';
 
 function App() {
 
-  const [lang, setLang] = useState<string>('ja');
+  const [lang, setLang] = useState<'en' | 'ja'>('ja');
 
   return (
     <>

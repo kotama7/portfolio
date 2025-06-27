@@ -15,6 +15,16 @@ import InterestGraph from '../interests/InterestGraph';
 import PersonalityRadar from '../personality/PersonalityRadar';
 import OtherSiteLinks from '../links/OtherSiteLinks';
 
+const FUNC_NAMES: Record<string, { en: string; ja: string }> = {
+  bioGraph: { en: 'Biography', ja: '経歴' },
+  skillTree: { en: 'Skills', ja: 'スキル' },
+  interestGraph: { en: 'Interests', ja: '興味' },
+  personalityRadar: { en: 'Personality', ja: '性格' },
+  contactInfo: { en: 'Contact Info', ja: '連絡先' },
+  portfolioSummary: { en: 'Portfolio Summary', ja: 'ポートフォリオ概要' },
+  otherSiteLinks: { en: 'Other Site Links', ja: 'その他のリンク' },
+};
+
 let model: ReturnType<typeof getGenerativeModel> | null = null;
 
 function getModel() {
@@ -47,7 +57,7 @@ async function callSelectFunction(text: string): Promise<string | undefined> {
 }
 
 
-export default function Home(props: { lang: string }) {
+export default function Home(props: { lang: 'en' | 'ja' }) {
 
     const [messages, setMessages] = useState<MessageFormProps[]>(() => {
         const saved = localStorage.getItem('chat_messages');
@@ -57,6 +67,7 @@ export default function Home(props: { lang: string }) {
         return localStorage.getItem('selected_func');
     })
     const [sidebarOpen, setSidebarOpen] = useState<boolean>(true)
+    const [autoFirstReply, setAutoFirstReply] = useState<boolean>(true)
 
     const user = {
         "uid" : "Guest"
@@ -92,8 +103,8 @@ export default function Home(props: { lang: string }) {
         const func = await callSelectFunction(input);
         const botText = func
             ? (props.lang === 'en'
-                ? `Function selected: ${func}`
-                : `選択された機能: ${func}`)
+                ? `Function selected: ${FUNC_NAMES[func]?.en ?? func}`
+                : `選択された機能: ${FUNC_NAMES[func]?.ja ?? func}`)
             : props.lang === 'en'
                 ? 'Failed to get response'
                 : '返答を取得できませんでした';
@@ -113,6 +124,7 @@ export default function Home(props: { lang: string }) {
         if (name === 'newChat') {
             setMessages([]);
             setSelectedFunc(null);
+            setAutoFirstReply(false);
         } else {
             setSelectedFunc(name);
         }
@@ -131,34 +143,56 @@ export default function Home(props: { lang: string }) {
             case 'otherSiteLinks':
                 return <OtherSiteLinks />;
             case 'contactInfo':
-                return <div>Contact: example@example.com</div>;
+                return (
+                    <div>
+                        {props.lang === 'en'
+                            ? 'Contact: example@example.com'
+                            : '連絡先: example@example.com'}
+                    </div>
+                );
             case 'portfolioSummary':
-                return <div>This portfolio showcases my work with React and TypeScript.</div>;
+                return (
+                    <div>
+                        {props.lang === 'en'
+                            ? 'This portfolio showcases my work with React and TypeScript.'
+                            : 'このポートフォリオでは React と TypeScript を用いた成果を紹介しています。'}
+                    </div>
+                );
             default:
                 return null;
         }
     };
 
     useEffect(() => {
-        if (messages.length === 0) {
-            const timer = setTimeout(() =>
-                FirstReply({
-                    seter: setMessages,
-                    lang: props.lang
-                }),
+        if (autoFirstReply && messages.length === 0) {
+            const timer = setTimeout(() => {
+                    FirstReply({
+                        seter: setMessages,
+                        lang: props.lang
+                    });
+                    setAutoFirstReply(false);
+                },
                 1750
             );
             return () => clearTimeout(timer);
         }
-    }, [messages.length, props.lang]);
+    }, [messages.length, props.lang, autoFirstReply]);
 
-    return (
+    // Reset conversation when language changes
+    useEffect(() => {
+        setMessages([]);
+        setSelectedFunc(null);
+        setAutoFirstReply(true);
+    }, [props.lang]);
+
+  return (
         <div className='home-container'>
             {sidebarOpen ? (
                 <FunctionSidebar
                     onSelect={handleSidebarSelect}
                     selected={selectedFunc}
                     onClose={() => setSidebarOpen(false)}
+                    lang={props.lang}
                 />
             ) : (
                 <button className='sidebar-open' onClick={() => setSidebarOpen(true)}>Open</button>

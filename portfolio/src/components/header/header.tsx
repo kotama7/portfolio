@@ -5,8 +5,8 @@ import Box from '@mui/material/Box';
 import LanguageSwitch from '../LanguageSwitch';
 
 interface HeaderProps {
-    lang: string;
-    setLang: (lang: string) => void;
+    lang: 'en' | 'ja';
+    setLang: (lang: 'en' | 'ja') => void;
 }
 
 export default function Header(props: HeaderProps){

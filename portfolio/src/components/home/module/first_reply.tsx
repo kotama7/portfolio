@@ -4,20 +4,21 @@ import Reply from "./return_respond"
 import { default_second_message_ja, default_second_message_en } from "./data"
 
 interface FirstReplyProps {
-    seter: Function;
-    lang: 'en' | 'ja';
-}
-
-export default function FirstReply(props: FirstReplyProps) {
-
-    let message:string = "あなたのことを教えてください"
-    let next_message:string = default_second_message_ja
-
-    if (props.lang === 'en') {
-        message = "Tell me about yourself"
-        next_message = default_second_message_en
-    } else {
-        message = "あなたのことを教えてください"
+    seter: (msgs: MessageFormProps[]) => void;
+    messages?: MessageFormProps[];
+    const existing = props.messages ?? [];
+    const first_message: MessageFormProps = {
+        text: message,
+        id: existing.length + 1,
+        sender: {
+            uid: "Guest",
+            name: "Guest",
+            avatar: "https://www.w3schools.com/howto/img_avatar.png"
+    };
+    const newMessages = [...existing, first_message];
+    props.seter(newMessages);
+        messages: newMessages,
+    });
         next_message = default_second_message_ja
     }
     

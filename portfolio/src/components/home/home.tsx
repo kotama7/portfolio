@@ -114,7 +114,24 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
             sender: {
                 uid: 'Takanori Kotama',
                 name: 'Takanori Kotama',
-                avatar: `${process.env.PUBLIC_URL}/kotama_icon.jpg`
+    // Run the initial reply whenever the conversation is empty
+                    lang: props.lang,
+                    messages: []
+    // Send a greeting again when the language changes without clearing messages
+    useEffect(() => {
+        if (messages.length > 0) {
+            const timer = setTimeout(() =>
+                FirstReply({
+                    seter: setMessages,
+                    lang: props.lang,
+                    messages
+                }),
+                1750
+            );
+            return () => clearTimeout(timer);
+        }
+    }, [props.lang]);
+
             }
         };
         setMessages(prev => [...prev, botMsg]);

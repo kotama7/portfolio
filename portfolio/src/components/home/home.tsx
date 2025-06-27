@@ -165,7 +165,7 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                     });
                     setAutoFirstReply(false);
                 },
-                1750
+                1000
             );
             return () => clearTimeout(timer);
         }

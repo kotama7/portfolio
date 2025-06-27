@@ -36,7 +36,7 @@ export default function Reply(props: ReplyProps) {
             current_messages[current_messages.length - 1] = newMessage;
             seter([...current_messages]);
             i += 1;
-            setTimeout(message_adder, 50);
+            setTimeout(message_adder, 25);
         } else {
             const newMessage = { ...append_message_base, text: append_message_text };
             current_messages[current_messages.length - 1] = newMessage;

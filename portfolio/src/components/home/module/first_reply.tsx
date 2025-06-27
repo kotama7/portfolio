@@ -6,6 +6,8 @@ import { default_second_message_ja, default_second_message_en } from "./data"
 interface FirstReplyProps {
     seter: Function;
     lang: 'en' | 'ja';
+    onStart?: () => void;
+    onEnd?: () => void;
 }
 
 export default function FirstReply(props: FirstReplyProps) {
@@ -40,6 +42,8 @@ export default function FirstReply(props: FirstReplyProps) {
         seter: props.seter,
         messages: first_messages,
         next_message: next_message,
+        onStart: props.onStart,
+        onEnd: props.onEnd,
     })
 }
 

@@ -1,9 +1,20 @@
 
+.chatbox-wrapper {
+  position: relative;
+}
+
 .chatbox {
   max-width: 600px;
   margin: 2rem auto;
   height: 400px;
   overflow-y: auto;
+}
+
+.chatbox-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6);
+  z-index: 10;
 }
 
 .msg-user {

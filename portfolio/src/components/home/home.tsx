@@ -63,6 +63,7 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
     const [selectedFunc, setSelectedFunc] = useState<string | null>(null)
     const [sidebarOpen, setSidebarOpen] = useState<boolean>(true)
     const [autoFirstReply, setAutoFirstReply] = useState<boolean>(true)
+    const [isReplying, setIsReplying] = useState<boolean>(false)
 
     const user = {
         "uid" : "Guest"
@@ -82,6 +83,8 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
         };
         setMessages(prev => [...prev, userMsg]);
 
+        setIsReplying(true);
+
         const func = await callSelectFunction(input);
         const botText = func
             ? (props.lang === 'en'
@@ -100,6 +103,7 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
             }
         };
         setMessages(prev => [...prev, botMsg]);
+        setIsReplying(false);
     }
 
     const handleSidebarSelect = (name: string) => {
@@ -107,6 +111,7 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
             setMessages([]);
             setSelectedFunc(null);
             setAutoFirstReply(false);
+            setIsReplying(false);
         } else {
             setSelectedFunc(name);
         }
@@ -150,7 +155,9 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
             const timer = setTimeout(() => {
                     FirstReply({
                         seter: setMessages,
-                        lang: props.lang
+                        lang: props.lang,
+                        onStart: () => setIsReplying(true),
+                        onEnd: () => setIsReplying(false),
                     });
                     setAutoFirstReply(false);
                 },
@@ -165,6 +172,7 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
         setMessages([]);
         setSelectedFunc(null);
         setAutoFirstReply(true);
+        setIsReplying(false);
     }, [props.lang]);
 
     return (
@@ -180,12 +188,15 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                 <button className='sidebar-open' onClick={() => setSidebarOpen(true)}>Open</button>
             )}
             <div className='chat-container'>
-                <div className='chatbox'>
-                    <ChatBox
-                        messages={messages}
-                        user={user}
-                        onSubmit={handleSendMessage}
-                    />
+                <div className='chatbox-wrapper'>
+                    <div className='chatbox'>
+                        <ChatBox
+                            messages={messages}
+                            user={user}
+                            onSubmit={handleSendMessage}
+                        />
+                    </div>
+                    {isReplying && <div className='chatbox-overlay'></div>}
                 </div>
                 {renderFunction()}
             </div>

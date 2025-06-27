@@ -62,6 +62,7 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
     const [messages, setMessages] = useState<MessageFormProps[]>([])
     const [selectedFunc, setSelectedFunc] = useState<string | null>(null)
     const [sidebarOpen, setSidebarOpen] = useState<boolean>(true)
+    const [autoFirstReply, setAutoFirstReply] = useState<boolean>(true)
 
     const user = {
         "uid" : "Guest"
@@ -105,6 +106,7 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
         if (name === 'newChat') {
             setMessages([]);
             setSelectedFunc(null);
+            setAutoFirstReply(false);
         } else {
             setSelectedFunc(name);
         }
@@ -144,22 +146,25 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
     };
 
     useEffect(() => {
-        if (messages.length === 0) {
-            const timer = setTimeout(() =>
-                FirstReply({
-                    seter: setMessages,
-                    lang: props.lang
-                }),
+        if (autoFirstReply && messages.length === 0) {
+            const timer = setTimeout(() => {
+                    FirstReply({
+                        seter: setMessages,
+                        lang: props.lang
+                    });
+                    setAutoFirstReply(false);
+                },
                 1750
             );
             return () => clearTimeout(timer);
         }
-    }, [messages.length, props.lang]);
+    }, [messages.length, props.lang, autoFirstReply]);
 
     // Reset conversation when language changes
     useEffect(() => {
         setMessages([]);
         setSelectedFunc(null);
+        setAutoFirstReply(true);
     }, [props.lang]);
 
     return (

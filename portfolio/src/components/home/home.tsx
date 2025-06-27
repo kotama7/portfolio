@@ -26,6 +26,37 @@ const FUNC_NAMES: Record<string, { en: string; ja: string }> = {
   otherSiteLinks: { en: 'Other Site Links', ja: 'その他のリンク' },
 };
 
+const FUNC_MESSAGES: Record<string, { en: string; ja: string }> = {
+  bioGraph: {
+    en: 'The following graph shows my biography.',
+    ja: '以下のグラフが私の経歴です。',
+  },
+  skillTree: {
+    en: 'Here is a breakdown of my skills.',
+    ja: '以下は私のスキルの構成です。',
+  },
+  interestGraph: {
+    en: 'These are my interests.',
+    ja: 'こちらが私の興味の一覧です。',
+  },
+  personalityRadar: {
+    en: 'My personality is summarized in this radar chart.',
+    ja: '私の性格を表すレーダーチャートです。',
+  },
+  contactInfo: {
+    en: 'Here is my contact information.',
+    ja: 'こちらが連絡先です。',
+  },
+  portfolioSummary: {
+    en: 'Here is a summary of my portfolio.',
+    ja: 'ポートフォリオの概要です。',
+  },
+  otherSiteLinks: {
+    en: 'You can find me at these other sites.',
+    ja: 'その他のリンクはこちらです。',
+  },
+};
+
 let model: ReturnType<typeof getGenerativeModel> | null = null;
 
 function getModel() {
@@ -88,7 +119,8 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
 
         const func = await callSelectFunction(input);
         const botText = func
-            ? (props.lang === 'en'
+            ? FUNC_MESSAGES[func]?.[props.lang] ??
+              (props.lang === 'en'
                 ? `Function selected: ${FUNC_NAMES[func]?.en ?? func}`
                 : `選択された機能: ${FUNC_NAMES[func]?.ja ?? func}`)
             : props.lang === 'en'

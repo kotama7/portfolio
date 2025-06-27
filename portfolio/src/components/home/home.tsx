@@ -134,20 +134,6 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
             );
             return () => clearTimeout(timer);
         }
-    }, [props.lang]);
-
-            }
-        };
-        setMessages(prev => [...prev, botMsg]);
-        if (func) {
-            setSelectedFunc(func);
-        }
-        setIsReplying(false);
-    }
-
-    const handleSidebarSelect = (name: string) => {
-        if (name === 'newChat') {
-            setMessages([]);
             setSelectedFunc(null);
             setAutoFirstReply(false);
             setIsReplying(false);

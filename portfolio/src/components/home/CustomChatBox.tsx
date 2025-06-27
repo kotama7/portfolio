@@ -11,15 +11,28 @@ export default function CustomChatBox({ messages, user, onSubmit }: ChatBoxProps
   const [input, setInput] = useState('');
   const endRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const [autoScroll, setAutoScroll] = useState(true);
+
+  const handleScroll = () => {
+    const container = containerRef.current;
+    if (!container) return;
+    const atBottom =
+      container.scrollHeight - container.scrollTop - container.clientHeight < 50;
+    setAutoScroll(atBottom);
+  };
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const nearBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 50;
-    if (nearBottom) {
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (autoScroll) {
       endRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [messages]);
+  }, [messages, autoScroll]);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();

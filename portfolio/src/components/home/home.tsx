@@ -101,6 +101,9 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
             }
         };
         setMessages(prev => [...prev, botMsg]);
+        if (func) {
+            setSelectedFunc(func);
+        }
     }
 
     const handleSidebarSelect = (name: string) => {

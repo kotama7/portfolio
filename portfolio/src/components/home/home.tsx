@@ -52,7 +52,21 @@ async function callSelectFunction(text: string): Promise<string | undefined> {
     return result.response.text().trim();
   } catch (err) {
     console.error('Failed to call selectFunction', err);
-    return undefined;
+    const normalized = text.toLowerCase();
+    const fallbackMap = [
+      { keyword: 'bio', func: 'bioGraph' },
+      { keyword: 'skill', func: 'skillTree' },
+      { keyword: 'interest', func: 'interestGraph' },
+      { keyword: 'personality', func: 'personalityRadar' },
+      { keyword: 'contact', func: 'contactInfo' },
+      { keyword: 'portfolio', func: 'portfolioSummary' },
+      { keyword: 'link', func: 'otherSiteLinks' },
+      { keyword: 'external', func: 'otherSiteLinks' },
+    ];
+    const matched = fallbackMap.find(({ keyword }) =>
+      normalized.includes(keyword)
+    );
+    return matched?.func;
   }
 }
 

@@ -19,6 +19,18 @@ interface FirstReplyProps {
     props.seter(newMessages);
         messages: newMessages,
     });
+}
+
+export default function FirstReply(props: FirstReplyProps) {
+
+    let message:string = "あなたのことを教えてください"
+    let next_message:string = default_second_message_ja
+
+    if (props.lang === 'en') {
+        message = "Tell me about yourself"
+        next_message = default_second_message_en
+    } else {
+        message = "あなたのことを教えてください"
         next_message = default_second_message_ja
     }
     
@@ -41,6 +53,8 @@ interface FirstReplyProps {
         seter: props.seter,
         messages: first_messages,
         next_message: next_message,
+        onStart: props.onStart,
+        onEnd: props.onEnd,
     })
 }
 

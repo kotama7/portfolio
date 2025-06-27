@@ -14,6 +14,7 @@ import SkillTree from '../skills/SkillTree';
 import InterestGraph from '../interests/InterestGraph';
 import PersonalityRadar from '../personality/PersonalityRadar';
 import OtherSiteLinks from '../links/OtherSiteLinks';
+import { fallbackSelectFunction } from '../../utils/selectFunction';
 
 const FUNC_NAMES: Record<string, { en: string; ja: string }> = {
   bioGraph: { en: 'Biography', ja: '経歴' },
@@ -52,7 +53,7 @@ async function callSelectFunction(text: string): Promise<string | undefined> {
     return result.response.text().trim();
   } catch (err) {
     console.error('Failed to call selectFunction', err);
-    return undefined;
+    return fallbackSelectFunction(text);
   }
 }
 
@@ -68,6 +69,7 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
     })
     const [sidebarOpen, setSidebarOpen] = useState<boolean>(true)
     const [autoFirstReply, setAutoFirstReply] = useState<boolean>(true)
+    const [isReplying, setIsReplying] = useState<boolean>(false)
 
     const user = {
         "uid" : "Guest"
@@ -99,6 +101,8 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
             }
         };
         setMessages(prev => [...prev, userMsg]);
+
+        setIsReplying(true);
 
         const func = await callSelectFunction(input);
         const botText = func
@@ -135,6 +139,10 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
             }
         };
         setMessages(prev => [...prev, botMsg]);
+        if (func) {
+            setSelectedFunc(func);
+        }
+        setIsReplying(false);
     }
 
     const handleSidebarSelect = (name: string) => {
@@ -142,6 +150,7 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
             setMessages([]);
             setSelectedFunc(null);
             setAutoFirstReply(false);
+            setIsReplying(false);
         } else {
             setSelectedFunc(name);
         }
@@ -185,7 +194,9 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
             const timer = setTimeout(() => {
                     FirstReply({
                         seter: setMessages,
-                        lang: props.lang
+                        lang: props.lang,
+                        onStart: () => setIsReplying(true),
+                        onEnd: () => setIsReplying(false),
                     });
                     setAutoFirstReply(false);
                 },
@@ -200,6 +211,7 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
         setMessages([]);
         setSelectedFunc(null);
         setAutoFirstReply(true);
+        setIsReplying(false);
     }, [props.lang]);
 
   return (
@@ -215,12 +227,15 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                 <button className='sidebar-open' onClick={() => setSidebarOpen(true)}>Open</button>
             )}
             <div className='chat-container'>
-                <div className='chatbox'>
-                    <ChatBox
-                        messages={messages}
-                        user={user}
-                        onSubmit={handleSendMessage}
-                    />
+                <div className='chatbox-wrapper'>
+                    <div className='chatbox'>
+                        <ChatBox
+                            messages={messages}
+                            user={user}
+                            onSubmit={handleSendMessage}
+                        />
+                    </div>
+                    {isReplying && <div className='chatbox-overlay'></div>}
                 </div>
                 {renderFunction()}
             </div>

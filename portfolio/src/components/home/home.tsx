@@ -14,6 +14,7 @@ import SkillTree from '../skills/SkillTree';
 import InterestGraph from '../interests/InterestGraph';
 import PersonalityRadar from '../personality/PersonalityRadar';
 import OtherSiteLinks from '../links/OtherSiteLinks';
+import { fallbackSelectFunction } from '../../utils/selectFunction';
 
 const FUNC_NAMES: Record<string, { en: string; ja: string }> = {
   bioGraph: { en: 'Biography', ja: '経歴' },
@@ -52,21 +53,7 @@ async function callSelectFunction(text: string): Promise<string | undefined> {
     return result.response.text().trim();
   } catch (err) {
     console.error('Failed to call selectFunction', err);
-    const normalized = text.toLowerCase();
-    const fallbackMap = [
-      { keyword: 'bio', func: 'bioGraph' },
-      { keyword: 'skill', func: 'skillTree' },
-      { keyword: 'interest', func: 'interestGraph' },
-      { keyword: 'personality', func: 'personalityRadar' },
-      { keyword: 'contact', func: 'contactInfo' },
-      { keyword: 'portfolio', func: 'portfolioSummary' },
-      { keyword: 'link', func: 'otherSiteLinks' },
-      { keyword: 'external', func: 'otherSiteLinks' },
-    ];
-    const matched = fallbackMap.find(({ keyword }) =>
-      normalized.includes(keyword)
-    );
-    return matched?.func;
+    return fallbackSelectFunction(text);
   }
 }
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ChatBox } from 'react-chatbox-component';
 import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAI, getGenerativeModel, GoogleAIBackend } from '@firebase/ai';
@@ -96,6 +96,9 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
     const [sidebarOpen, setSidebarOpen] = useState<boolean>(true)
     const [autoFirstReply, setAutoFirstReply] = useState<boolean>(true)
     const [isReplying, setIsReplying] = useState<boolean>(false)
+    const chatRef = useRef<HTMLDivElement | null>(null)
+    const prevScroll = useRef<number>(0)
+    const [lockScroll, setLockScroll] = useState<boolean>(false)
 
     const user = {
         "uid" : "Guest"
@@ -153,6 +156,16 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
         }
     }
 
+    const handleScroll = () => {
+        const container = chatRef.current;
+        if (!container) return;
+        const nearBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 50;
+        setLockScroll(!nearBottom);
+        if (!nearBottom) {
+            prevScroll.current = container.scrollTop;
+        }
+    }
+
     const renderFunction = () => {
         switch (selectedFunc) {
             case 'bioGraph':
@@ -203,6 +216,16 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
         }
     }, [messages.length, props.lang, autoFirstReply]);
 
+    useEffect(() => {
+        const container = chatRef.current;
+        if (!container) return;
+        if (lockScroll) {
+            container.scrollTop = prevScroll.current;
+        } else {
+            container.scrollTop = container.scrollHeight;
+        }
+    }, [messages, lockScroll]);
+
     // Reset conversation when language changes
     useEffect(() => {
         setMessages([]);
@@ -225,7 +248,7 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
             )}
             <div className='chat-container'>
                 <div className='chatbox-wrapper'>
-                    <div className='chatbox'>
+                    <div className='chatbox' ref={chatRef} onScroll={handleScroll}>
                         <ChatBox
                             messages={messages}
                             user={user}

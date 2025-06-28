@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default interface MessageFormProps {
     text: string;
     id: number;
@@ -6,4 +8,5 @@ export default interface MessageFormProps {
         name: string;
         avatar: string;
     }
+    element?: React.ReactNode;
 }

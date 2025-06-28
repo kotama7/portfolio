@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChatBox } from 'react-chatbox-component';
 import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAI, getGenerativeModel, GoogleAIBackend } from '@firebase/ai';
@@ -101,6 +101,33 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
         "uid" : "Guest"
     }
 
+    const renderMessageBubble = (message: MessageFormProps) => {
+        const isUser = user.uid === message.sender.uid;
+        const name = isUser ? null : (
+            <div className='sender-name'>{message.sender.name}</div>
+        );
+        return (
+            <div
+                key={message.id}
+                className='chat-bubble-row'
+                style={{ flexDirection: isUser ? 'row-reverse' : 'row' }}
+            >
+                <img
+                    src={message.sender.avatar}
+                    alt='sender avatar'
+                    className='avatar'
+                    style={isUser ? { marginLeft: '15px' } : { marginRight: '15px' }}
+                />
+                <div className={`chat-bubble ${isUser ? 'is-user' : 'is-other'}`}> 
+                    {name}
+                    <div className='message' style={{ color: isUser ? '#FFF' : '#2D313F' }}>
+                        {message.element ?? message.text}
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
     const handleSendMessage = async (input: string) => {
         if (!input.trim()) return;
 
@@ -135,10 +162,22 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                 avatar: `${process.env.PUBLIC_URL}/kotama_icon.jpg`
             }
         };
-        setMessages(prev => [...prev, botMsg]);
+        const newMessages: MessageFormProps[] = [botMsg];
         if (func) {
+            const elementMsg: MessageFormProps = {
+                text: '',
+                id: botMsg.id + 1,
+                sender: {
+                    uid: 'Takanori Kotama',
+                    name: 'Takanori Kotama',
+                    avatar: `${process.env.PUBLIC_URL}/kotama_icon.jpg`
+                },
+                element: getFunctionComponent(func)
+            };
+            newMessages.push(elementMsg);
             setSelectedFunc(func);
         }
+        setMessages(prev => [...prev, ...newMessages]);
         setIsReplying(false);
     }
 
@@ -153,8 +192,8 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
         }
     }
 
-    const renderFunction = () => {
-        switch (selectedFunc) {
+    const getFunctionComponent = (name: string | null) => {
+        switch (name) {
             case 'bioGraph':
                 return <BioTree />;
             case 'skillTree':
@@ -185,6 +224,8 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                 return null;
         }
     };
+
+    const renderFunction = () => getFunctionComponent(selectedFunc);
 
     useEffect(() => {
         if (autoFirstReply && messages.length === 0) {
@@ -230,6 +271,7 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                             messages={messages}
                             user={user}
                             onSubmit={handleSendMessage}
+                            renderMessage={renderMessageBubble}
                         />
                     </div>
                     {isReplying && <div className='chatbox-overlay'></div>}

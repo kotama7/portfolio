@@ -2,8 +2,9 @@ import { render, screen } from '@testing-library/react';
 import App from './App';
 
 // Mock the chatbox component so it doesn't fail during tests
-jest.mock('react-chatbox-component', () => ({
-  ChatBox: () => <div data-testid="chatbox" />,
+jest.mock('./components/home/ChatBox', () => ({
+  __esModule: true,
+  default: () => <div data-testid="chatbox" />,
 }));
 
 beforeAll(() => {

@@ -7251,13 +7251,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bowser@npm:^1.0.0, bowser@npm:^1.7.3":
-  version: 1.9.4
-  resolution: "bowser@npm:1.9.4"
-  checksum: 10c0/72504ebb20eed2143ed22715e13bd48d51bde31de113beb500bd17e86009a28cd6b32436b5e001e4c7cdf89c8c06249275cc219ce82c1be28558b32ae61472a1
-  languageName: node
-  linkType: hard
-
 "boxen@npm:^5.0.0":
   version: 5.1.2
   resolution: "boxen@npm:5.1.2"
@@ -7353,18 +7346,6 @@ __metadata:
   version: 1.0.0
   resolution: "browser-process-hrtime@npm:1.0.0"
   checksum: 10c0/65da78e51e9d7fa5909147f269c54c65ae2e03d1cf797cc3cfbbe49f475578b8160ce4a76c36c1a2ffbff26c74f937d73096c508057491ddf1a6dfd11143f72d
-  languageName: node
-  linkType: hard
-
-"browserslist@npm:^1.3.6":
-  version: 1.7.7
-  resolution: "browserslist@npm:1.7.7"
-  dependencies:
-    caniuse-db: "npm:^1.0.30000639"
-    electron-to-chromium: "npm:^1.2.7"
-  bin:
-    browserslist: ./cli.js
-  checksum: 10c0/1caae2f00800711b3c18a834b84ab3109b955836f23e00a7eb0227e54c22a101b95a9606c1347a04ec882524a724ba57691f856a7aba3fde6dd197b867b8cd41
   languageName: node
   linkType: hard
 
@@ -7584,18 +7565,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-api@npm:^1.6.1":
-  version: 1.6.1
-  resolution: "caniuse-api@npm:1.6.1"
-  dependencies:
-    browserslist: "npm:^1.3.6"
-    caniuse-db: "npm:^1.0.30000529"
-    lodash.memoize: "npm:^4.1.2"
-    lodash.uniq: "npm:^4.5.0"
-  checksum: 10c0/0769ffb827dcc9d7f6fb1d9616d6ac9dcb0a271cfacd3b1026459f0c5052491ef5a458bdaca12c2204b65bf65aa0c43b880b9bfbe497a0469e319cb48f5da4fb
-  languageName: node
-  linkType: hard
-
 "caniuse-api@npm:^3.0.0":
   version: 3.0.0
   resolution: "caniuse-api@npm:3.0.0"
@@ -7605,13 +7574,6 @@ __metadata:
     lodash.memoize: "npm:^4.1.2"
     lodash.uniq: "npm:^4.5.0"
   checksum: 10c0/60f9e85a3331e6d761b1b03eec71ca38ef7d74146bece34694853033292156b815696573ed734b65583acf493e88163618eda915c6c826d46a024c71a9572b4c
-  languageName: node
-  linkType: hard
-
-"caniuse-db@npm:^1.0.30000529, caniuse-db@npm:^1.0.30000639":
-  version: 1.0.30001607
-  resolution: "caniuse-db@npm:1.0.30001607"
-  checksum: 10c0/9403141c784268e81527b2aa87534320355e4d9175cea82e60a83917a9346c6e8fbabcc16010331f730b04bf747194f41fb8612cbcecd0346838e61bedcb7001
   languageName: node
   linkType: hard
 
@@ -8579,28 +8541,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css-in-js-utils@npm:^2.0.0":
-  version: 2.0.1
-  resolution: "css-in-js-utils@npm:2.0.1"
-  dependencies:
-    hyphenate-style-name: "npm:^1.0.2"
-    isobject: "npm:^3.0.1"
-  checksum: 10c0/6696cda3ebd596fc42ff40059546786936a8cf709e00bc8dedce6cd42c2b3edb19333a5d5bba6ac35b75b58cf55c021cee7ab3ec0f13fb2cf59fbb024ba0894f
-  languageName: node
-  linkType: hard
-
-"css-keyframer@npm:1.0.1":
-  version: 1.0.1
-  resolution: "css-keyframer@npm:1.0.1"
-  dependencies:
-    exenv: "npm:^1.2.1"
-    hyphenate-style-name: "npm:^1.0.2"
-    inline-style-prefixer: "npm:^2.0.5"
-    is-plain-object: "npm:^2.0.1"
-  checksum: 10c0/0b88795f2761873b7c5a713d25d8ae8385d2023cf37d7bedf0d76a5d1b015b72accd320dbcc5c7b5ef932da077451593bbaa3bd995bd31c5cf7e422a4b9a1f06
-  languageName: node
-  linkType: hard
-
 "css-loader@npm:^6.5.1":
   version: 6.11.0
   resolution: "css-loader@npm:6.11.0"
@@ -9535,7 +9475,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron-to-chromium@npm:^1.2.7, electron-to-chromium@npm:^1.3.47":
+"electron-to-chromium@npm:^1.3.47":
   version: 1.4.729
   resolution: "electron-to-chromium@npm:1.4.729"
   checksum: 10c0/9f093b873a5e02da5fd5db5a1038c3a3f84bd43ff6d0e894280848717e5892953cc814a4ddf1de2acbfa9af4fe356c714f036f39b82d52bc6c8c3aed6e97fbde
@@ -10477,13 +10417,6 @@ __metadata:
     raw-body: "npm:^2.3.3"
     semver: "npm:^7.0.0"
   checksum: 10c0/0c300b782520f43ed7a878976926e997ae88fac91b3d23893ddd98b34eeb90b3f4fae713e745fbf044d7d46cabb93cd46b845438b7a0b3629cb8129c2cca1661
-  languageName: node
-  linkType: hard
-
-"exenv@npm:^1.2.1":
-  version: 1.2.2
-  resolution: "exenv@npm:1.2.2"
-  checksum: 10c0/4e96b355a6b9b9547237288ca779dd673b2e698458b409e88b50df09feb7c85ef94c07354b6b87bc3ed0193a94009a6f7a3c71956da12f45911c0d0f5aa3caa0
   languageName: node
   linkType: hard
 
@@ -12393,13 +12326,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hyphenate-style-name@npm:^1.0.1, hyphenate-style-name@npm:^1.0.2":
-  version: 1.0.4
-  resolution: "hyphenate-style-name@npm:1.0.4"
-  checksum: 10c0/b19c3e2cd1dc426f6f893752fec08140abf79058a1b6238422e45373ed81389f02e1a2ba2ef4e9b2430d4e900a0f5ba12307de82320604e81ac1b722abd2ee62
-  languageName: node
-  linkType: hard
-
 "iconv-lite@npm:0.4.24, iconv-lite@npm:^0.4.17, iconv-lite@npm:^0.4.24":
   version: 0.4.24
   resolution: "iconv-lite@npm:0.4.24"
@@ -12551,26 +12477,6 @@ __metadata:
   version: 1.3.8
   resolution: "ini@npm:1.3.8"
   checksum: 10c0/ec93838d2328b619532e4f1ff05df7909760b6f66d9c9e2ded11e5c1897d6f2f9980c54dd638f88654b00919ce31e827040631eab0a3969e4d1abefa0719516a
-  languageName: node
-  linkType: hard
-
-"inline-style-prefixer@npm:^2.0.5":
-  version: 2.0.5
-  resolution: "inline-style-prefixer@npm:2.0.5"
-  dependencies:
-    bowser: "npm:^1.0.0"
-    hyphenate-style-name: "npm:^1.0.1"
-  checksum: 10c0/8c8c4f9090fa25539f140abe375113d5bb1f5213dc534ec240f6d30486aa0834d9bd13209305acb674f044ce85187e69ec8105d0ba2ccc60c757fbcb7aa75c3e
-  languageName: node
-  linkType: hard
-
-"inline-style-prefixer@npm:^3.0.3":
-  version: 3.0.8
-  resolution: "inline-style-prefixer@npm:3.0.8"
-  dependencies:
-    bowser: "npm:^1.7.3"
-    css-in-js-utils: "npm:^2.0.0"
-  checksum: 10c0/032faf4c00179a76604fa5511199ac9f9e1fc8c40e9e6fa039b9c1abcb4ff4d799503c2d3e7c97f5605a5cd5ff1e8d82361a6dfa9befef0de4d95cea97551233
   languageName: node
   linkType: hard
 
@@ -13112,7 +13018,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-plain-object@npm:^2.0.1, is-plain-object@npm:^2.0.3, is-plain-object@npm:^2.0.4":
+"is-plain-object@npm:^2.0.3, is-plain-object@npm:^2.0.4":
   version: 2.0.4
   resolution: "is-plain-object@npm:2.0.4"
   dependencies:
@@ -17197,7 +17103,6 @@ __metadata:
     react: "npm:^18.2.0"
     react-bootstrap: "npm:^2.10.2"
     react-chartjs-2: "npm:^5.3.0"
-    react-chatbox-component: "npm:^0.0.5"
     react-chrono: "npm:^2.6.1"
     react-dom: "npm:^18.2.0"
     react-native-chatbox: "npm:^1.2.1"
@@ -18591,18 +18496,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-chatbox-component@npm:^0.0.5":
-  version: 0.0.5
-  resolution: "react-chatbox-component@npm:0.0.5"
-  dependencies:
-    react-md-spinner: "npm:^0.4.0"
-  peerDependencies:
-    react: ^16.3.2
-    react-dom: ^16.3.2
-  checksum: 10c0/2ebf7c46d52bab2f5fb9e0f5e5bfb19f2e019901de1ba2aa27273ad4892a4aec2e71d0207fcbd1f5f14a89351400e7895500edf56dd416e95b029e670438a678
-  languageName: node
-  linkType: hard
-
 "react-chrono@npm:^2.6.1":
   version: 2.6.1
   resolution: "react-chrono@npm:2.6.1"
@@ -18720,22 +18613,6 @@ __metadata:
   version: 3.0.4
   resolution: "react-lifecycles-compat@npm:3.0.4"
   checksum: 10c0/1d0df3c85af79df720524780f00c064d53a9dd1899d785eddb7264b378026979acbddb58a4b7e06e7d0d12aa1494fd5754562ee55d32907b15601068dae82c27
-  languageName: node
-  linkType: hard
-
-"react-md-spinner@npm:^0.4.0":
-  version: 0.4.0
-  resolution: "react-md-spinner@npm:0.4.0"
-  dependencies:
-    caniuse-api: "npm:^1.6.1"
-    css-keyframer: "npm:1.0.1"
-    exenv: "npm:^1.2.1"
-    inline-style-prefixer: "npm:^3.0.3"
-    prop-types: "npm:^15.5.8"
-  peerDependencies:
-    react: ">=15.3.0"
-    react-dom: ">=15.3.0"
-  checksum: 10c0/bab8f84bf5fe330cab0d9b7df379b35391551a9e8908878b95d6366f193a07bfe472f5ac11b075380ee72544f4bfc6f00377da168300e5d0c3e348fb486f77ed
   languageName: node
   linkType: hard
 

@@ -101,6 +101,9 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
         "uid" : "Guest"
     }
 
+    // Render a single chat bubble. If the message contains a React element,
+    // it is inserted here so that function outputs only appear inside the
+    // chat area and not below it.
     const renderMessageBubble = (message: MessageFormProps) => {
         const isUser = user.uid === message.sender.uid;
         const name = isUser ? null : (
@@ -118,7 +121,7 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                     className='avatar'
                     style={isUser ? { marginLeft: '15px' } : { marginRight: '15px' }}
                 />
-                <div className={`chat-bubble ${isUser ? 'is-user' : 'is-other'}`}> 
+                <div className={`chat-bubble ${isUser ? 'is-user' : 'is-other'}`}>
                     {name}
                     <div className='message' style={{ color: isUser ? '#FFF' : '#2D313F' }}>
                         {message.element ?? message.text}
@@ -225,7 +228,6 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
         }
     };
 
-    const renderFunction = () => getFunctionComponent(selectedFunc);
 
     useEffect(() => {
         if (autoFirstReply && messages.length === 0) {
@@ -276,7 +278,6 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                     </div>
                     {isReplying && <div className='chatbox-overlay'></div>}
                 </div>
-                {renderFunction()}
             </div>
         </div>
     );

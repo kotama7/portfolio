@@ -225,7 +225,6 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
         }
     };
 
-    const renderFunction = () => getFunctionComponent(selectedFunc);
 
     useEffect(() => {
         if (autoFirstReply && messages.length === 0) {
@@ -276,7 +275,6 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                     </div>
                     {isReplying && <div className='chatbox-overlay'></div>}
                 </div>
-                {renderFunction()}
             </div>
         </div>
     );

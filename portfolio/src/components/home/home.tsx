@@ -117,11 +117,10 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
             id: userMsg.id + 1,
             sender: {
                 uid: 'Takanori Kotama',
-                name: 'Takanori Kotama',
-    // Run the initial reply whenever the conversation is empty
-                    lang: props.lang,
-                    messages: []
-    // Send a greeting again when the language changes without clearing messages
+            const timer = setTimeout(() => {
+                    messages: [],
+                });
+            }, 1750);
     useEffect(() => {
         if (messages.length > 0) {
             const timer = setTimeout(() =>

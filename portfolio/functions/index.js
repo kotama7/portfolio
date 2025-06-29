@@ -78,10 +78,8 @@ exports.autoReply = functions.https.onRequest((req, res) => {
       `
     名古屋大学片桐・星野研究室所属のコンピュータ科学科4年、小玉貴教です。\n
     Aixtalで製造データからAIモデルを構築するデータサイエンティストとして活動しています。\n
-    2024年には中国科学技術大学FuSEPサマーリサーチに参加しました。
       `,
       `
-    アプリ開発サークル「jack」の元副代表で、AIと音楽処理、歌、旅行、食、ものづくりが好きです。\n
     2026年3月卒業予定で、2025年2月に名古屋大学高等教育研究センターの修了証を取得しました。
       `,
     ],
@@ -90,7 +88,7 @@ exports.autoReply = functions.https.onRequest((req, res) => {
     I am Takanori Kotama, a fourth-year Computer Science student at Nagoya University's Katagiri–Hoshino Lab. I work as a Data Scientist at Aixtal building AI models from manufacturing data.
       `,
       `
-    Former vice president of the app-development circle "jack." I joined USTC's FuSEP Summer Research Program in 2024. I enjoy AI and music processing, singing, travel, food, and making things. B.Sc. expected March 2026.
+    I enjoy AI and music processing, singing, travel, food, and making things. B.Sc. expected March 2026.
       `,
     ],
   };

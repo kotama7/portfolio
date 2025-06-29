@@ -21,7 +21,7 @@ const functions: FunctionItem[] = [
   { id: 'otherSiteLinks' },
 ];
 
-const labels: Record<string, { en: string; ja: string }> = {
+export const labels: Record<string, { en: string; ja: string }> = {
   bioGraph: { en: 'Please explain your biography', ja: '経歴を教えてください' },
   skillTree: { en: 'Show me your skills', ja: 'スキルを見せてください' },
   interestGraph: { en: 'What are your interests?', ja: '興味を教えてください' },

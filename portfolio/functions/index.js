@@ -106,3 +106,33 @@ exports.autoReply = functions.https.onRequest((req, res) => {
   const message = candidates[Math.floor(Math.random() * candidates.length)];
   res.json({ message });
 });
+
+// Provide profile details such as life summary, awards, qualifications and lab
+exports.profileInfo = functions.https.onRequest((req, res) => {
+  const query = (req.body.query || '').toLowerCase();
+
+  const details = {
+    summary:
+      'Takanori Kotama is a fourth-year undergraduate at Nagoya University\'s Department of Computer Science. ' +
+      'He specializes in artificial intelligence and music processing, interns as an AI engineer at Aixtal, ' +
+      'and completed a two-month FuSEP research program at the University of Science and Technology of China. ' +
+      'He formerly led the app development circle "jack" and enjoys singing, travel, food and creating things.',
+    award:
+      "Nagoya University Student Thesis's Contest – Encouragement Award (Feb 2025) issued by the Center for the Studies of Higher Education.",
+    qualifications:
+      'Bachelor of Science in Computer Science expected in March 2026 from Nagoya University.',
+    lab:
+      'Member of the Katagiri–Hoshino Laboratory, Information Systems division at Nagoya University.'
+  };
+
+  if (!query) {
+    res.json(details);
+    return;
+  }
+
+  if (Object.prototype.hasOwnProperty.call(details, query)) {
+    res.json({ [query]: details[query] });
+  } else {
+    res.status(400).json({ error: 'Unknown query' });
+  }
+});

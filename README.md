@@ -52,3 +52,6 @@ firebase deploy --only functions
 
 Ensure `FIREBASE_WEB_API_KEY` and `FIREBASE_APP_ID` are set in your project before deploying.
 
+The `profileInfo` function in this directory returns details about the life summary,
+award, qualifications and laboratory affiliation when called with a `query` field.
+

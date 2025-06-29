@@ -76,28 +76,21 @@ exports.autoReply = functions.https.onRequest((req, res) => {
   const replies = {
     ja: [
       `
-    名古屋大学情報学部コンピュータ科学科情報システム専攻3年の学生です。\n
-    React と TypeScript を中心に、AI を活用したアプリを開発しています。\n
-    ポートフォリオにはチャットボット型プロフィールサイトや LLM を利用したアプリなどがあります。\n
-    詳細は GitHub (https://github.com/kotama7) をご覧ください。
+    名古屋大学片桐・星野研究室所属のコンピュータ科学科4年、小玉貴教です。\n
+    Aixtalで製造データからAIモデルを構築するデータサイエンティストとして活動しています。\n
+    2024年には中国科学技術大学FuSEPサマーリサーチに参加しました。
       `,
       `
-    名古屋大学3年生で、React と TypeScript を主に使って開発しています。\n
-    AI を取り入れたプロジェクトに取り組んでおり、このサイトもその一つです。\n
-    興味があれば GitHub (https://github.com/kotama7) をご覧ください。
+    アプリ開発サークル「jack」の元代表で、AIと音楽処理、歌、旅行、食、ものづくりが好きです。\n
+    2026年3月卒業予定で、2025年2月に名古屋大学高等教育研究センターの修了証を取得しました。
       `,
     ],
     en: [
       `
-    I am a third year student at Nagoya University majoring in Computer Science.\n
-    My main stack is React and TypeScript, and I love building apps that leverage AI.\n
-    My portfolio includes a chatbot style profile site and several applications powered by large language models.\n
-    For more, please visit my GitHub: https://github.com/kotama7
+    I am Takanori Kotama, a fourth-year Computer Science student at Nagoya University's Katagiri–Hoshino Lab. I work as a Data Scientist at Aixtal building AI models from manufacturing data.
       `,
       `
-    I'm a junior at Nagoya University focusing on Computer Science.\n
-    I build applications with React and TypeScript and enjoy exploring AI tools.\n
-    Check out more of my projects on GitHub: https://github.com/kotama7
+    Former president of the app-development circle "jack." I joined USTC's FuSEP Summer Research Program in 2024. I enjoy AI and music processing, singing, travel, food, and making things. B.Sc. expected March 2026.
       `,
     ],
   };

@@ -41,7 +41,15 @@ export default function ChatBox({ messages, user, onSubmit, renderMessage }: Cha
         className="msg-page"
         ref={containerRef}
         onScroll={handleScroll}
-        style={{ flex: '1 1 auto', overflowY: 'auto' }}
+        onPointerDown={() => {
+          const el = containerRef.current;
+          if (!el) return;
+          const atBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 20;
+          if (!atBottom) {
+            atBottomRef.current = false;
+          }
+        }}
+        style={{ flex: '1 1 auto', overflowY: 'auto', overflowAnchor: 'none' }}
       >
         {messages.map(renderMessage)}
       </div>

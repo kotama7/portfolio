@@ -23,7 +23,13 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
     return;
   }
 
-  const prompt = `You are a helpful assistant that maps user requests to function names.\nPossible functions include:\n- bioGraph: returns the biography graph.\n- skillTree: returns the skill hierarchy.\n- interestGraph: returns an interest graph.\n- personalityRadar: shows a personality radar chart.\n- contactInfo: returns contact information.\n- portfolioSummary: gives a summary of the portfolio.\nRespond with only the function name that best matches the user's request.`;
+  const lang = (req.body.lang || 'en').toLowerCase();
+  const basePrompt =
+    'Possible functions include:\n- bioGraph: returns the biography graph.\n- skillTree: returns the skill hierarchy.\n- interestGraph: returns an interest graph.\n- personalityRadar: shows a personality radar chart.\n- contactInfo: returns contact information.\n- portfolioSummary: gives a summary of the portfolio.\nRespond with only the function name that best matches the user\'s request.';
+  const prompt =
+    lang === 'ja'
+      ? `あなたはユーザーのリクエストを関数名に対応付けるアシスタントです。\n${basePrompt}`
+      : `You are a helpful assistant that maps user requests to function names.\n${basePrompt}`;
 
   try {
     const result = await model.generateContent({
@@ -37,12 +43,19 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
     const normalized = text.toLowerCase();
     const fallbackMap = [
       { keyword: 'bio', func: 'bioGraph' },
+      { keyword: '経歴', func: 'bioGraph' },
       { keyword: 'skill', func: 'skillTree' },
+      { keyword: 'スキル', func: 'skillTree' },
       { keyword: 'interest', func: 'interestGraph' },
+      { keyword: '興味', func: 'interestGraph' },
       { keyword: 'personality', func: 'personalityRadar' },
+      { keyword: '性格', func: 'personalityRadar' },
       { keyword: 'contact', func: 'contactInfo' },
+      { keyword: '連絡', func: 'contactInfo' },
       { keyword: 'portfolio', func: 'portfolioSummary' },
+      { keyword: 'ポートフォリオ', func: 'portfolioSummary' },
       { keyword: 'link', func: 'otherSiteLinks' },
+      { keyword: 'リンク', func: 'otherSiteLinks' },
       { keyword: 'external', func: 'otherSiteLinks' },
     ];
     const matched = fallbackMap.find(({ keyword }) =>

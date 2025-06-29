@@ -1,0 +1,44 @@
+[
+  {
+    "title": "2003",
+    "cardTitle": "誕生",
+    "cardSubtitle": "日本",
+    "cardDetailedText": "日本で生まれる"
+  },
+  {
+    "title": "2022",
+    "cardTitle": "名古屋大学",
+    "cardSubtitle": "情報学部コンピュータ科学科情報システム専攻",
+    "cardDetailedText": "名古屋大学情報学部コンピュータ科学科情報システム専攻に入学"
+  },
+  {
+    "title": "2022–現在",
+    "cardTitle": "副代表",
+    "cardSubtitle": "アプリ開発団体\u201cjack\u201d",
+    "cardDetailedText": "センサー情報を高速な代替シミュレーションへ変換するプロジェクトを主導"
+  },
+  {
+    "title": "2023–2024",
+    "cardTitle": "Webチーフ",
+    "cardSubtitle": "名古屋大学祭実行委員会",
+    "cardDetailedText": "公式サイトの構築と運用を担当"
+  },
+  {
+    "title": "2024年3月",
+    "cardTitle": "JENESYS 2024 韓国派遣",
+    "cardSubtitle": "参加者",
+    "cardDetailedText": "名古屋大学代表として文化・学術交流に参加"
+  },
+  {
+    "title": "2024年夏",
+    "cardTitle": "AIインターンシップ",
+    "cardSubtitle": "パナソニック",
+    "cardDetailedText": "大量の生産データを解析しAIで製造工程を効率化"
+  },
+  {
+    "title": "2024年7–8月",
+    "cardTitle": "FuSEP サマーリサーチャー",
+    "cardSubtitle": "中国科学技術大学(USTC)",
+    "cardDetailedText": "高エントロピー合金の形成エネルギーを予測するGNNを開発"
+  }
+]

@@ -1,5 +1,6 @@
 import React from 'react';
-import interests from './interests.json';
+import interestsEn from './interests.json';
+import interestsJa from './interests.ja.json';
 
 export interface InterestItem {
   title: string;
@@ -19,8 +20,12 @@ export const createInterestGraph = (data: InterestItem[]): JSX.Element => {
   );
 };
 
-const InterestGraph: React.FC = () => {
-  const data = interests as InterestItem[];
+export interface InterestGraphProps {
+  lang: 'en' | 'ja';
+}
+
+const InterestGraph: React.FC<InterestGraphProps> = ({ lang }) => {
+  const data = (lang === 'ja' ? interestsJa : interestsEn) as InterestItem[];
   return <>{createInterestGraph(data)}</>;
 };
 

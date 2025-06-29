@@ -1,5 +1,6 @@
 import React from 'react';
-import skills from './skills.json';
+import skillsEn from './skills.json';
+import skillsJa from './skills.ja.json';
 
 export interface SkillItem {
   title: string;
@@ -19,8 +20,12 @@ export const createSkillTree = (data: SkillItem[]): JSX.Element => {
   );
 };
 
-const SkillTree: React.FC = () => {
-  const data = skills as SkillItem[];
+export interface SkillTreeProps {
+  lang: 'en' | 'ja';
+}
+
+const SkillTree: React.FC<SkillTreeProps> = ({ lang }) => {
+  const data = (lang === 'ja' ? skillsJa : skillsEn) as SkillItem[];
   return <>{createSkillTree(data)}</>;
 };
 

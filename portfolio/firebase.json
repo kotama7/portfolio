@@ -11,7 +11,8 @@
     ],
     "rewrites": [
       { "source": "/selectFunction", "function": "selectFunction" },
-      { "source": "/autoReply", "function": "autoReply" }
+      { "source": "/autoReply", "function": "autoReply" },
+      { "source": "/profileInfo", "function": "profileInfo" }
     ]
   }
 }

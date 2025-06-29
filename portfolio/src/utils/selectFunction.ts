@@ -14,6 +14,8 @@ export const FALLBACK_KEYWORDS = [
   { keyword: 'link', func: 'otherSiteLinks' },
   { keyword: 'リンク', func: 'otherSiteLinks' },
   { keyword: 'external', func: 'otherSiteLinks' },
+  { keyword: 'profile', func: 'profileInfo' },
+  { keyword: 'プロフィール', func: 'profileInfo' },
 ] as const;
 
 export type FunctionName = typeof FALLBACK_KEYWORDS[number]['func'];

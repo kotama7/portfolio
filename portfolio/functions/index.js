@@ -25,7 +25,16 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
 
   const lang = (req.body.lang || 'en').toLowerCase();
   const basePrompt =
-    'Possible functions include:\n- bioGraph: returns the biography graph.\n- skillTree: returns the skill hierarchy.\n- interestGraph: returns an interest graph.\n- personalityRadar: shows a personality radar chart.\n- contactInfo: returns contact information.\n- portfolioSummary: gives a summary of the portfolio.\nRespond with only the function name that best matches the user\'s request.';
+    'Possible functions include:\n' +
+    '- bioGraph: returns the biography graph.\n' +
+    '- skillTree: returns the skill hierarchy.\n' +
+    '- interestGraph: returns an interest graph.\n' +
+    '- personalityRadar: shows a personality radar chart.\n' +
+    '- contactInfo: returns contact information.\n' +
+    '- portfolioSummary: gives a summary of the portfolio.\n' +
+    '- otherSiteLinks: returns links to other sites.\n' +
+    '- profileInfo: returns life summary, award, qualifications and lab info.\n' +
+    'Respond with only the function name that best matches the user\'s request.';
   const prompt =
     lang === 'ja'
       ? `あなたはユーザーのリクエストを関数名に対応付けるアシスタントです。\n${basePrompt}`
@@ -57,6 +66,8 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
       { keyword: 'link', func: 'otherSiteLinks' },
       { keyword: 'リンク', func: 'otherSiteLinks' },
       { keyword: 'external', func: 'otherSiteLinks' },
+      { keyword: 'profile', func: 'profileInfo' },
+      { keyword: 'プロフィール', func: 'profileInfo' },
     ];
     const matched = fallbackMap.find(({ keyword }) =>
       normalized.includes(keyword)
@@ -96,4 +107,34 @@ exports.autoReply = functions.https.onRequest((req, res) => {
   const candidates = replies[lang] || replies.en;
   const message = candidates[Math.floor(Math.random() * candidates.length)];
   res.json({ message });
+});
+
+// Provide profile details such as life summary, awards, qualifications and lab
+exports.profileInfo = functions.https.onRequest((req, res) => {
+  const query = (req.body.query || '').toLowerCase();
+
+  const details = {
+    summary:
+      'Takanori Kotama is a fourth-year undergraduate at Nagoya University\'s Department of Computer Science. ' +
+      'He specializes in artificial intelligence and music processing, interns as an AI engineer at Aixtal, ' +
+      'and completed a two-month FuSEP research program at the University of Science and Technology of China. ' +
+      'He formerly led the app development circle "jack" and enjoys singing, travel, food and creating things.',
+    award:
+      "Nagoya University Student Thesis's Contest – Encouragement Award (Feb 2025) issued by the Center for the Studies of Higher Education.",
+    qualifications:
+      'Bachelor of Science in Computer Science expected in March 2026 from Nagoya University.',
+    lab:
+      'Member of the Katagiri–Hoshino Laboratory, Information Systems division at Nagoya University.'
+  };
+
+  if (!query) {
+    res.json(details);
+    return;
+  }
+
+  if (Object.prototype.hasOwnProperty.call(details, query)) {
+    res.json({ [query]: details[query] });
+  } else {
+    res.status(400).json({ error: 'Unknown query' });
+  }
 });

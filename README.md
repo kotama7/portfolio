@@ -54,4 +54,6 @@ Ensure `FIREBASE_WEB_API_KEY` and `FIREBASE_APP_ID` are set in your project befo
 
 The `profileInfo` function in this directory returns details about the life summary,
 award, qualifications and laboratory affiliation when called with a `query` field.
+It is available at `/profileInfo` after deployment and is also included in the list
+of callable functions used by the AI.
 

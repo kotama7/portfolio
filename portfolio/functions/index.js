@@ -25,7 +25,16 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
 
   const lang = (req.body.lang || 'en').toLowerCase();
   const basePrompt =
-    'Possible functions include:\n- bioGraph: returns the biography graph.\n- skillTree: returns the skill hierarchy.\n- interestGraph: returns an interest graph.\n- personalityRadar: shows a personality radar chart.\n- contactInfo: returns contact information.\n- portfolioSummary: gives a summary of the portfolio.\nRespond with only the function name that best matches the user\'s request.';
+    'Possible functions include:\n' +
+    '- bioGraph: returns the biography graph.\n' +
+    '- skillTree: returns the skill hierarchy.\n' +
+    '- interestGraph: returns an interest graph.\n' +
+    '- personalityRadar: shows a personality radar chart.\n' +
+    '- contactInfo: returns contact information.\n' +
+    '- portfolioSummary: gives a summary of the portfolio.\n' +
+    '- otherSiteLinks: returns links to other sites.\n' +
+    '- profileInfo: returns life summary, award, qualifications and lab info.\n' +
+    'Respond with only the function name that best matches the user\'s request.';
   const prompt =
     lang === 'ja'
       ? `あなたはユーザーのリクエストを関数名に対応付けるアシスタントです。\n${basePrompt}`
@@ -57,6 +66,8 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
       { keyword: 'link', func: 'otherSiteLinks' },
       { keyword: 'リンク', func: 'otherSiteLinks' },
       { keyword: 'external', func: 'otherSiteLinks' },
+      { keyword: 'profile', func: 'profileInfo' },
+      { keyword: 'プロフィール', func: 'profileInfo' },
     ];
     const matched = fallbackMap.find(({ keyword }) =>
       normalized.includes(keyword)

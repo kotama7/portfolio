@@ -24,6 +24,7 @@ const FUNC_NAMES: Record<string, { en: string; ja: string }> = {
   contactInfo: { en: 'Contact Info', ja: '連絡先' },
   portfolioSummary: { en: 'Portfolio Summary', ja: 'ポートフォリオ概要' },
   otherSiteLinks: { en: 'Other Site Links', ja: 'その他のリンク' },
+  profileInfo: { en: 'Profile Info', ja: 'プロフィール情報' },
 };
 
 const FUNC_MESSAGES: Record<string, { en: string; ja: string }> = {
@@ -55,6 +56,10 @@ const FUNC_MESSAGES: Record<string, { en: string; ja: string }> = {
     en: 'You can find me at these other sites.',
     ja: 'その他のリンクはこちらです。',
   },
+  profileInfo: {
+    en: 'Here is my life summary, awards and lab info.',
+    ja: '概要や受賞、所属研究室の情報です。',
+  },
 };
 
 let model: ReturnType<typeof getGenerativeModel> | null = null;
@@ -79,7 +84,16 @@ async function callSelectFunction(
   lang: 'en' | 'ja'
 ): Promise<string | undefined> {
   const basePrompt =
-    'Possible functions include:\n- bioGraph: returns the biography graph.\n- skillTree: returns the skill hierarchy.\n- interestGraph: returns an interest graph.\n- personalityRadar: shows a personality radar chart.\n- contactInfo: returns contact information.\n- portfolioSummary: gives a summary of the portfolio.\nRespond with only the function name that best matches the user\'s request.';
+    'Possible functions include:\n' +
+    '- bioGraph: returns the biography graph.\n' +
+    '- skillTree: returns the skill hierarchy.\n' +
+    '- interestGraph: returns an interest graph.\n' +
+    '- personalityRadar: shows a personality radar chart.\n' +
+    '- contactInfo: returns contact information.\n' +
+    '- portfolioSummary: gives a summary of the portfolio.\n' +
+    '- otherSiteLinks: returns links to other sites.\n' +
+    '- profileInfo: returns life summary, award, qualifications and lab info.\n' +
+    'Respond with only the function name that best matches the user\'s request.';
   const prompt =
     lang === 'ja'
       ? `あなたはユーザーのリクエストを関数名に対応付けるアシスタントです。\n${basePrompt}`
@@ -226,6 +240,14 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                         {props.lang === 'en'
                             ? 'This portfolio showcases my work with React and TypeScript.'
                             : 'このポートフォリオでは React と TypeScript を用いた成果を紹介しています。'}
+                    </div>
+                );
+            case 'profileInfo':
+                return (
+                    <div>
+                        {props.lang === 'en'
+                            ? 'Takanori Kotama is a fourth-year CS student at Nagoya University. Awarded in Feb 2025, expecting B.Sc. in 2026 and belonging to the Katagiri–Hoshino Lab.'
+                            : '名古屋大学情報学部4年の学生です。2025年2月に学生論文コンテスト奨励賞を受賞し、2026年3月に学士取得予定。片桐・星野研究室に所属しています。'}
                     </div>
                 );
             default:

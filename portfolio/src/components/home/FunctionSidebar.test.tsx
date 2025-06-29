@@ -22,3 +22,8 @@ test('highlights selected function', () => {
   const activeBtn = screen.getByText('Show me your skills');
   expect(activeBtn.className).toMatch(/active/);
 });
+
+test('contains profileInfo option', () => {
+  render(<FunctionSidebar onSelect={() => {}} lang="en" />);
+  expect(screen.getByText('Profile summary and awards')).toBeInTheDocument();
+});

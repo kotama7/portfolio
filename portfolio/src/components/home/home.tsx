@@ -74,8 +74,16 @@ function getModel() {
   return model;
 }
 
-async function callSelectFunction(text: string): Promise<string | undefined> {
-  const prompt = `You are a helpful assistant that maps user requests to function names.\nPossible functions include:\n- bioGraph: returns the biography graph.\n- skillTree: returns the skill hierarchy.\n- interestGraph: returns an interest graph.\n- personalityRadar: shows a personality radar chart.\n- contactInfo: returns contact information.\n- portfolioSummary: gives a summary of the portfolio.\nRespond with only the function name that best matches the user's request.`;
+async function callSelectFunction(
+  text: string,
+  lang: 'en' | 'ja'
+): Promise<string | undefined> {
+  const basePrompt =
+    'Possible functions include:\n- bioGraph: returns the biography graph.\n- skillTree: returns the skill hierarchy.\n- interestGraph: returns an interest graph.\n- personalityRadar: shows a personality radar chart.\n- contactInfo: returns contact information.\n- portfolioSummary: gives a summary of the portfolio.\nRespond with only the function name that best matches the user\'s request.';
+  const prompt =
+    lang === 'ja'
+      ? `あなたはユーザーのリクエストを関数名に対応付けるアシスタントです。\n${basePrompt}`
+      : `You are a helpful assistant that maps user requests to function names.\n${basePrompt}`;
   try {
     const result = await getModel().generateContent({
       contents: [{ role: 'user', parts: [{ text: `${prompt}\n${text}` }] }],
@@ -144,7 +152,7 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
 
         setIsReplying(true);
 
-        const func = await callSelectFunction(input);
+        const func = await callSelectFunction(input, props.lang);
         const botText = func
             ? FUNC_MESSAGES[func]?.[props.lang] ??
               (props.lang === 'en'

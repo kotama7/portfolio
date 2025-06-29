@@ -1,11 +1,18 @@
 export const FALLBACK_KEYWORDS = [
   { keyword: 'bio', func: 'bioGraph' },
+  { keyword: '経歴', func: 'bioGraph' },
   { keyword: 'skill', func: 'skillTree' },
+  { keyword: 'スキル', func: 'skillTree' },
   { keyword: 'interest', func: 'interestGraph' },
+  { keyword: '興味', func: 'interestGraph' },
   { keyword: 'personality', func: 'personalityRadar' },
+  { keyword: '性格', func: 'personalityRadar' },
   { keyword: 'contact', func: 'contactInfo' },
+  { keyword: '連絡', func: 'contactInfo' },
   { keyword: 'portfolio', func: 'portfolioSummary' },
+  { keyword: 'ポートフォリオ', func: 'portfolioSummary' },
   { keyword: 'link', func: 'otherSiteLinks' },
+  { keyword: 'リンク', func: 'otherSiteLinks' },
   { keyword: 'external', func: 'otherSiteLinks' },
 ] as const;
 

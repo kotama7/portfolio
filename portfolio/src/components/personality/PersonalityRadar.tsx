@@ -9,7 +9,8 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import data from './personality.json';
+import dataEn from './personality.json';
+import dataJa from './personality.ja.json';
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
 
@@ -18,8 +19,12 @@ export interface PersonalityData {
   values: number[];
 }
 
-const PersonalityRadar: React.FC = () => {
-  const personality = data as PersonalityData;
+export interface PersonalityRadarProps {
+  lang: 'en' | 'ja';
+}
+
+const PersonalityRadar: React.FC<PersonalityRadarProps> = ({ lang }) => {
+  const personality = (lang === 'ja' ? dataJa : dataEn) as PersonalityData;
   const chartData = {
     labels: personality.labels,
     datasets: [
@@ -33,9 +38,10 @@ const PersonalityRadar: React.FC = () => {
     ],
   };
 
+  const heading = lang === 'ja' ? '性格レーダーチャート' : 'Personality Radar Chart';
   return (
     <div>
-      <h3>Personality Radar Chart</h3>
+      <h3>{heading}</h3>
       <Radar data={chartData} />
     </div>
   );

@@ -195,13 +195,13 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
     const getFunctionComponent = (name: string | null) => {
         switch (name) {
             case 'bioGraph':
-                return <BioTree />;
+                return <BioTree lang={props.lang} />;
             case 'skillTree':
-                return <SkillTree />;
+                return <SkillTree lang={props.lang} />;
             case 'interestGraph':
-                return <InterestGraph />;
+                return <InterestGraph lang={props.lang} />;
             case 'personalityRadar':
-                return <PersonalityRadar />;
+                return <PersonalityRadar lang={props.lang} />;
             case 'otherSiteLinks':
                 return <OtherSiteLinks />;
             case 'contactInfo':

@@ -1,5 +1,6 @@
 import React from 'react';
-import qualifications from './qualifications.json';
+import qualificationsEn from './qualifications.json';
+import qualificationsJa from './qualifications.ja.json';
 
 export interface QualificationItem {
   title: string;
@@ -21,8 +22,12 @@ export const createQualificationList = (data: QualificationItem[]): JSX.Element 
   );
 };
 
-const QualificationList: React.FC = () => {
-  const data = qualifications as QualificationItem[];
+export interface QualificationListProps {
+  lang: 'en' | 'ja';
+}
+
+const QualificationList: React.FC<QualificationListProps> = ({ lang }) => {
+  const data = (lang === 'ja' ? qualificationsJa : qualificationsEn) as QualificationItem[];
   return <>{createQualificationList(data)}</>;
 };
 

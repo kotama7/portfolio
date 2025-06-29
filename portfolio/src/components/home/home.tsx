@@ -8,7 +8,7 @@ import './home.css';
 
 import MessageFormProps from './module/message_form';
 import FirstReply from './module/first_reply';
-import FunctionSidebar from './FunctionSidebar';
+import FunctionSidebar, { labels } from './FunctionSidebar';
 import BioTree from '../bio/BioTree';
 import SkillTree from '../skills/SkillTree';
 import InterestGraph from '../interests/InterestGraph';
@@ -196,7 +196,34 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
             setAutoFirstReply(false);
             setIsReplying(false);
         } else {
+            const baseId = messages.length + 1;
+            const userMsg: MessageFormProps = {
+                text: labels[name][props.lang],
+                id: baseId,
+                sender: {
+                    uid: 'Guest',
+                    name: 'Guest',
+                    avatar: 'https://www.w3schools.com/howto/img_avatar.png',
+                },
+            };
+            const botMsg: MessageFormProps = {
+                text: FUNC_MESSAGES[name][props.lang],
+                id: baseId + 1,
+                sender: {
+                    uid: 'Takanori Kotama',
+                    name: 'Takanori Kotama',
+                    avatar: `${process.env.PUBLIC_URL}/kotama_icon.jpg`,
+                },
+            };
+            const elementMsg: MessageFormProps = {
+                text: '',
+                id: baseId + 2,
+                sender: botMsg.sender,
+                element: getFunctionComponent(name),
+            };
+            setMessages(prev => [...prev, userMsg, botMsg, elementMsg]);
             setSelectedFunc(name);
+            setAutoFirstReply(false);
         }
     }
 

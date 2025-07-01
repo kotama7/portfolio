@@ -15,7 +15,7 @@ export default function Header(props: HeaderProps){
             <AppBar position="static">
                 <Toolbar variant="dense">
                     <Typography variant="h6" color="inherit" component="div" sx={{ flexGrow: 1 }}>
-                        {props.lang === 'en' ? 'Takanori Kotama' : '樹神 宇徳'}
+                        {props.lang === 'en' ? 'Takanori Kotama' : '小玉 貴教'}
                     </Typography>
                     <LanguageSwitch lang={props.lang} setLang={props.setLang} />
                 </Toolbar>

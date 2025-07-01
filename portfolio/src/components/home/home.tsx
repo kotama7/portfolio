@@ -8,6 +8,7 @@ import './home.css';
 
 import MessageFormProps from './module/message_form';
 import FirstReply from './module/first_reply';
+import Reply from './module/return_respond';
 import FunctionSidebar, { labels } from './FunctionSidebar';
 import BioTree from '../bio/BioTree';
 import SkillTree from '../skills/SkillTree';
@@ -162,7 +163,8 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                 avatar: 'https://www.w3schools.com/howto/img_avatar.png'
             }
         };
-        setMessages(prev => [...prev, userMsg]);
+        const current = [...messages, userMsg];
+        setMessages(current);
 
         setIsReplying(true);
 
@@ -175,32 +177,29 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
             : props.lang === 'en'
                 ? "Sorry, I couldn't determine an appropriate response to your message. Please try rephrasing your request or feel free to ask about my portfolio, professional experience, or anything else you're curious about, and I'll do my best to assist you."
                 : '申し訳ありませんが、ご入力の内容から適切な応答を判断できませんでした。お手数ですが別の言い方で再度質問していただくか、私のポートフォリオや経歴など知りたいことがあれば何でもお聞かせください。できる限り対応いたします。';
-        const botMsg: MessageFormProps = {
-            text: botText,
-            id: userMsg.id + 1,
-            sender: {
-                uid: 'Takanori Kotama',
-                name: 'Takanori Kotama',
-                avatar: `${process.env.PUBLIC_URL}/kotama_icon.jpg`
-            }
-        };
-        const newMessages: MessageFormProps[] = [botMsg];
-        if (func) {
-            const elementMsg: MessageFormProps = {
-                text: '',
-                id: botMsg.id + 1,
-                sender: {
-                    uid: 'Takanori Kotama',
-                    name: 'Takanori Kotama',
-                    avatar: `${process.env.PUBLIC_URL}/kotama_icon.jpg`
-                },
-                element: getFunctionComponent(func)
-            };
-            newMessages.push(elementMsg);
-            setSelectedFunc(func);
-        }
-        setMessages(prev => [...prev, ...newMessages]);
-        setIsReplying(false);
+
+        Reply({
+            seter: setMessages,
+            messages: current,
+            next_message: botText,
+            onEnd: () => {
+                if (func) {
+                    const elementMsg: MessageFormProps = {
+                        text: '',
+                        id: current.length + 2,
+                        sender: {
+                            uid: 'Takanori Kotama',
+                            name: 'Takanori Kotama',
+                            avatar: `${process.env.PUBLIC_URL}/kotama_icon.jpg`
+                        },
+                        element: getFunctionComponent(func)
+                    };
+                    setMessages(prev => [...prev, elementMsg]);
+                    setSelectedFunc(func);
+                }
+                setIsReplying(false);
+            },
+        });
     }
 
     const handleSidebarSelect = (name: string) => {
@@ -220,23 +219,29 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                     avatar: 'https://www.w3schools.com/howto/img_avatar.png',
                 },
             };
-            const botMsg: MessageFormProps = {
-                text: FUNC_MESSAGES[name][props.lang],
-                id: baseId + 1,
-                sender: {
-                    uid: 'Takanori Kotama',
-                    name: 'Takanori Kotama',
-                    avatar: `${process.env.PUBLIC_URL}/kotama_icon.jpg`,
+            const current = [...messages, userMsg];
+            setMessages(current);
+            setIsReplying(true);
+            Reply({
+                seter: setMessages,
+                messages: current,
+                next_message: FUNC_MESSAGES[name][props.lang],
+                onEnd: () => {
+                    const elementMsg: MessageFormProps = {
+                        text: '',
+                        id: baseId + 2,
+                        sender: {
+                            uid: 'Takanori Kotama',
+                            name: 'Takanori Kotama',
+                            avatar: `${process.env.PUBLIC_URL}/kotama_icon.jpg`,
+                        },
+                        element: getFunctionComponent(name),
+                    };
+                    setMessages(prev => [...prev, elementMsg]);
+                    setSelectedFunc(name);
+                    setIsReplying(false);
                 },
-            };
-            const elementMsg: MessageFormProps = {
-                text: '',
-                id: baseId + 2,
-                sender: botMsg.sender,
-                element: getFunctionComponent(name),
-            };
-            setMessages(prev => [...prev, userMsg, botMsg, elementMsg]);
-            setSelectedFunc(name);
+            });
             setAutoFirstReply(false);
         }
     }

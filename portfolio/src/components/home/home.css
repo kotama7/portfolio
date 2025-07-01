@@ -123,4 +123,9 @@
 
 .msg-page {
   height: calc(100% - 60px) !important;
+  width: 100% !important;
+}
+
+.chat-box-bottom {
+  width: 100% !important;
 }

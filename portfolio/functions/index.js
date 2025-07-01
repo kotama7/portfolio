@@ -89,7 +89,7 @@ exports.autoReply = functions.https.onRequest((req, res) => {
   const replies = {
     ja: [
       `
-    名古屋大学片桐・星野研究室所属のコンピュータ科学科4年、小玉貴教です。\n
+    名古屋大学片桐・星野研究室所属のコンピュータ科学科4年、樹神宇徳です。\n
     Aixtalで製造データからAIモデルを構築するデータサイエンティストとして活動しています。\n
       `,
       `
@@ -145,12 +145,12 @@ exports.profileInfo = functions.https.onRequest((req, res) => {
 exports.briefIntro = functions.https.onRequest((req, res) => {
   const intros = {
     ja: [
-      '名古屋大学コンピュータ科学科4年の小玉貴教です。AIと音楽処理が得意です。',
-      '小玉貴教と申します。名古屋大学でAIを研究し、音楽も好きです。'
+      '名古屋大学コンピュータ科学科4年の樹神宇徳です。AIと音楽処理が得意です。',
+      '樹神宇徳と申します。名古屋大学でAIを研究しています。'
     ],
     en: [
-      'I\'m Takanori Kotama, a fourth-year CS student at Nagoya University focused on AI and music processing.',
-      'Takanori Kotama here – a student researcher in AI who also enjoys music.'
+      "I'm Itsuki Utoku, a fourth-year CS student at Nagoya University focused on AI and music processing.",
+      'Itsuki Utoku here – a student researcher in AI.'
     ]
   };
 

@@ -98,10 +98,10 @@ exports.autoReply = functions.https.onRequest((req, res) => {
     ],
     en: [
       `
-    I am Takanori Kotama, a fourth-year Computer Science student at Nagoya University's Katagiri–Hoshino Lab. I work as a Data Scientist at Aixtal building AI models from manufacturing data.
+    I am Takanori Kotama, a fourth-year Computer Science student at Nagoya University's Katagiri–Hoshino Lab. I build AI models from manufacturing data as a Data Scientist at Aixtal.
       `,
       `
-    I enjoy AI and music processing, singing, travel, food, and making things. B.Sc. expected March 2026.
+    I expect to graduate in March 2026 and received a certificate from the Center for Higher Education in February 2025.
       `,
     ],
   };
@@ -154,8 +154,12 @@ exports.briefIntro = functions.https.onRequest((req, res) => {
       `,
     ],
     en: [
-      "I'm Takanori Kotama, a fourth-year CS student at Nagoya University focused on AI and music processing.",
-      'Takanori Kotama here – a student researcher in AI.'
+      `
+    I'm Takanori Kotama, a fourth-year Computer Science student at Nagoya University's Katagiri–Hoshino Lab. I build AI models from manufacturing data as a Data Scientist at Aixtal.
+      `,
+      `
+    I expect to graduate in March 2026 and received a certificate from the Center for Higher Education in February 2025.
+      `
     ]
   };
 

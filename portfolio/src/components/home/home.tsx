@@ -173,8 +173,8 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                 ? `Function selected: ${FUNC_NAMES[func]?.en ?? func}`
                 : `選択された機能: ${FUNC_NAMES[func]?.ja ?? func}`)
             : props.lang === 'en'
-                ? 'Failed to get response'
-                : '返答を取得できませんでした';
+                ? "Sorry, I couldn't determine an appropriate response"
+                : '申し訳ありませんが、適切な応答を判断できませんでした';
         const botMsg: MessageFormProps = {
             text: botText,
             id: userMsg.id + 1,

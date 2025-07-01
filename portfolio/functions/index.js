@@ -68,6 +68,8 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
       { keyword: 'external', func: 'otherSiteLinks' },
       { keyword: 'profile', func: 'profileInfo' },
       { keyword: 'プロフィール', func: 'profileInfo' },
+      { keyword: 'intro', func: 'briefIntro' },
+      { keyword: '自己紹介', func: 'briefIntro' },
     ];
     const matched = fallbackMap.find(({ keyword }) =>
       normalized.includes(keyword)
@@ -87,7 +89,7 @@ exports.autoReply = functions.https.onRequest((req, res) => {
   const replies = {
     ja: [
       `
-    名古屋大学片桐・星野研究室所属のコンピュータ科学科4年、小玉貴教です。\n
+    名古屋大学片桐・星野研究室所属のコンピュータ科学科4年、樹神宇徳です。\n
     Aixtalで製造データからAIモデルを構築するデータサイエンティストとして活動しています。\n
       `,
       `
@@ -96,10 +98,10 @@ exports.autoReply = functions.https.onRequest((req, res) => {
     ],
     en: [
       `
-    I am Takanori Kotama, a fourth-year Computer Science student at Nagoya University's Katagiri–Hoshino Lab. I work as a Data Scientist at Aixtal building AI models from manufacturing data.
+    I am Takanori Kotama, a fourth-year Computer Science student at Nagoya University's Katagiri–Hoshino Lab. I build AI models from manufacturing data as a Data Scientist at Aixtal.
       `,
       `
-    I enjoy AI and music processing, singing, travel, food, and making things. B.Sc. expected March 2026.
+    I expect to graduate in March 2026 and received a certificate from the Center for Higher Education in February 2025.
       `,
     ],
   };
@@ -137,4 +139,32 @@ exports.profileInfo = functions.https.onRequest((req, res) => {
   } else {
     res.status(400).json({ error: 'Unknown query' });
   }
+});
+
+// Return a brief self-introduction
+exports.briefIntro = functions.https.onRequest((req, res) => {
+  const intros = {
+    ja: [
+      `
+    名古屋大学片桐・星野研究室所属のコンピュータ科学科4年、樹神宇徳です。\n
+    Aixtalで製造データからAIモデルを構築するデータサイエンティストとして活動しています。\n
+      `,
+      `
+    2026年3月卒業予定で、2025年2月に名古屋大学高等教育研究センターの修了証を取得しました。
+      `,
+    ],
+    en: [
+      `
+    I'm Takanori Kotama, a fourth-year Computer Science student at Nagoya University's Katagiri–Hoshino Lab. I build AI models from manufacturing data as a Data Scientist at Aixtal.
+      `,
+      `
+    I expect to graduate in March 2026 and received a certificate from the Center for Higher Education in February 2025.
+      `
+    ]
+  };
+
+  const lang = (req.body.lang || 'en').toLowerCase();
+  const candidates = intros[lang] || intros.en;
+  const message = candidates[Math.floor(Math.random() * candidates.length)];
+  res.json({ message });
 });

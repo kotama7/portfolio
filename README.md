@@ -57,3 +57,7 @@ award, qualifications and laboratory affiliation when called with a `query` fiel
 It is available at `/profileInfo` after deployment and is also included in the list
 of callable functions used by the AI.
 
+The `briefIntro` function provides a short self-introduction. POST a JSON body
+with a `lang` field (`en` or `ja`) to `/briefIntro` to receive the message in
+the specified language.
+

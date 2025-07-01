@@ -145,8 +145,13 @@ exports.profileInfo = functions.https.onRequest((req, res) => {
 exports.briefIntro = functions.https.onRequest((req, res) => {
   const intros = {
     ja: [
-      '名古屋大学コンピュータ科学科4年の樹神宇徳です。AIと音楽処理が得意です。',
-      '樹神宇徳と申します。名古屋大学でAIを研究しています。'
+      `
+    名古屋大学片桐・星野研究室所属のコンピュータ科学科4年、樹神宇徳です。\n
+    Aixtalで製造データからAIモデルを構築するデータサイエンティストとして活動しています。\n
+      `,
+      `
+    2026年3月卒業予定で、2025年2月に名古屋大学高等教育研究センターの修了証を取得しました。
+      `,
     ],
     en: [
       "I'm Takanori Kotama, a fourth-year CS student at Nagoya University focused on AI and music processing.",

@@ -68,6 +68,8 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
       { keyword: 'external', func: 'otherSiteLinks' },
       { keyword: 'profile', func: 'profileInfo' },
       { keyword: 'プロフィール', func: 'profileInfo' },
+      { keyword: 'intro', func: 'briefIntro' },
+      { keyword: '自己紹介', func: 'briefIntro' },
     ];
     const matched = fallbackMap.find(({ keyword }) =>
       normalized.includes(keyword)
@@ -137,4 +139,23 @@ exports.profileInfo = functions.https.onRequest((req, res) => {
   } else {
     res.status(400).json({ error: 'Unknown query' });
   }
+});
+
+// Return a brief self-introduction
+exports.briefIntro = functions.https.onRequest((req, res) => {
+  const intros = {
+    ja: [
+      '名古屋大学コンピュータ科学科4年の小玉貴教です。AIと音楽処理が得意です。',
+      '小玉貴教と申します。名古屋大学でAIを研究し、音楽も好きです。'
+    ],
+    en: [
+      'I\'m Takanori Kotama, a fourth-year CS student at Nagoya University focused on AI and music processing.',
+      'Takanori Kotama here – a student researcher in AI who also enjoys music.'
+    ]
+  };
+
+  const lang = (req.body.lang || 'en').toLowerCase();
+  const candidates = intros[lang] || intros.en;
+  const message = candidates[Math.floor(Math.random() * candidates.length)];
+  res.json({ message });
 });

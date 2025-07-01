@@ -67,3 +67,18 @@ curl -X POST https://<your-region>-<your-project>.cloudfunctions.net/autoReply \
 ```
 
 This will return a JSON response containing the introduction text.
+
+### `briefIntro` function
+
+Returns a short self-introduction message. Send a JSON body with a `lang`
+field (`en` or `ja`) to get the message in that language.
+
+Example:
+
+```bash
+curl -X POST https://<your-region>-<your-project>.cloudfunctions.net/briefIntro \
+     -H "Content-Type: application/json" \
+     -d '{"lang": "en"}'
+```
+
+This will return a JSON response containing the brief self-introduction.

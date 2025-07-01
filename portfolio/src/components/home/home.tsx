@@ -175,8 +175,8 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                 ? `Function selected: ${FUNC_NAMES[func]?.en ?? func}`
                 : `選択された機能: ${FUNC_NAMES[func]?.ja ?? func}`)
             : props.lang === 'en'
-                ? 'Failed to get response'
-                : '返答を取得できませんでした';
+                ? "Sorry, I couldn't determine an appropriate response to your message. Please try rephrasing your request or feel free to ask about my portfolio, professional experience, or anything else you're curious about, and I'll do my best to assist you."
+                : '申し訳ありませんが、ご入力の内容から適切な応答を判断できませんでした。お手数ですが別の言い方で再度質問していただくか、私のポートフォリオや経歴など知りたいことがあれば何でもお聞かせください。できる限り対応いたします。';
 
         Reply({
             seter: setMessages,

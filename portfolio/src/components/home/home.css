@@ -113,3 +113,11 @@
   cursor: pointer;
   z-index: 1000;
 }
+/* Expand chatbox to occupy available height */
+.chat-box {
+  height: 100% !important;
+}
+
+.msg-page {
+  height: calc(100% - 60px) !important;
+}

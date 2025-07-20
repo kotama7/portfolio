@@ -168,3 +168,13 @@ exports.briefIntro = functions.https.onRequest((req, res) => {
   const message = candidates[Math.floor(Math.random() * candidates.length)];
   res.json({ message });
 });
+
+// Return external links to other profiles
+exports.otherSiteLinks = functions.https.onRequest((req, res) => {
+  res.json({
+    github: 'https://github.com/kotama7',
+    qiita: 'https://qiita.com/kotama7',
+    x: 'https://x.com/kotama8',
+    linkedin: 'https://www.linkedin.com/in/takanori-kotama-b785b52a4/'
+  });
+});

@@ -3,49 +3,40 @@
     "title": "Programming",
     "children": [
       { "title": "Python" },
-      { "title": "JavaScript / TypeScript" },
-      { "title": "C" }
+      { "title": "JavaScript" }
     ]
   },
   {
-    "title": "AI & ML",
+    "title": "Frameworks & Libraries",
     "children": [
-      { "title": "TensorFlow" },
-      { "title": "PyTorch" },
+      { "title": "TensorFlow 1.x" },
       { "title": "OpenSpiel" },
-      { "title": "Reinforcement Learning (CFR / DeepCFR)" },
-      { "title": "Graph Neural Networks" }
+      { "title": "LightGBM" }
     ]
   },
   {
-    "title": "Materials Science Research",
+    "title": "Tooling",
     "children": [
-      { "title": "High Entropy Alloys (HEAs)" },
-      { "title": "Energy Estimation Models" },
-      { "title": "GNN Applications to Materials" }
+      { "title": "Docker" },
+      { "title": "CMake" },
+      { "title": "MPI" },
+      { "title": "CUDA" }
     ]
   },
   {
-    "title": "Web & DevOps",
+    "title": "HPC",
     "children": [
-      { "title": "React" },
-      { "title": "Docker" }
-    ]
-  },
-  {
-    "title": "Data Visualization",
-    "children": [
-      { "title": "Matplotlib / EPS Workflow" },
-      { "title": "pandas Data Analysis" },
-      { "title": "Graph & Network Plotting" }
+      { "title": "Parallelization" },
+      { "title": "Distributed training" },
+      { "title": "GPU acceleration" }
     ]
   },
   {
     "title": "Languages",
     "children": [
       { "title": "Japanese (Native)" },
-      { "title": "English (Business Level)" },
-      { "title": "Chinese (Learning)" }
+      { "title": "English (advanced – TOEFL in progress)" },
+      { "title": "Chinese (intermediate)" }
     ]
   },
   {

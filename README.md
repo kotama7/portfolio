@@ -61,3 +61,7 @@ The `briefIntro` function provides a short self-introduction. POST a JSON body
 with a `lang` field (`en` or `ja`) to `/briefIntro` to receive the message in
 the specified language.
 
+The `thesisSummary` function returns a summary of the Encouragement Award
+thesis. Send a JSON payload with a `lang` field (`en` or `ja`) to
+`/thesisSummary` to obtain the summary in the requested language.
+

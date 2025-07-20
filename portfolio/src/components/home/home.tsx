@@ -278,8 +278,8 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                 return (
                     <div>
                         {props.lang === 'en'
-                            ? 'Takanori Kotama is a fourth-year CS student at Nagoya University. Awarded in Feb 2025, expecting B.Sc. in 2026 and belonging to the Katagiri–Hoshino Lab.'
-                            : '名古屋大学情報学部4年の学生です。2025年2月に学生論文コンテスト奨励賞を受賞し、2026年3月に学士取得予定。片桐・星野研究室に所属しています。'}
+                            ? 'Takanori Kotama is a fourth-year CS student in Nagoya University\'s Information Systems program. He received the 2024 Student Paper Contest Encouragement Award and expects to graduate in March 2026.'
+                            : '名古屋大学情報学部情報システム専攻の4年生です。2024年の学生論文コンテストで奨励賞を受賞し、2026年3月に学士取得予定です。'}
                     </div>
                 );
             default:

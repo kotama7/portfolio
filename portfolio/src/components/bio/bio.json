@@ -40,5 +40,17 @@
     "cardTitle": "FuSEP Summer Researcher",
     "cardSubtitle": "University of Science and Technology of China (USTC)",
     "cardDetailedText": "Developed a GNN that achieved near-benchmark accuracy in predicting formation energies of Mb-Nb-Ta-W high-entropy alloys."
+  },
+  {
+    "title": "2024",
+    "cardTitle": "Encouragement Award",
+    "cardSubtitle": "Nagoya University Student Paper Contest",
+    "cardDetailedText": "Received Encouragement Award for the paper 'A quantitative definition of青春 using large language models.'"
+  },
+  {
+    "title": "Sep–Oct 2025",
+    "cardTitle": "Planned HPC Internship",
+    "cardSubtitle": "RIKEN R-CCS AI for Science Team",
+    "cardDetailedText": "Scheduled to join the HPC Computational Science Internship."
   }
 ]

@@ -40,5 +40,17 @@
     "cardTitle": "FuSEP サマーリサーチャー",
     "cardSubtitle": "中国科学技術大学(USTC)",
     "cardDetailedText": "高エントロピー合金の形成エネルギーを予測するGNNを開発"
+  },
+  {
+    "title": "2024年",
+    "cardTitle": "奨励賞",
+    "cardSubtitle": "名古屋大学学生論文コンテスト",
+    "cardDetailedText": "『大規模言語モデルを用いた青春の定量的な定義法の考案』で奨励賞を受賞"
+  },
+  {
+    "title": "2025年9月–10月",
+    "cardTitle": "HPCインターンシップ予定",
+    "cardSubtitle": "RIKEN R-CCS AI for Science Team",
+    "cardDetailedText": "HPC計算科学インターンシップに参加予定"
   }
 ]

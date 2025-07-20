@@ -89,19 +89,19 @@ exports.autoReply = functions.https.onRequest((req, res) => {
   const replies = {
     ja: [
       `
-    名古屋大学片桐・星野研究室所属のコンピュータ科学科4年、樹神宇徳です。\n
-    Aixtalで製造データからAIモデルを構築するデータサイエンティストとして活動しています。\n
+    名古屋大学情報学部コンピュータ科学科情報システム専攻4年の樹神宇徳です。\n
+    高エントロピー合金やGNNを用いた材料研究、HPC 活用に興味があります。\n
       `,
       `
-    2026年3月卒業予定で、2025年2月に名古屋大学高等教育研究センターの修了証を取得しました。
+    2026年3月卒業予定で、2024年には学生論文コンテストで奨励賞を受賞しました。
       `,
     ],
     en: [
       `
-    I am Takanori Kotama, a fourth-year Computer Science student at Nagoya University's Katagiri–Hoshino Lab. I build AI models from manufacturing data as a Data Scientist at Aixtal.
+    I am Takanori Kotama, a fourth-year Computer Science student in Nagoya University's Information Systems program. My work centers on high-entropy alloys and GNNs for materials science with an interest in HPC.
       `,
       `
-    I expect to graduate in March 2026 and received a certificate from the Center for Higher Education in February 2025.
+    I expect to graduate in March 2026 and won the Encouragement Award at the 2024 Nagoya University Student Paper Contest.
       `,
     ],
   };
@@ -117,16 +117,16 @@ exports.profileInfo = functions.https.onRequest((req, res) => {
 
   const details = {
     summary:
-      'Takanori Kotama is a fourth-year undergraduate at Nagoya University\'s Department of Computer Science. ' +
-      'He specializes in artificial intelligence and music processing, interns as an AI engineer at Aixtal, ' +
-      'and completed a two-month FuSEP research program at the University of Science and Technology of China. ' +
-      'He formerly led the app development circle "jack" and enjoys singing, travel, food and creating things.',
+      'Takanori Kotama is a fourth-year undergraduate in the Information Systems program at Nagoya University. ' +
+      'His interests include high-entropy alloys, graph neural networks for materials science and HPC-driven discovery. ' +
+      'He joined the FuSEP Summer Researcher Program at USTC and interned at Panasonic applying AI to manufacturing. ' +
+      'He plans to participate in the RIKEN R-CCS HPC internship in 2025 and previously served as vice-president of the app development group "jack".',
     award:
-      "Nagoya University Student Thesis's Contest – Encouragement Award (Feb 2025) issued by the Center for the Studies of Higher Education.",
+      'Encouragement Award at the 2024 Nagoya University Student Paper Contest for the paper "A quantitative definition of青春 using large language models."',
     qualifications:
-      'Bachelor of Science in Computer Science expected in March 2026 from Nagoya University.',
+      'Bachelor of Science in Information Systems expected in March 2026 from Nagoya University.',
     lab:
-      'Member of the Katagiri–Hoshino Laboratory, Information Systems division at Nagoya University.'
+      'Affiliated with the Faculty of Informatics at Nagoya University.'
   };
 
   if (!query) {
@@ -146,19 +146,19 @@ exports.briefIntro = functions.https.onRequest((req, res) => {
   const intros = {
     ja: [
       `
-    名古屋大学片桐・星野研究室所属のコンピュータ科学科4年、樹神宇徳です。\n
-    Aixtalで製造データからAIモデルを構築するデータサイエンティストとして活動しています。\n
+    名古屋大学情報学部コンピュータ科学科情報システム専攻4年の樹神宇徳です。\n
+    高エントロピー合金やGNNを用いた材料研究、HPC 活用に興味があります。\n
       `,
       `
-    2026年3月卒業予定で、2025年2月に名古屋大学高等教育研究センターの修了証を取得しました。
+    2026年3月卒業予定で、2024年の学生論文コンテストで奨励賞を受賞しました。
       `,
     ],
     en: [
       `
-    I'm Takanori Kotama, a fourth-year Computer Science student at Nagoya University's Katagiri–Hoshino Lab. I build AI models from manufacturing data as a Data Scientist at Aixtal.
+    I'm Takanori Kotama, a fourth-year Computer Science student in Nagoya University's Information Systems program. My work centers on high-entropy alloys and GNNs with a focus on HPC.
       `,
       `
-    I expect to graduate in March 2026 and received a certificate from the Center for Higher Education in February 2025.
+    I expect to graduate in March 2026 and won the Encouragement Award at the 2024 Nagoya University Student Paper Contest.
       `
     ]
   };

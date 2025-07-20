@@ -1,9 +1,12 @@
 [
   {
-    "title": "Technology",
+    "title": "Research",
     "children": [
-      {"title": "Artificial Intelligence"},
-      {"title": "Web Development"}
+      {"title": "High-entropy alloys (HEAs)"},
+      {"title": "Graph Neural Networks for materials science"},
+      {"title": "AI-driven scientific discovery"},
+      {"title": "High-performance computing (HPC)"},
+      {"title": "Reinforcement learning & game theory"}
     ]
   },
   {

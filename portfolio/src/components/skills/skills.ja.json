@@ -3,49 +3,40 @@
     "title": "プログラミング",
     "children": [
       { "title": "Python" },
-      { "title": "JavaScript / TypeScript" },
-      { "title": "C" }
+      { "title": "JavaScript" }
     ]
   },
   {
-    "title": "AI・機械学習",
+    "title": "フレームワーク・ライブラリ",
     "children": [
-      { "title": "TensorFlow" },
-      { "title": "PyTorch" },
+      { "title": "TensorFlow 1.x" },
       { "title": "OpenSpiel" },
-      { "title": "強化学習 (CFR / DeepCFR)" },
-      { "title": "グラフニューラルネットワーク" }
+      { "title": "LightGBM" }
     ]
   },
   {
-    "title": "材料科学研究",
+    "title": "ツール",
     "children": [
-      { "title": "高エントロピー合金 (HEA)" },
-      { "title": "エネルギー推定モデル" },
-      { "title": "材料へのGNN応用" }
+      { "title": "Docker" },
+      { "title": "CMake" },
+      { "title": "MPI" },
+      { "title": "CUDA" }
     ]
   },
   {
-    "title": "Web・DevOps",
+    "title": "HPC",
     "children": [
-      { "title": "React" },
-      { "title": "Docker" }
-    ]
-  },
-  {
-    "title": "データ可視化",
-    "children": [
-      { "title": "Matplotlib / EPS ワークフロー" },
-      { "title": "pandas データ解析" },
-      { "title": "グラフ・ネットワーク描画" }
+      { "title": "並列化" },
+      { "title": "分散学習" },
+      { "title": "GPU 活用" }
     ]
   },
   {
     "title": "言語",
     "children": [
       { "title": "日本語 (母国語)" },
-      { "title": "英語 (ビジネスレベル)" },
-      { "title": "中国語 (学習中)" }
+      { "title": "英語 (上級、TOEFL 取得予定)" },
+      { "title": "中国語 (中級)" }
     ]
   },
   {

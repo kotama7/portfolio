@@ -65,3 +65,7 @@ The `thesisSummary` function returns a summary of the Encouragement Award
 thesis. Send a JSON payload with a `lang` field (`en` or `ja`) to
 `/thesisSummary` to obtain the summary in the requested language.
 
+The `fusepThesisSummary` function provides the summary of the FuSEP thesis in
+either language. POST a JSON body with `lang` set to `en` or `ja` to
+`/fusepThesisSummary` for the desired version.
+

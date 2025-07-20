@@ -34,6 +34,7 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
     '- portfolioSummary: gives a summary of the portfolio.\n' +
     '- otherSiteLinks: returns links to other sites.\n' +
     '- profileInfo: returns life summary, award, qualifications and lab info.\n' +
+    '- thesisSummary: returns the Encouragement Award thesis summary.\n' +
     'Respond with only the function name that best matches the user\'s request.';
   const prompt =
     lang === 'ja'
@@ -70,6 +71,8 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
       { keyword: 'プロフィール', func: 'profileInfo' },
       { keyword: 'intro', func: 'briefIntro' },
       { keyword: '自己紹介', func: 'briefIntro' },
+      { keyword: 'thesis', func: 'thesisSummary' },
+      { keyword: '論文要約', func: 'thesisSummary' },
     ];
     const matched = fallbackMap.find(({ keyword }) =>
       normalized.includes(keyword)
@@ -169,6 +172,23 @@ exports.briefIntro = functions.https.onRequest((req, res) => {
   res.json({ message });
 });
 
+// Return a summary of the Encouragement Award thesis
+exports.thesisSummary = functions.https.onRequest((req, res) => {
+  const lang = (req.body.lang || 'en').toLowerCase();
+
+  const summaries = {
+    ja:
+      '本論文では、文章の意外性・ポジティブさ・文法流暢性を情報エントロピーとして統合し「青春情報エントロピー」を提案した。' +
+      '日本語BERTで推定した確率を用い、Llama-3-ELYZA-JP-8Bによる嗜好度との相関を36文で検証し、有意な弱い正相関(r=0.333, p=0.035)を確認した。' +
+      '長文適用や概念多様性が課題だが、意外性と感情を情報理論で統合する枠組みとして有用性を示した。',
+    en:
+      'The thesis proposes "Youth Information Entropy" that sums the entropy of surprise, positivity and grammatical fluency. ' +
+      'Probabilities estimated using a Japanese BERT model were validated against preference scores from Llama-3-ELYZA-JP-8B, ' +
+      'showing a weak but significant positive correlation (r=0.333, p=0.035) across 36 sentences. ' +
+      'While long texts and concept diversity remain challenges, it demonstrates the usefulness of integrating surprise and emotion via information theory.'
+  };
+
+  res.json({ summary: summaries[lang] || summaries.en });
 // Return external links to other profiles
 exports.otherSiteLinks = functions.https.onRequest((req, res) => {
   res.json({

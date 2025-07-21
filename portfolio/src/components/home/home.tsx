@@ -15,6 +15,8 @@ import SkillTree from '../skills/SkillTree';
 import InterestGraph from '../interests/InterestGraph';
 import PersonalityRadar from '../personality/PersonalityRadar';
 import OtherSiteLinks from '../links/OtherSiteLinks';
+import ThesisSummary from '../thesis/ThesisSummary';
+import FusepThesisSummary from '../thesis/FusepThesisSummary';
 import { fallbackSelectFunction } from '../../utils/selectFunction';
 
 const FUNC_NAMES: Record<string, { en: string; ja: string }> = {
@@ -309,21 +311,9 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                     </div>
                 );
             case 'thesisSummary':
-                return (
-                    <div>
-                        {props.lang === 'en'
-                            ? 'Summary of the Encouragement Award thesis.'
-                            : '奨励賞論文の要約です。'}
-                    </div>
-                );
+                return <ThesisSummary lang={props.lang} />;
             case 'fusepThesisSummary':
-                return (
-                    <div>
-                        {props.lang === 'en'
-                            ? 'Summary of the FuSEP thesis.'
-                            : '夏研論文の要約です。'}
-                    </div>
-                );
+                return <FusepThesisSummary lang={props.lang} />;
             default:
                 return null;
         }

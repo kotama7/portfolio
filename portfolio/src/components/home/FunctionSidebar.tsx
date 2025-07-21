@@ -20,6 +20,9 @@ const functions: FunctionItem[] = [
   { id: 'portfolioSummary' },
   { id: 'otherSiteLinks' },
   { id: 'profileInfo' },
+  { id: 'briefIntro' },
+  { id: 'thesisSummary' },
+  { id: 'fusepThesisSummary' },
 ];
 
 export const labels: Record<string, { en: string; ja: string }> = {
@@ -34,6 +37,9 @@ export const labels: Record<string, { en: string; ja: string }> = {
   portfolioSummary: { en: 'Summarize your portfolio', ja: 'ポートフォリオを要約してください' },
   otherSiteLinks: { en: 'Share other site links', ja: 'その他のリンクを教えてください' },
   profileInfo: { en: 'Profile summary and awards', ja: '概要と受賞など' },
+  briefIntro: { en: 'Give me a brief intro', ja: '自己紹介をお願いします' },
+  thesisSummary: { en: 'Show thesis summary', ja: '論文要約を見せて' },
+  fusepThesisSummary: { en: 'Show FuSEP thesis', ja: '夏研論文を教えて' },
   newChat: { en: 'newChat', ja: '新しいチャット' },
 };
 

@@ -26,6 +26,9 @@ const FUNC_NAMES: Record<string, { en: string; ja: string }> = {
   portfolioSummary: { en: 'Portfolio Summary', ja: 'ポートフォリオ概要' },
   otherSiteLinks: { en: 'Other Site Links', ja: 'その他のリンク' },
   profileInfo: { en: 'Profile Info', ja: 'プロフィール情報' },
+  briefIntro: { en: 'Brief Intro', ja: '自己紹介' },
+  thesisSummary: { en: 'Thesis Summary', ja: '論文要約' },
+  fusepThesisSummary: { en: 'FuSEP Thesis Summary', ja: '夏研論文要約' },
 };
 
 const FUNC_MESSAGES: Record<string, { en: string; ja: string }> = {
@@ -61,6 +64,18 @@ const FUNC_MESSAGES: Record<string, { en: string; ja: string }> = {
     en: 'Here is my life summary, awards and lab info.',
     ja: '概要や受賞、所属研究室の情報です。',
   },
+  briefIntro: {
+    en: 'Here is a short self introduction.',
+    ja: '簡単な自己紹介です。',
+  },
+  thesisSummary: {
+    en: 'This is the Encouragement Award thesis summary.',
+    ja: '奨励賞論文の要約です。',
+  },
+  fusepThesisSummary: {
+    en: 'This is the FuSEP thesis summary.',
+    ja: '夏研論文の要約です。',
+  },
 };
 
 let model: ReturnType<typeof getGenerativeModel> | null = null;
@@ -94,6 +109,9 @@ async function callSelectFunction(
     '- portfolioSummary: gives a summary of the portfolio.\n' +
     '- otherSiteLinks: returns links to other sites.\n' +
     '- profileInfo: returns life summary, award, qualifications and lab info.\n' +
+    '- briefIntro: returns a short self introduction.\n' +
+    '- thesisSummary: returns the Encouragement Award thesis summary.\n' +
+    '- fusepThesisSummary: returns the FuSEP thesis summary.\n' +
     'Respond with only the function name that best matches the user\'s request.';
   const prompt =
     lang === 'ja'
@@ -280,6 +298,30 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                         {props.lang === 'en'
                             ? 'Takanori Kotama is a fourth-year CS student in Nagoya University\'s Information Systems program. He received the 2024 Student Paper Contest Encouragement Award and expects to graduate in March 2026.'
                             : '名古屋大学情報学部情報システム専攻の4年生です。2024年の学生論文コンテストで奨励賞を受賞し、2026年3月に学士取得予定です。'}
+                    </div>
+                );
+            case 'briefIntro':
+                return (
+                    <div>
+                        {props.lang === 'en'
+                            ? 'I am Takanori Kotama, a CS student at Nagoya University.'
+                            : '名古屋大学情報学部の樹神宇徳です。'}
+                    </div>
+                );
+            case 'thesisSummary':
+                return (
+                    <div>
+                        {props.lang === 'en'
+                            ? 'Summary of the Encouragement Award thesis.'
+                            : '奨励賞論文の要約です。'}
+                    </div>
+                );
+            case 'fusepThesisSummary':
+                return (
+                    <div>
+                        {props.lang === 'en'
+                            ? 'Summary of the FuSEP thesis.'
+                            : '夏研論文の要約です。'}
                     </div>
                 );
             default:

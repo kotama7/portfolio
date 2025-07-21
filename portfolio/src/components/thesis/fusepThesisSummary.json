@@ -1,0 +1,3 @@
+{
+  "summary": "To rapidly and accurately estimate crystal energies of Nb-Mo-Ta-W high-entropy alloys, we developed a machine-learning potential called CrysEnergyModel. CrystalGNN processes 16-atom structures, FractionFNN encodes element ratios, and ConcatFNN merges both outputs to predict energy. Training used 1,049 structures including 598 quaternary compositions with 198 for validation and an additional 605 low-energy samples. Optuna hyperparameter tuning achieved a test RMSE of 0.00139 eV and 0.00054 eV for low-energy data. Although errors grew for larger supercells, the model enables fast screening across the composition space and can accelerate alloy design."
+}

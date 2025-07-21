@@ -26,4 +26,5 @@ test('highlights selected function', () => {
 test('contains profileInfo option', () => {
   render(<FunctionSidebar onSelect={() => {}} lang="en" />);
   expect(screen.getByText('Profile summary and awards')).toBeInTheDocument();
+  expect(screen.getByText('Show your certificates')).toBeInTheDocument();
 });

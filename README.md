@@ -65,3 +65,7 @@ The `thesisSummary` function returns a summary of the Encouragement Award
 thesis. Send a JSON payload with a `lang` field (`en` or `ja`) to
 `/thesisSummary` to obtain the summary in the requested language.
 
+The `certificateHistory` function returns a list of certificates and awards.
+Make a POST request with no parameters to `/certificateHistory` to retrieve
+the array of certificate strings.
+

@@ -34,6 +34,7 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
     '- portfolioSummary: gives a summary of the portfolio.\n' +
     '- otherSiteLinks: returns links to other sites.\n' +
     '- profileInfo: returns life summary, award, qualifications and lab info.\n' +
+    '- certificateHistory: lists certificates and awards.\n' +
     '- thesisSummary: returns the Encouragement Award thesis summary.\n' +
     'Respond with only the function name that best matches the user\'s request.';
   const prompt =
@@ -73,6 +74,9 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
       { keyword: '自己紹介', func: 'briefIntro' },
       { keyword: 'thesis', func: 'thesisSummary' },
       { keyword: '論文要約', func: 'thesisSummary' },
+      { keyword: 'certificate', func: 'certificateHistory' },
+      { keyword: '資格', func: 'certificateHistory' },
+      { keyword: 'award', func: 'certificateHistory' },
     ];
     const matched = fallbackMap.find(({ keyword }) =>
       normalized.includes(keyword)
@@ -196,5 +200,16 @@ exports.otherSiteLinks = functions.https.onRequest((req, res) => {
     qiita: 'https://qiita.com/kotama7',
     x: 'https://x.com/kotama8',
     linkedin: 'https://www.linkedin.com/in/takanori-kotama-b785b52a4/'
+  });
+});
+
+// Return certificate history
+exports.certificateHistory = functions.https.onRequest((req, res) => {
+  res.json({
+    certificates: [
+      'Applied Information Technology Engineer Examination (Jul. 2024)',
+      'TOEIC Listening and Reading Score: 790 Points (Sep. 2024)',
+      'Nagoya University Student Thesis Contest Encouragement Award (Mar. 2025)'
+    ]
   });
 });

@@ -113,3 +113,30 @@
   cursor: pointer;
   z-index: 1000;
 }
+
+@media (max-width: 600px) {
+  .home-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 80%;
+    max-width: 300px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1001;
+  }
+
+  .sidebar-opened .sidebar {
+    transform: translateX(0);
+  }
+
+  .chat-container {
+    height: calc(100vh - 48px);
+  }
+}

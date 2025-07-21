@@ -36,6 +36,7 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
     '- profileInfo: returns life summary, award, qualifications and lab info.\n' +
     '- certificateHistory: lists certificates and awards.\n' +
     '- thesisSummary: returns the Encouragement Award thesis summary.\n' +
+    '- fusepThesisSummary: returns the FuSEP thesis summary.\n' +
     'Respond with only the function name that best matches the user\'s request.';
   const prompt =
     lang === 'ja'
@@ -77,6 +78,8 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
       { keyword: 'certificate', func: 'certificateHistory' },
       { keyword: '資格', func: 'certificateHistory' },
       { keyword: 'award', func: 'certificateHistory' },
+      { keyword: 'fusep', func: 'fusepThesisSummary' },
+      { keyword: '夏研', func: 'fusepThesisSummary' },
     ];
     const matched = fallbackMap.find(({ keyword }) =>
       normalized.includes(keyword)
@@ -193,6 +196,30 @@ exports.thesisSummary = functions.https.onRequest((req, res) => {
   };
 
   res.json({ summary: summaries[lang] || summaries.en });
+});
+
+// Return a summary of the FuSEP thesis
+exports.fusepThesisSummary = functions.https.onRequest((req, res) => {
+  const lang = (req.body.lang || 'en').toLowerCase();
+
+  const summaries = {
+    ja:
+      'Nb-Mo-Ta-W系高エントロピー合金の結晶エネルギーを高速かつ高精度に推定するため、機械学習ポテンシャルCrysEnergyModelを開発した。' +
+      'CrystalGNNで16原子配置を処理し、FractionFNNで元素比を符号化、ConcatFNNで両情報を結合してエネルギーを予測する。' +
+      '598点を含む計1049点で学習、198点で検証し、低エネルギー605点を追加して分布を補強した。' +
+      'Optunaによる最適化でテストRMSEは0.00139eVに到達し、低エネルギーでは0.00054eVまで向上した。' +
+      '大型系では誤差が拡大し過小・過大予測のバイアスが生じたが、組成空間全域を迅速に探索でき、合金設計を加速する手法となる。',
+    en:
+      'To rapidly and accurately estimate crystal energies of Nb-Mo-Ta-W high-entropy alloys, we developed a machine-learning potential called CrysEnergyModel. ' +
+      'CrystalGNN processes 16-atom structures, FractionFNN encodes element ratios, and ConcatFNN merges both outputs to predict energy. ' +
+      'Training used 1,049 structures including 598 quaternary compositions with 198 for validation and an additional 605 low-energy samples. ' +
+      'Optuna hyperparameter tuning achieved a test RMSE of 0.00139 eV and 0.00054 eV for low-energy data. ' +
+      'Although errors grew for larger supercells, the model enables fast screening across the composition space and can accelerate alloy design.'
+  };
+
+  res.json({ summary: summaries[lang] || summaries.en });
+});
+
 // Return external links to other profiles
 exports.otherSiteLinks = functions.https.onRequest((req, res) => {
   res.json({

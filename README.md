@@ -69,3 +69,7 @@ The `certificateHistory` function returns a list of certificates and awards.
 Make a POST request with no parameters to `/certificateHistory` to retrieve
 the array of certificate strings.
 
+The `fusepThesisSummary` function provides the summary of the FuSEP thesis in
+either language. POST a JSON body with `lang` set to `en` or `ja` to
+`/fusepThesisSummary` for the desired version.
+

@@ -28,6 +28,9 @@ const FUNC_NAMES: Record<string, { en: string; ja: string }> = {
   otherSiteLinks: { en: 'Other Site Links', ja: 'その他のリンク' },
   profileInfo: { en: 'Profile Info', ja: 'プロフィール情報' },
   certificateHistory: { en: 'Certificates', ja: '資格・受賞' },
+  briefIntro: { en: 'Brief Intro', ja: '自己紹介' },
+  thesisSummary: { en: 'Thesis Summary', ja: '論文要約' },
+  fusepThesisSummary: { en: 'FuSEP Thesis Summary', ja: '夏研論文要約' },
 };
 
 const FUNC_MESSAGES: Record<string, { en: string; ja: string }> = {
@@ -66,6 +69,17 @@ const FUNC_MESSAGES: Record<string, { en: string; ja: string }> = {
   certificateHistory: {
     en: 'Here are my certificates and awards.',
     ja: '資格・受賞歴はこちらです。',
+  briefIntro: {
+    en: 'Here is a short self introduction.',
+    ja: '簡単な自己紹介です。',
+  },
+  thesisSummary: {
+    en: 'This is the Encouragement Award thesis summary.',
+    ja: '奨励賞論文の要約です。',
+  },
+  fusepThesisSummary: {
+    en: 'This is the FuSEP thesis summary.',
+    ja: '夏研論文の要約です。',
   },
 };
 
@@ -101,6 +115,9 @@ async function callSelectFunction(
     '- otherSiteLinks: returns links to other sites.\n' +
     '- profileInfo: returns life summary, award, qualifications and lab info.\n' +
     '- certificateHistory: lists certificates and awards.\n' +
+    '- briefIntro: returns a short self introduction.\n' +
+    '- thesisSummary: returns the Encouragement Award thesis summary.\n' +
+    '- fusepThesisSummary: returns the FuSEP thesis summary.\n' +
     'Respond with only the function name that best matches the user\'s request.';
   const prompt =
     lang === 'ja'
@@ -291,6 +308,30 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                 );
             case 'certificateHistory':
                 return <CertificateList lang={props.lang} />;
+            case 'briefIntro':
+                return (
+                    <div>
+                        {props.lang === 'en'
+                            ? 'I am Takanori Kotama, a CS student at Nagoya University.'
+                            : '名古屋大学情報学部の樹神宇徳です。'}
+                    </div>
+                );
+            case 'thesisSummary':
+                return (
+                    <div>
+                        {props.lang === 'en'
+                            ? 'Summary of the Encouragement Award thesis.'
+                            : '奨励賞論文の要約です。'}
+                    </div>
+                );
+            case 'fusepThesisSummary':
+                return (
+                    <div>
+                        {props.lang === 'en'
+                            ? 'Summary of the FuSEP thesis.'
+                            : '夏研論文の要約です。'}
+                    </div>
+                );
             default:
                 return null;
         }

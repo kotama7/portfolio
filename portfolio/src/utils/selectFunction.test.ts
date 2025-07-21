@@ -6,6 +6,7 @@ test('matches keywords to function names', () => {
   expect(fallbackSelectFunction('経歴を見せて')).toBe('bioGraph');
   expect(fallbackSelectFunction('スキルを教えて')).toBe('skillTree');
   expect(fallbackSelectFunction('profile')).toBe('profileInfo');
+  expect(fallbackSelectFunction('show certificates')).toBe('certificateHistory');
 });
 
 test('returns undefined when no keywords match', () => {

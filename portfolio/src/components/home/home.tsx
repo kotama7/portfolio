@@ -15,6 +15,7 @@ import SkillTree from '../skills/SkillTree';
 import InterestGraph from '../interests/InterestGraph';
 import PersonalityRadar from '../personality/PersonalityRadar';
 import OtherSiteLinks from '../links/OtherSiteLinks';
+import CertificateList from '../certificates/CertificateList';
 import { fallbackSelectFunction } from '../../utils/selectFunction';
 
 const FUNC_NAMES: Record<string, { en: string; ja: string }> = {
@@ -26,6 +27,7 @@ const FUNC_NAMES: Record<string, { en: string; ja: string }> = {
   portfolioSummary: { en: 'Portfolio Summary', ja: 'ポートフォリオ概要' },
   otherSiteLinks: { en: 'Other Site Links', ja: 'その他のリンク' },
   profileInfo: { en: 'Profile Info', ja: 'プロフィール情報' },
+  certificateHistory: { en: 'Certificates', ja: '資格・受賞' },
 };
 
 const FUNC_MESSAGES: Record<string, { en: string; ja: string }> = {
@@ -61,6 +63,10 @@ const FUNC_MESSAGES: Record<string, { en: string; ja: string }> = {
     en: 'Here is my life summary, awards and lab info.',
     ja: '概要や受賞、所属研究室の情報です。',
   },
+  certificateHistory: {
+    en: 'Here are my certificates and awards.',
+    ja: '資格・受賞歴はこちらです。',
+  },
 };
 
 let model: ReturnType<typeof getGenerativeModel> | null = null;
@@ -94,6 +100,7 @@ async function callSelectFunction(
     '- portfolioSummary: gives a summary of the portfolio.\n' +
     '- otherSiteLinks: returns links to other sites.\n' +
     '- profileInfo: returns life summary, award, qualifications and lab info.\n' +
+    '- certificateHistory: lists certificates and awards.\n' +
     'Respond with only the function name that best matches the user\'s request.';
   const prompt =
     lang === 'ja'
@@ -282,6 +289,8 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                             : '名古屋大学情報学部情報システム専攻の4年生です。2024年の学生論文コンテストで奨励賞を受賞し、2026年3月に学士取得予定です。'}
                     </div>
                 );
+            case 'certificateHistory':
+                return <CertificateList lang={props.lang} />;
             default:
                 return null;
         }

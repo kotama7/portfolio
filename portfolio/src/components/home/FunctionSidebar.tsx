@@ -20,6 +20,7 @@ const functions: FunctionItem[] = [
   { id: 'portfolioSummary' },
   { id: 'otherSiteLinks' },
   { id: 'profileInfo' },
+  { id: 'certificateHistory' },
 ];
 
 export const labels: Record<string, { en: string; ja: string }> = {
@@ -34,6 +35,7 @@ export const labels: Record<string, { en: string; ja: string }> = {
   portfolioSummary: { en: 'Summarize your portfolio', ja: 'ポートフォリオを要約してください' },
   otherSiteLinks: { en: 'Share other site links', ja: 'その他のリンクを教えてください' },
   profileInfo: { en: 'Profile summary and awards', ja: '概要と受賞など' },
+  certificateHistory: { en: 'Show your certificates', ja: '資格・受賞歴を教えてください' },
   newChat: { en: 'newChat', ja: '新しいチャット' },
 };
 

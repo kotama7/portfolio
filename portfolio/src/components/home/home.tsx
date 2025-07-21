@@ -356,7 +356,7 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
     }, [props.lang]);
 
     return (
-        <div className='home-container'>
+        <div className={`home-container${sidebarOpen ? ' sidebar-opened' : ''}`}>
             {sidebarOpen ? (
                 <FunctionSidebar
                     onSelect={handleSidebarSelect}

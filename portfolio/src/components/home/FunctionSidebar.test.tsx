@@ -23,7 +23,9 @@ test('highlights selected function', () => {
   expect(activeBtn.className).toMatch(/active/);
 });
 
-test('contains profileInfo option', () => {
+test('does not contain profileInfo option after trimming list', () => {
   render(<FunctionSidebar onSelect={() => {}} lang="en" />);
-  expect(screen.getByText('Profile summary and awards')).toBeInTheDocument();
+  expect(
+    screen.queryByText('Profile summary and awards')
+  ).not.toBeInTheDocument();
 });

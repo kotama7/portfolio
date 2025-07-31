@@ -37,6 +37,7 @@ export const labels: Record<string, { en: string; ja: string }> = {
   briefIntro: { en: 'Give me a brief intro', ja: '自己紹介をお願いします' },
   thesisSummary: { en: 'Show thesis summary', ja: '論文要約を見せて' },
   fusepThesisSummary: { en: 'Show FuSEP thesis', ja: '夏研論文を教えて' },
+  favoriteLanguage: { en: 'Favorite programming language?', ja: '好きなプログラミング言語は？' },
   newChat: { en: 'newChat', ja: '新しいチャット' },
 };
 

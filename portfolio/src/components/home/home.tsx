@@ -31,6 +31,7 @@ const FUNC_NAMES: Record<string, { en: string; ja: string }> = {
   briefIntro: { en: 'Brief Intro', ja: '自己紹介' },
   thesisSummary: { en: 'Thesis Summary', ja: '論文要約' },
   fusepThesisSummary: { en: 'FuSEP Thesis Summary', ja: '夏研論文要約' },
+  favoriteLanguage: { en: 'Favorite Language', ja: '好きな言語' },
 };
 
 const FUNC_MESSAGES: Record<string, { en: string; ja: string }> = {
@@ -69,6 +70,10 @@ const FUNC_MESSAGES: Record<string, { en: string; ja: string }> = {
   briefIntro: {
     en: 'Here is a short self introduction.',
     ja: '簡単な自己紹介です。',
+  },
+  favoriteLanguage: {
+    en: 'My favorite programming language is Python because of its readability and rich ecosystem.',
+    ja: '好きなプログラミング言語は Python です。読みやすく豊富なライブラリがあります。',
   },
   thesisSummary: {
     en: 'This is the Encouragement Award thesis summary.',
@@ -112,6 +117,7 @@ async function callSelectFunction(
     '- otherSiteLinks: returns links to other sites.\n' +
     '- profileInfo: returns life summary, award, qualifications and lab info.\n' +
     '- briefIntro: returns a short self introduction.\n' +
+    '- favoriteLanguage: tells my favorite programming language.\n' +
     '- thesisSummary: returns the Encouragement Award thesis summary.\n' +
     '- fusepThesisSummary: returns the FuSEP thesis summary.\n' +
     'Respond with only the function name that best matches the user\'s request.';
@@ -314,6 +320,14 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                 return <ThesisSummary lang={props.lang} />;
             case 'fusepThesisSummary':
                 return <FusepThesisSummary lang={props.lang} />;
+            case 'favoriteLanguage':
+                return (
+                    <div>
+                        {props.lang === 'en'
+                            ? 'My favorite programming language is Python because of its readability and rich ecosystem.'
+                            : '好きなプログラミング言語は Python です。読みやすく豊富なライブラリがあります。'}
+                    </div>
+                );
             default:
                 return null;
         }

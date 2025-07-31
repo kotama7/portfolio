@@ -7,6 +7,7 @@ test('matches keywords to function names', () => {
   expect(fallbackSelectFunction('スキルを教えて')).toBe('skillTree');
   expect(fallbackSelectFunction('profile')).toBe('profileInfo');
   expect(fallbackSelectFunction('intro')).toBe('briefIntro');
+  expect(fallbackSelectFunction('What is your favorite programming language?')).toBe('favoriteLanguage');
   expect(fallbackSelectFunction('thesis')).toBe('thesisSummary');
   expect(fallbackSelectFunction('fusep')).toBe('fusepThesisSummary');
 });

@@ -41,9 +41,9 @@
 .sidebar {
   width: 240px;
   padding: 1rem;
-  background-color: #202123;
-  color: #ececf1;
-  border-right: 1px solid #343541;
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  border-right: 1px solid var(--sidebar-border);
   display: flex;
   flex-direction: column;
 }
@@ -67,26 +67,26 @@
 
 .sidebar-button {
   width: 100%;
-  background: #343541;
+  background: var(--sidebar-button-bg);
   border: none;
   border-radius: 6px;
-  color: #ececf1;
+  color: var(--sidebar-button-text);
   padding: 0.5rem;
   text-align: left;
   cursor: pointer;
 }
 
 .sidebar-button:hover {
-  background: #40414f;
+  background: var(--sidebar-button-hover);
 }
 
 .sidebar-button.active {
-  background: #2b2c2f;
+  background: var(--sidebar-button-active);
 }
 
 .chat-container {
   flex: 1;
-  background: #ffffff;
+  background: var(--chat-bg);
   display: flex;
   height: 100%;
 }
@@ -95,7 +95,7 @@
   align-self: flex-end;
   background: none;
   border: none;
-  color: #ececf1;
+  color: var(--sidebar-text);
   font-size: 1.2rem;
   cursor: pointer;
   margin-bottom: 0.5rem;
@@ -105,10 +105,10 @@
   position: absolute;
   top: 1rem;
   left: 1rem;
-  background: #343541;
+  background: var(--sidebar-open-bg);
   border: none;
   border-radius: 6px;
-  color: #ececf1;
+  color: var(--sidebar-button-text);
   padding: 0.5rem 0.75rem;
   cursor: pointer;
   z-index: 1000;

@@ -34,6 +34,7 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
     '- portfolioSummary: gives a summary of the portfolio.\n' +
     '- otherSiteLinks: returns links to other sites.\n' +
     '- profileInfo: returns life summary, award, qualifications and lab info.\n' +
+    '- favoriteLanguage: tells my favorite programming language.\n' +
     '- thesisSummary: returns the Encouragement Award thesis summary.\n' +
     '- fusepThesisSummary: returns the FuSEP thesis summary.\n' +
     'Respond with only the function name that best matches the user\'s request.';
@@ -72,6 +73,9 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
       { keyword: 'プロフィール', func: 'profileInfo' },
       { keyword: 'intro', func: 'briefIntro' },
       { keyword: '自己紹介', func: 'briefIntro' },
+      { keyword: 'favorite programming language', func: 'favoriteLanguage' },
+      { keyword: 'favorite language', func: 'favoriteLanguage' },
+      { keyword: '好きな言語', func: 'favoriteLanguage' },
       { keyword: 'thesis', func: 'thesisSummary' },
       { keyword: '論文要約', func: 'thesisSummary' },
       { keyword: 'fusep', func: 'fusepThesisSummary' },
@@ -224,4 +228,14 @@ exports.otherSiteLinks = functions.https.onRequest((req, res) => {
     x: 'https://x.com/kotama8',
     linkedin: 'https://www.linkedin.com/in/takanori-kotama-b785b52a4/'
   });
+});
+
+// Return favorite programming language
+exports.favoriteLanguage = functions.https.onRequest((req, res) => {
+  const lang = (req.body.lang || 'en').toLowerCase();
+  const messages = {
+    ja: '好きなプログラミング言語は Python です。読みやすく豊富なライブラリがあります。',
+    en: 'My favorite programming language is Python because of its readability and rich ecosystem.'
+  };
+  res.json({ message: messages[lang] || messages.en });
 });

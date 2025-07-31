@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import styles from './Home.module.css';
 import { ChatBox } from 'react-chatbox-component';
 import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAI, getGenerativeModel, GoogleAIBackend } from '@firebase/ai';
 
 import 'react-chatbox-component/dist/style.css';
-import './home.css';
 
 import MessageFormProps from './module/message_form';
 import FirstReply from './module/first_reply';
@@ -136,13 +136,23 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
 
     const [messages, setMessages] = useState<MessageFormProps[]>([])
     const [selectedFunc, setSelectedFunc] = useState<string | null>(null)
-    const [sidebarOpen, setSidebarOpen] = useState<boolean>(true)
+    const [sidebarOpen, setSidebarOpen] = useState<boolean>(
+        typeof window === 'undefined' ? true : window.innerWidth >= 600
+    )
     const [autoFirstReply, setAutoFirstReply] = useState<boolean>(true)
     const [isReplying, setIsReplying] = useState<boolean>(false)
 
     const user = {
         "uid" : "Guest"
     }
+
+    useEffect(() => {
+        const handleResize = () => {
+            setSidebarOpen(window.innerWidth >= 600)
+        }
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
 
     const renderMessageBubble = (message: MessageFormProps) => {
         const isUser = user.uid === message.sender.uid;
@@ -346,7 +356,7 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
     }, [props.lang]);
 
     return (
-        <div className={`home-container${sidebarOpen ? ' sidebar-opened' : ''}`}>
+        <div className={`${styles.homeContainer} ${sidebarOpen ? styles.sidebarOpened : ''}`}> 
             {sidebarOpen ? (
                 <FunctionSidebar
                     onSelect={handleSidebarSelect}
@@ -355,11 +365,11 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                     lang={props.lang}
                 />
             ) : (
-                <button className='sidebar-open' onClick={() => setSidebarOpen(true)}>Open</button>
+                <button className={styles.sidebarOpen} onClick={() => setSidebarOpen(true)}>☰</button>
             )}
-            <div className='chat-container'>
-                <div className='chatbox-wrapper'>
-                    <div className='chatbox'>
+            <div className={styles.chatContainer}>
+                <div className={styles.chatboxWrapper}>
+                    <div className={styles.chatbox}>
                         <ChatBox
                             messages={messages}
                             user={user}
@@ -367,7 +377,7 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                             renderMessage={renderMessageBubble}
                         />
                     </div>
-                    {isReplying && <div className='chatbox-overlay'></div>}
+                    {isReplying && <div className={styles.chatboxOverlay}></div>}
                 </div>
             </div>
         </div>

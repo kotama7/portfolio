@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Home.module.css';
 
 export interface FunctionSidebarProps {
   onSelect: (name: string) => void;
@@ -41,23 +42,23 @@ export const labels: Record<string, { en: string; ja: string }> = {
 };
 
 const FunctionSidebar: React.FC<FunctionSidebarProps> = ({ onSelect, selected, onClose, lang }) => (
-  <div className="sidebar">
+  <div className={styles.sidebar}>
     {onClose && (
-      <button className="sidebar-close" onClick={onClose} aria-label="close sidebar">
+      <button className={styles.sidebarClose} onClick={onClose} aria-label="close sidebar">
         ×
       </button>
     )}
     <h3>Sample Chat</h3>
     <ul>
       <li key="newChat">
-        <button className="sidebar-button" onClick={() => onSelect('newChat')}>
+        <button className={styles.sidebarButton} onClick={() => onSelect('newChat')}>
           {labels.newChat[lang]}
         </button>
       </li>
       {functions.map(({ id }) => (
         <li key={id}>
           <button
-            className={`sidebar-button ${selected === id ? 'active' : ''}`}
+            className={`${styles.sidebarButton} ${selected === id ? 'active' : ''}`}
             onClick={() => onSelect(id)}
           >
             {labels[id][lang]}

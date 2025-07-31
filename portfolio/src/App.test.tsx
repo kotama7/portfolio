@@ -5,6 +5,9 @@ import App from './App';
 jest.mock('react-chatbox-component', () => ({
   ChatBox: () => <div data-testid="chatbox" />,
 }));
+jest.mock('react-chrono', () => ({
+  Chrono: () => <div />,
+}));
 
 beforeAll(() => {
   if (!globalThis.crypto) {

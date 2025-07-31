@@ -1,5 +1,4 @@
-
-.chatbox-wrapper {
+.chatboxWrapper {
   position: relative;
   height: 100%;
   display: flex;
@@ -13,26 +12,24 @@
   overflow-y: auto;
 }
 
-.chatbox-overlay {
+.chatboxOverlay {
   position: absolute;
   inset: 0;
   background: rgba(255, 255, 255, 0.6);
   z-index: 10;
 }
 
-.msg-user {
+.msgUser {
   text-align: right;
   margin: 0.25rem 0;
 }
 
-.msg-bot {
+.msgBot {
   text-align: left;
   margin: 0.25rem 0;
 }
 
-
-
-.home-container {
+.homeContainer {
   display: flex;
   height: calc(100vh - 48px);
   position: relative;
@@ -65,7 +62,7 @@
   margin-bottom: 0.5rem;
 }
 
-.sidebar-button {
+.sidebarButton {
   width: 100%;
   background: #343541;
   border: none;
@@ -76,22 +73,22 @@
   cursor: pointer;
 }
 
-.sidebar-button:hover {
+.sidebarButton:hover {
   background: #40414f;
 }
 
-.sidebar-button.active {
+.sidebarButton.active {
   background: #2b2c2f;
 }
 
-.chat-container {
+.chatContainer {
   flex: 1;
   background: #ffffff;
   display: flex;
   height: 100%;
 }
 
-.sidebar-close {
+.sidebarClose {
   align-self: flex-end;
   background: none;
   border: none;
@@ -101,7 +98,7 @@
   margin-bottom: 0.5rem;
 }
 
-.sidebar-open {
+.sidebarOpen {
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -114,8 +111,11 @@
   z-index: 1000;
 }
 
+.sidebarOpened {
+}
+
 @media (max-width: 600px) {
-  .home-container {
+  .homeContainer {
     flex-direction: column;
     height: auto;
   }
@@ -132,11 +132,11 @@
     z-index: 1001;
   }
 
-  .sidebar-opened .sidebar {
+  .sidebarOpened .sidebar {
     transform: translateX(0);
   }
 
-  .chat-container {
+  .chatContainer {
     height: calc(100vh - 48px);
   }
 }

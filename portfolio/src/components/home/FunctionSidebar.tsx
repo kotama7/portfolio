@@ -11,6 +11,8 @@ interface FunctionItem {
   id: string;
 }
 
+// The sidebar originally contained a large list of functions which could be
+// overwhelming. Trim the menu to only expose the most commonly used options.
 const functions: FunctionItem[] = [
   { id: 'bioGraph' },
   { id: 'skillTree' },
@@ -18,11 +20,6 @@ const functions: FunctionItem[] = [
   { id: 'personalityRadar' },
   { id: 'contactInfo' },
   { id: 'portfolioSummary' },
-  { id: 'otherSiteLinks' },
-  { id: 'profileInfo' },
-  { id: 'briefIntro' },
-  { id: 'thesisSummary' },
-  { id: 'fusepThesisSummary' },
 ];
 
 export const labels: Record<string, { en: string; ja: string }> = {

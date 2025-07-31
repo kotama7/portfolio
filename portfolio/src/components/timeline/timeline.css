@@ -1,0 +1,19 @@
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.timeline-item {
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  border-left: 2px solid #1976d2;
+}
+
+.timeline-date {
+  font-weight: bold;
+}
+
+.timeline-content {
+  margin-left: 0.5rem;
+}

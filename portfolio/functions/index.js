@@ -83,6 +83,18 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
     '- majorProjects: returns a list of major projects.\n' +
     '- contributions: returns open-source contributions.\n' +
     '- researchWorks: returns research works and publications.\n' +
+    '- greeting: responds to greetings like hello, hi, hey.\n' +
+    '- thankYou: responds to thank-you messages.\n' +
+    '- goodbye: responds to farewell messages.\n' +
+    '- help: lists available topics the user can ask about.\n' +
+    '- aboutThisSite: explains how this portfolio site was built.\n' +
+    '- qualifications: returns education and qualifications.\n' +
+    '- workExperience: returns internship and work experience.\n' +
+    '- awards: returns awards and achievements.\n' +
+    '- hobbies: returns personal hobbies.\n' +
+    '- futureGoals: returns future career goals and plans.\n' +
+    '- spokenLanguages: returns spoken languages.\n' +
+    '- devEnvironment: returns development tools and technologies used.\n' +
     'Respond with only the function name that best matches the user\'s request.';
   const prompt =
     lang === 'ja'
@@ -134,6 +146,58 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
       { keyword: '研究', func: 'researchWorks' },
       { keyword: 'publication', func: 'researchWorks' },
       { keyword: '功績', func: 'researchWorks' },
+
+      // Conversation functions
+      { keyword: 'hello', func: 'greeting' },
+      { keyword: 'hi', func: 'greeting' },
+      { keyword: 'hey', func: 'greeting' },
+      { keyword: 'こんにちは', func: 'greeting' },
+      { keyword: 'やあ', func: 'greeting' },
+      { keyword: 'はじめまして', func: 'greeting' },
+      { keyword: 'thanks', func: 'thankYou' },
+      { keyword: 'thank you', func: 'thankYou' },
+      { keyword: 'ありがとう', func: 'thankYou' },
+      { keyword: '感謝', func: 'thankYou' },
+      { keyword: 'bye', func: 'goodbye' },
+      { keyword: 'goodbye', func: 'goodbye' },
+      { keyword: 'さようなら', func: 'goodbye' },
+      { keyword: 'またね', func: 'goodbye' },
+      { keyword: 'help', func: 'help' },
+      { keyword: 'ヘルプ', func: 'help' },
+      { keyword: '何が聞ける', func: 'help' },
+      { keyword: 'what can', func: 'help' },
+      { keyword: 'about this site', func: 'aboutThisSite' },
+      { keyword: 'how was this made', func: 'aboutThisSite' },
+      { keyword: 'このサイト', func: 'aboutThisSite' },
+      { keyword: '技術スタック', func: 'aboutThisSite' },
+
+      // Content functions
+      { keyword: 'qualification', func: 'qualifications' },
+      { keyword: '資格', func: 'qualifications' },
+      { keyword: '学歴', func: 'qualifications' },
+      { keyword: 'internship', func: 'workExperience' },
+      { keyword: 'work experience', func: 'workExperience' },
+      { keyword: 'インターン', func: 'workExperience' },
+      { keyword: '職歴', func: 'workExperience' },
+      { keyword: 'award', func: 'awards' },
+      { keyword: '受賞', func: 'awards' },
+      { keyword: '表彰', func: 'awards' },
+      { keyword: 'hobby', func: 'hobbies' },
+      { keyword: 'hobbies', func: 'hobbies' },
+      { keyword: '趣味', func: 'hobbies' },
+      { keyword: 'goal', func: 'futureGoals' },
+      { keyword: 'future', func: 'futureGoals' },
+      { keyword: '目標', func: 'futureGoals' },
+      { keyword: '将来', func: 'futureGoals' },
+      { keyword: 'spoken language', func: 'spokenLanguages' },
+      { keyword: 'what language do you speak', func: 'spokenLanguages' },
+      { keyword: '話せる言語', func: 'spokenLanguages' },
+      { keyword: '何語', func: 'spokenLanguages' },
+      { keyword: 'tool', func: 'devEnvironment' },
+      { keyword: 'environment', func: 'devEnvironment' },
+      { keyword: 'setup', func: 'devEnvironment' },
+      { keyword: '開発環境', func: 'devEnvironment' },
+      { keyword: 'ツール', func: 'devEnvironment' },
     ];
     const matched = fallbackMap.find(({ keyword }) =>
       normalized.includes(keyword)
@@ -158,7 +222,7 @@ exports.autoReply = functions.https.onRequest((req, res) => {
     ja: [
       `
     名古屋大学情報学部コンピュータ科学科情報システム専攻の樹神宇徳です。2026年3月に卒業予定で、同大学大学院へ進学予定です。\n
-    高エントロピー合金やGNNを用いた材料研究、HPC 活用に興味があります。\n
+    研究テーマはHPC環境における自律的研究フレームワーク（HPC-AutoResearch）です。\n
       `,
       `
     2026年3月卒業・大学院進学予定で、2024年には学生論文コンテストで奨励賞を受賞しました。
@@ -166,7 +230,7 @@ exports.autoReply = functions.https.onRequest((req, res) => {
     ],
     en: [
       `
-    I am Takanori Kotama, a Computer Science student in Nagoya University's Information Systems program, graduating in March 2026 and advancing to graduate school. My work centers on high-entropy alloys and GNNs for materials science with an interest in HPC.
+    I am Takanori Kotama, a Computer Science student in Nagoya University's Information Systems program, graduating in March 2026 and advancing to graduate school. My research focuses on autonomous research frameworks in HPC environments (HPC-AutoResearch).
       `,
       `
     I graduate in March 2026 and will be advancing to graduate school. I won the Encouragement Award at the 2024 Nagoya University Student Paper Contest.
@@ -190,9 +254,9 @@ exports.profileInfo = functions.https.onRequest((req, res) => {
   const details = {
     summary:
       'Takanori Kotama is an undergraduate in the Information Systems program at Nagoya University, graduating in March 2026 and advancing to graduate school. ' +
-      'His interests include high-entropy alloys, graph neural networks for materials science and HPC-driven discovery. ' +
+      'His research focuses on autonomous research frameworks in HPC environments (HPC-AutoResearch). ' +
       'He joined the FuSEP Summer Researcher Program at USTC and interned at Panasonic applying AI to manufacturing. ' +
-      'He participated in the RIKEN R-CCS HPC internship in 2025 and previously served as vice-president of the app development group "jack".',
+      'He participated in the RIKEN R-CCS HPC internship in September 2025 and has been working as a research part-timer at RIKEN R-CCS since November 2025. He previously served as vice-president of the app development group "jack" until 2024.',
     award:
       'Encouragement Award at the 2024 Nagoya University Student Paper Contest for the paper "A quantitative definition of青春 using large language models."',
     qualifications:
@@ -222,7 +286,7 @@ exports.briefIntro = functions.https.onRequest((req, res) => {
     ja: [
       `
     名古屋大学情報学部コンピュータ科学科情報システム専攻の樹神宇徳です。2026年3月に卒業予定で、同大学大学院へ進学予定です。\n
-    高エントロピー合金やGNNを用いた材料研究、HPC 活用に興味があります。\n
+    研究テーマはHPC環境における自律的研究フレームワーク（HPC-AutoResearch）です。\n
       `,
       `
     2026年3月卒業・大学院進学予定で、2024年の学生論文コンテストで奨励賞を受賞しました。
@@ -230,7 +294,7 @@ exports.briefIntro = functions.https.onRequest((req, res) => {
     ],
     en: [
       `
-    I'm Takanori Kotama, a Computer Science student in Nagoya University's Information Systems program, graduating in March 2026 and advancing to graduate school. My work centers on high-entropy alloys and GNNs with a focus on HPC.
+    I'm Takanori Kotama, a Computer Science student in Nagoya University's Information Systems program, graduating in March 2026 and advancing to graduate school. My research focuses on autonomous research frameworks in HPC environments (HPC-AutoResearch).
       `,
       `
     I graduate in March 2026 and will be advancing to graduate school. I won the Encouragement Award at the 2024 Nagoya University Student Paper Contest.
@@ -370,13 +434,14 @@ exports.agent = functions.https.onRequest((req, res) => {
   const bio = [
     { year: 2003, event: lang === 'ja' ? '日本で出生' : 'Born in Japan' },
     { year: 2022, event: lang === 'ja' ? '名古屋大学情報学部入学' : 'Enrolled at Nagoya University (CS & Information Systems)' },
-    { year: '2022-present', event: lang === 'ja' ? 'アプリ開発団体jack副代表' : 'Vice-President of app-development group "jack"' },
+    { year: '2022-2024', event: lang === 'ja' ? 'アプリ開発団体jack副代表' : 'Vice-President of app-development group "jack"' },
     { year: '2023-2024', event: lang === 'ja' ? '名大祭Webチーフ' : 'Web Chief at Nagoya University Festival' },
     { year: '2024-03', event: lang === 'ja' ? 'JENESYS 2024 韓国交流プログラム参加' : 'JENESYS 2024 Korea Exchange participant' },
     { year: '2024-summer', event: lang === 'ja' ? 'パナソニック AIインターンシップ' : 'AI Internship at Panasonic' },
     { year: '2024-07-08', event: lang === 'ja' ? 'USTC FuSEP夏季研究プログラム' : 'FuSEP Summer Researcher at USTC' },
     { year: 2024, event: lang === 'ja' ? '学生論文コンテスト奨励賞受賞' : 'Encouragement Award at Student Paper Contest' },
-    { year: '2025-07-12', event: lang === 'ja' ? '理化学研究所R-CCS HPCインターン' : 'HPC Internship at RIKEN R-CCS AI for Science Team' },
+    { year: '2025-09', event: lang === 'ja' ? '理化学研究所R-CCS HPCインターン' : 'HPC Internship at RIKEN R-CCS AI for Science Team' },
+    { year: '2025-11-present', event: lang === 'ja' ? '理化学研究所R-CCS 研究パートタイマー' : 'Research Part-timer at RIKEN R-CCS AI for Science Team' },
     { year: '2026-03', event: lang === 'ja' ? '学士取得予定・大学院進学' : 'Expected B.S. degree, advancing to graduate school' },
   ];
 
@@ -398,11 +463,8 @@ exports.agent = functions.https.onRequest((req, res) => {
 
   const interests = {
     research: lang === 'ja'
-      ? ['高エントロピー合金', 'GNNによる材料科学', 'AI駆動の科学的発見', 'LLMによる研究自動化', 'HPC', '強化学習・ゲーム理論']
-      : ['High-entropy alloys', 'Graph Neural Networks for materials science', 'AI-driven scientific discovery', 'LLM-driven research automation', 'HPC', 'Reinforcement learning & game theory'],
-    hobbies: lang === 'ja'
-      ? ['写真', '旅行']
-      : ['Photography', 'Travel'],
+      ? ['HPC環境での自律的研究', 'LLMによる研究自動化', 'AI駆動の科学的発見', '強化学習・ゲーム理論']
+      : ['Autonomous research in HPC environments', 'LLM-driven research automation', 'AI-driven scientific discovery', 'Reinforcement learning & game theory'],
   };
 
   const theses = [

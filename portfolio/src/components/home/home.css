@@ -20,6 +20,19 @@
   height: 100%;
 }
 
+.chat-bubble a {
+  color: #1a73e8;
+  text-decoration: underline;
+  cursor: pointer;
+  pointer-events: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.chat-bubble a:hover {
+  color: #0d47a1;
+}
+
 .chatbox-overlay {
   position: absolute;
   inset: 0;
@@ -70,6 +83,31 @@
 
 .sidebar li {
   margin-bottom: 0.5rem;
+}
+
+.sidebar-scroll {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.sidebar-section {
+  margin-bottom: 0.75rem;
+}
+
+.sidebar-section .sidebar-button {
+  margin-bottom: 0.35rem;
+}
+
+.sidebar-category-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sidebar-text);
+  opacity: 0.6;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .sidebar-button {

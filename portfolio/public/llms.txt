@@ -22,7 +22,7 @@ GET https://fir-939f3.web.app/agent
 - `profile`: Name, affiliation, graduation, awards, contact, ORCID
 - `bio`: Career and education timeline
 - `skills`: Programming languages, frameworks, tools, HPC, spoken languages
-- `interests`: Research interests and hobbies
+- `interests`: Research interests
 - `theses`: Summaries of published theses (Encouragement Award, FuSEP, Graduation)
 - `projects`: Major GitHub projects with descriptions and stars
 - `contributions`: Open-source contributions

@@ -12,7 +12,7 @@
     "cardDetailedText": "Enrolled at Nagoya University as a Computer Science and Information Systems major."
   },
   {
-    "title": "2022–present",
+    "title": "2022–2024",
     "cardTitle": "Vice-President",
     "cardSubtitle": "App-development group \u201cjack\u201d",
     "cardDetailedText": "Leads projects turning sensor streams into fast surrogate simulations for industry partners."
@@ -48,10 +48,16 @@
     "cardDetailedText": "Received Encouragement Award for the paper 'A quantitative definition of青春 using large language models.'"
   },
   {
-    "title": "Jul–Dec 2025",
+    "title": "Sep 2025",
     "cardTitle": "HPC Internship",
     "cardSubtitle": "RIKEN R-CCS AI for Science Team",
     "cardDetailedText": "Participated in the HPC Computational Science Internship."
+  },
+  {
+    "title": "Nov 2025–present",
+    "cardTitle": "Research Part-timer",
+    "cardSubtitle": "RIKEN R-CCS AI for Science Team",
+    "cardDetailedText": "Working as a research part-timer at RIKEN R-CCS."
   },
   {
     "title": "Mar 2026",

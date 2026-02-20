@@ -1,4 +1,6 @@
 *.cache
 .yarn/
 .yarnrc.yml
+docs/
+CLAUDE.md
 

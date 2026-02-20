@@ -10,12 +10,5 @@
       {"title": "High-performance computing (HPC)"},
       {"title": "Reinforcement learning & game theory"}
     ]
-  },
-  {
-    "title": "Hobbies",
-    "children": [
-      {"title": "Photography"},
-      {"title": "Travel"}
-    ]
   }
 ]

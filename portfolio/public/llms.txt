@@ -27,7 +27,7 @@ GET https://fir-939f3.web.app/agent
 - `projects`: Major GitHub projects with descriptions and stars
 - `contributions`: Open-source contributions
 - `research`: Research works and publications (sourced from ORCID)
-- `links`: GitHub, Qiita, X, LinkedIn, ORCID profile URLs
+- `links`: GitHub, Qiita, Zenn, X, LinkedIn, ORCID profile URLs
 - `contact`: Email address
 
 ### Examples

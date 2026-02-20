@@ -2,6 +2,7 @@
   {
     "title": "Research",
     "children": [
+      {"title": "HPC-AutoResearch"},
       {"title": "High-entropy alloys (HEAs)"},
       {"title": "Graph Neural Networks for materials science"},
       {"title": "AI-driven scientific discovery"},

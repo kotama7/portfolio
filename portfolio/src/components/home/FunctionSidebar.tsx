@@ -27,7 +27,7 @@ const categories: FunctionCategory[] = [
   },
   {
     label: { en: 'Other', ja: 'その他' },
-    items: ['contactInfo', 'otherSiteLinks', 'portfolioSummary', 'hobbies', 'futureGoals', 'aboutThisSite'],
+    items: ['contactInfo', 'otherSiteLinks', 'portfolioSummary', 'futureGoals', 'aboutThisSite'],
   },
 ];
 
@@ -57,7 +57,6 @@ export const labels: Record<string, { en: string; ja: string }> = {
   qualifications: { en: 'Show qualifications', ja: '学歴・資格を教えて' },
   workExperience: { en: 'Show work experience', ja: '職歴・インターンを教えて' },
   awards: { en: 'Show awards', ja: '受賞歴を教えて' },
-  hobbies: { en: 'What are your hobbies?', ja: '趣味は何ですか？' },
   futureGoals: { en: 'What are your future goals?', ja: '将来の目標は？' },
   spokenLanguages: { en: 'What languages do you speak?', ja: '何語が話せますか？' },
   devEnvironment: { en: 'What tools do you use?', ja: '開発環境を教えて' },

@@ -2,6 +2,7 @@
   {
     "title": "研究",
     "children": [
+      {"title": "HPC-AutoResearch"},
       {"title": "高エントロピー合金 (HEA)"},
       {"title": "材料科学向けグラフニューラルネットワーク"},
       {"title": "AI駆動の科学的発見"},

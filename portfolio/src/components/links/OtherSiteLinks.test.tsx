@@ -6,5 +6,6 @@ test('renders other site links', () => {
   expect(screen.getByText('GitHub')).toBeInTheDocument();
   expect(screen.getByText('X')).toBeInTheDocument();
   expect(screen.getByText('Qiita')).toBeInTheDocument();
+  expect(screen.getByText('Zenn')).toBeInTheDocument();
   expect(screen.getByText('LinkedIn')).toBeInTheDocument();
 });

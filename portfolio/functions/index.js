@@ -91,7 +91,6 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
     '- qualifications: returns education and qualifications.\n' +
     '- workExperience: returns internship and work experience.\n' +
     '- awards: returns awards and achievements.\n' +
-    '- hobbies: returns personal hobbies.\n' +
     '- futureGoals: returns future career goals and plans.\n' +
     '- spokenLanguages: returns spoken languages.\n' +
     '- devEnvironment: returns development tools and technologies used.\n' +
@@ -182,9 +181,6 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
       { keyword: 'award', func: 'awards' },
       { keyword: '受賞', func: 'awards' },
       { keyword: '表彰', func: 'awards' },
-      { keyword: 'hobby', func: 'hobbies' },
-      { keyword: 'hobbies', func: 'hobbies' },
-      { keyword: '趣味', func: 'hobbies' },
       { keyword: 'goal', func: 'futureGoals' },
       { keyword: 'future', func: 'futureGoals' },
       { keyword: '目標', func: 'futureGoals' },
@@ -364,6 +360,7 @@ exports.otherSiteLinks = functions.https.onRequest((req, res) => {
   res.json({
     github: 'https://github.com/kotama7',
     qiita: 'https://qiita.com/kotama7',
+    zenn: 'https://zenn.dev/kotama7',
     x: 'https://x.com/kotama8',
     linkedin: 'https://www.linkedin.com/in/takanori-kotama-b785b52a4/',
     orcid: 'https://orcid.org/0009-0001-0749-5486'
@@ -530,6 +527,7 @@ exports.agent = functions.https.onRequest((req, res) => {
   const links = {
     github: 'https://github.com/kotama7',
     qiita: 'https://qiita.com/kotama7',
+    zenn: 'https://zenn.dev/kotama7',
     x: 'https://x.com/kotama8',
     linkedin: 'https://www.linkedin.com/in/takanori-kotama-b785b52a4/',
     orcid: 'https://orcid.org/0009-0001-0749-5486',

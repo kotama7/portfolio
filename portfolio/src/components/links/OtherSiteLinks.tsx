@@ -8,6 +8,7 @@ export interface SiteLink {
 const links: SiteLink[] = [
   { name: 'GitHub', url: 'https://github.com/kotama7' },
   { name: 'Qiita', url: 'https://qiita.com/kotama7' },
+  { name: 'Zenn', url: 'https://zenn.dev/kotama' },
   { name: 'X', url: 'https://x.com/kotama8' },
   { name: 'LinkedIn', url: 'https://www.linkedin.com/in/takanori-kotama-b785b52a4/' },
   { name: 'ORCID', url: 'https://orcid.org/0009-0001-0749-5486' }

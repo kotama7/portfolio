@@ -50,7 +50,6 @@ const FUNC_NAMES: Record<string, { en: string; ja: string }> = {
   qualifications: { en: 'Qualifications', ja: '学歴・資格' },
   workExperience: { en: 'Work Experience', ja: '職歴・インターン' },
   awards: { en: 'Awards', ja: '受賞歴' },
-  hobbies: { en: 'Hobbies', ja: '趣味' },
   futureGoals: { en: 'Future Goals', ja: '将来の目標' },
   spokenLanguages: { en: 'Spoken Languages', ja: '話せる言語' },
   devEnvironment: { en: 'Dev Environment', ja: '開発環境' },
@@ -132,8 +131,8 @@ const FUNC_MESSAGES: Record<string, { en: string; ja: string }> = {
     ja: 'ポートフォリオをご覧いただきありがとうございます！いつでもまたお越しください。良い一日を！',
   },
   help: {
-    en: 'You can ask me about: biography, skills, interests, contact info, portfolio summary, other site links, profile info, self-introduction, favorite language, thesis summaries, projects, contributions, research works, qualifications, work experience, awards, hobbies, future goals, spoken languages, or development environment.',
-    ja: '以下のことについて聞けます：経歴、スキル、興味、連絡先、ポートフォリオ概要、外部リンク、プロフィール、自己紹介、好きな言語、論文要約、プロジェクト、コントリビューション、研究功績、学歴・資格、職歴・インターン、受賞歴、趣味、将来の目標、話せる言語、開発環境。',
+    en: 'You can ask me about: biography, skills, interests, contact info, portfolio summary, other site links, profile info, self-introduction, favorite language, thesis summaries, projects, contributions, research works, qualifications, work experience, awards, future goals, spoken languages, or development environment.',
+    ja: '以下のことについて聞けます：経歴、スキル、興味、連絡先、ポートフォリオ概要、外部リンク、プロフィール、自己紹介、好きな言語、論文要約、プロジェクト、コントリビューション、研究功績、学歴・資格、職歴・インターン、受賞歴、将来の目標、話せる言語、開発環境。',
   },
   aboutThisSite: {
     en: 'This portfolio is a chat-based website built with React, TypeScript, and Firebase. Gemini AI powers the natural language understanding to route your questions to the right information. The source code is available on GitHub!',
@@ -150,10 +149,6 @@ const FUNC_MESSAGES: Record<string, { en: string; ja: string }> = {
   awards: {
     en: 'I received the Encouragement Award for a paper that quantifies "youth" using information theory and large language models.',
     ja: '情報理論と大規模言語モデルを用いて「青春」を定量化した論文で奨励賞を受賞しました。',
-  },
-  hobbies: {
-    en: 'Outside of research, I enjoy photography and traveling to explore new places.',
-    ja: '研究以外では、写真撮影と旅行を楽しんでいます。',
   },
   futureGoals: {
     en: 'I will be advancing to graduate school in April 2026 to deepen my research on autonomous research frameworks in HPC environments.',
@@ -226,7 +221,6 @@ async function callSelectFunction(
     '- qualifications: returns education and qualifications.\n' +
     '- workExperience: returns internship and work experience.\n' +
     '- awards: returns awards and achievements.\n' +
-    '- hobbies: returns personal hobbies.\n' +
     '- futureGoals: returns future career goals and plans.\n' +
     '- spokenLanguages: returns spoken languages.\n' +
     '- devEnvironment: returns development tools and technologies used.\n' +
@@ -535,14 +529,6 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                                 <p>情報理論を用いて意外性・ポジティブさ・文法流暢性を統合した新指標「青春情報エントロピー」を提案。日本語BERTとLlama-3-ELYZA-JP-8Bで検証し、有意な正相関（r=0.333, p=0.035）を確認しました。</p>
                             </>
                         )}
-                    </div>
-                );
-            case 'hobbies':
-                return (
-                    <div>
-                        {props.lang === 'en'
-                            ? 'My hobbies include photography and travel. I enjoy capturing moments from my trips and exploring new places.'
-                            : '趣味は写真と旅行です。旅先での瞬間を撮影したり、新しい場所を探索するのが好きです。'}
                     </div>
                 );
             case 'futureGoals':

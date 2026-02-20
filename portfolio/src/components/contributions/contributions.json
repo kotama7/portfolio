@@ -1,0 +1,20 @@
+[
+  {
+    "name": "SakanaAI/AI-Scientist-v2",
+    "role": "Fork + HPC extension",
+    "description": "Extended the BFTS-based automated scientific discovery framework for HPC environments with Singularity container support.",
+    "url": "https://github.com/SakanaAI/AI-Scientist-v2"
+  },
+  {
+    "name": "SakanaAI/ShinkaEvolve",
+    "role": "Fork",
+    "description": "Open-ended and sample-efficient program evolution research.",
+    "url": "https://github.com/SakanaAI/ShinkaEvolve"
+  },
+  {
+    "name": "jack-app",
+    "role": "Member / Vice-President",
+    "description": "Contributed to multiple projects as vice-president of the app development group jack.",
+    "url": "https://github.com/jack-app"
+  }
+]

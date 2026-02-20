@@ -1,0 +1,30 @@
+[
+  {
+    "name": "AI-Scientist-v2-HPC",
+    "description": "AI Scientist v2のHPC特化版。Singularityコンテナ+BFTSによる自動科学論文生成。",
+    "url": "https://github.com/kotama7/AI-Scientist-v2-HPC",
+    "language": "Python",
+    "stars": 17
+  },
+  {
+    "name": "HPC-AutoResearch",
+    "description": "BFTS木探索・Singularityコンテナ・LLM統合によるHPC環境での自動研究ワークフローフレームワーク。",
+    "url": "https://github.com/kotama7/HPC-AutoResearch",
+    "language": "Python",
+    "stars": 3
+  },
+  {
+    "name": "seisyun_information_entropy",
+    "description": "BERTと情報理論を用いた「青春」の定量分析フレームワーク。",
+    "url": "https://github.com/kotama7/seisyun_information_entropy",
+    "language": "Python",
+    "stars": 2
+  },
+  {
+    "name": "portfolio",
+    "description": "React+TypeScriptで構築したチャットUIポートフォリオサイト。",
+    "url": "https://github.com/kotama7/portfolio",
+    "language": "TypeScript",
+    "stars": 1
+  }
+]

@@ -1,0 +1,3 @@
+{
+  "summary": "本論文では、AI Scientist v2を基盤としてHPC環境に適合させた自律研究システムHPC-AutoResearchを提案した。Split-Phase実行モデルにより研究プロセスを計画・環境構築・コーディング・コンパイル・実行の5段階に分割し、MemGPT型3層階層記憶（Core/Recall/Archival）で文脈長制約下でも重要な知見を保持する。Singularityコンテナによる実行環境分離、Best-First木探索による効率的な実装空間探索も統合した。Himeno Benchmarkを題材にClaude Code・Codex・Gemini CLIと比較実験を行い、提案手法はLLMレビュー全7評価項目で最高水準（各3/4）を達成しOverall 7/10・Accept判定を獲得した。"
+}

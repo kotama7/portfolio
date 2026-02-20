@@ -1,0 +1,30 @@
+[
+  {
+    "name": "AI-Scientist-v2-HPC",
+    "description": "HPC-optimized adaptation of AI Scientist v2 with Singularity containers and BFTS for automated scientific paper generation.",
+    "url": "https://github.com/kotama7/AI-Scientist-v2-HPC",
+    "language": "Python",
+    "stars": 17
+  },
+  {
+    "name": "HPC-AutoResearch",
+    "description": "Framework for automated research workflows in HPC environments using BFTS tree search, Singularity containers, and LLM integration.",
+    "url": "https://github.com/kotama7/HPC-AutoResearch",
+    "language": "Python",
+    "stars": 3
+  },
+  {
+    "name": "seisyun_information_entropy",
+    "description": "Computational framework measuring 'youth' (青春) through linguistic analysis using BERT and information theory.",
+    "url": "https://github.com/kotama7/seisyun_information_entropy",
+    "language": "Python",
+    "stars": 2
+  },
+  {
+    "name": "portfolio",
+    "description": "Chat-UI portfolio website built with React and TypeScript.",
+    "url": "https://github.com/kotama7/portfolio",
+    "language": "TypeScript",
+    "stars": 1
+  }
+]

@@ -5,8 +5,7 @@ export const FALLBACK_KEYWORDS = [
   { keyword: 'スキル', func: 'skillTree' },
   { keyword: 'interest', func: 'interestGraph' },
   { keyword: '興味', func: 'interestGraph' },
-  { keyword: 'personality', func: 'personalityRadar' },
-  { keyword: '性格', func: 'personalityRadar' },
+
   { keyword: 'contact', func: 'contactInfo' },
   { keyword: '連絡', func: 'contactInfo' },
   { keyword: 'portfolio', func: 'portfolioSummary' },
@@ -25,6 +24,19 @@ export const FALLBACK_KEYWORDS = [
   { keyword: '論文要約', func: 'thesisSummary' },
   { keyword: 'fusep', func: 'fusepThesisSummary' },
   { keyword: '夏研', func: 'fusepThesisSummary' },
+  { keyword: 'graduation', func: 'graduationThesis' },
+  { keyword: '卒業論文', func: 'graduationThesis' },
+  { keyword: '卒論', func: 'graduationThesis' },
+  { keyword: 'hpc-autoresearch', func: 'graduationThesis' },
+  { keyword: 'project', func: 'majorProjects' },
+  { keyword: 'プロジェクト', func: 'majorProjects' },
+  { keyword: 'contribution', func: 'contributions' },
+  { keyword: 'コントリビューション', func: 'contributions' },
+  { keyword: 'oss', func: 'contributions' },
+  { keyword: 'research', func: 'researchWorks' },
+  { keyword: '研究', func: 'researchWorks' },
+  { keyword: 'publication', func: 'researchWorks' },
+  { keyword: '功績', func: 'researchWorks' },
 ] as const;
 
 export type FunctionName = typeof FALLBACK_KEYWORDS[number]['func'];

@@ -13,17 +13,21 @@ import FunctionSidebar, { labels } from './FunctionSidebar';
 import BioTree from '../bio/BioTree';
 import SkillTree from '../skills/SkillTree';
 import InterestGraph from '../interests/InterestGraph';
-import PersonalityRadar from '../personality/PersonalityRadar';
+
 import OtherSiteLinks from '../links/OtherSiteLinks';
 import ThesisSummary from '../thesis/ThesisSummary';
 import FusepThesisSummary from '../thesis/FusepThesisSummary';
+import GraduationThesisSummary from '../thesis/GraduationThesisSummary';
+import MajorProjects from '../projects/MajorProjects';
+import Contributions from '../contributions/Contributions';
+import ResearchWorks from '../research/ResearchWorks';
 import { fallbackSelectFunction } from '../../utils/selectFunction';
 
 const FUNC_NAMES: Record<string, { en: string; ja: string }> = {
   bioGraph: { en: 'Biography', ja: '経歴' },
   skillTree: { en: 'Skills', ja: 'スキル' },
   interestGraph: { en: 'Interests', ja: '興味' },
-  personalityRadar: { en: 'Personality', ja: '性格' },
+
   contactInfo: { en: 'Contact Info', ja: '連絡先' },
   portfolioSummary: { en: 'Portfolio Summary', ja: 'ポートフォリオ概要' },
   otherSiteLinks: { en: 'Other Site Links', ja: 'その他のリンク' },
@@ -31,7 +35,11 @@ const FUNC_NAMES: Record<string, { en: string; ja: string }> = {
   briefIntro: { en: 'Brief Intro', ja: '自己紹介' },
   thesisSummary: { en: 'Thesis Summary', ja: '論文要約' },
   fusepThesisSummary: { en: 'FuSEP Thesis Summary', ja: '夏研論文要約' },
+  graduationThesis: { en: 'Graduation Thesis', ja: '卒業論文' },
   favoriteLanguage: { en: 'Favorite Language', ja: '好きな言語' },
+  majorProjects: { en: 'Major Projects', ja: '主要プロジェクト' },
+  contributions: { en: 'Contributions', ja: 'コントリビューション' },
+  researchWorks: { en: 'Research Works', ja: '研究功績' },
 };
 
 const FUNC_MESSAGES: Record<string, { en: string; ja: string }> = {
@@ -47,10 +55,7 @@ const FUNC_MESSAGES: Record<string, { en: string; ja: string }> = {
     en: 'These are my interests.',
     ja: 'こちらが私の興味の一覧です。',
   },
-  personalityRadar: {
-    en: 'My personality is summarized in this radar chart.',
-    ja: '私の性格を表すレーダーチャートです。',
-  },
+
   contactInfo: {
     en: 'Here is my contact information.',
     ja: 'こちらが連絡先です。',
@@ -83,6 +88,22 @@ const FUNC_MESSAGES: Record<string, { en: string; ja: string }> = {
     en: 'This is the FuSEP thesis summary.',
     ja: '夏研論文の要約です。',
   },
+  graduationThesis: {
+    en: 'This is my graduation thesis summary.',
+    ja: '卒業論文の要約です。',
+  },
+  majorProjects: {
+    en: 'Here are my major projects.',
+    ja: '主要プロジェクトの一覧です。',
+  },
+  contributions: {
+    en: 'Here are my open-source contributions.',
+    ja: 'OSSコントリビューションの一覧です。',
+  },
+  researchWorks: {
+    en: 'Here are my research works.',
+    ja: '研究功績の一覧です。',
+  },
 };
 
 let model: ReturnType<typeof getGenerativeModel> | null = null;
@@ -102,6 +123,16 @@ function getModel() {
   return model;
 }
 
+const VALID_FUNCTIONS = Object.keys(FUNC_MESSAGES);
+
+function extractFunctionName(raw: string): string | undefined {
+  const cleaned = raw.replace(/[`"'.\s]/g, '');
+  if (VALID_FUNCTIONS.indexOf(cleaned) !== -1) return cleaned;
+  const lower = cleaned.toLowerCase();
+  const found = VALID_FUNCTIONS.find(name => name.toLowerCase() === lower);
+  return found;
+}
+
 async function callSelectFunction(
   text: string,
   lang: 'en' | 'ja'
@@ -111,7 +142,7 @@ async function callSelectFunction(
     '- bioGraph: returns the biography graph.\n' +
     '- skillTree: returns the skill hierarchy.\n' +
     '- interestGraph: returns an interest graph.\n' +
-    '- personalityRadar: shows a personality radar chart.\n' +
+
     '- contactInfo: returns contact information.\n' +
     '- portfolioSummary: gives a summary of the portfolio.\n' +
     '- otherSiteLinks: returns links to other sites.\n' +
@@ -120,7 +151,11 @@ async function callSelectFunction(
     '- favoriteLanguage: tells my favorite programming language.\n' +
     '- thesisSummary: returns the Encouragement Award thesis summary.\n' +
     '- fusepThesisSummary: returns the FuSEP thesis summary.\n' +
-    'Respond with only the function name that best matches the user\'s request.';
+    '- graduationThesis: returns the graduation thesis summary about HPC-AutoResearch.\n' +
+    '- majorProjects: returns a list of major projects.\n' +
+    '- contributions: returns open-source contributions.\n' +
+    '- researchWorks: returns research works and publications.\n' +
+    'Respond with ONLY the function name. Do not add any explanation, quotes, or formatting.';
   const prompt =
     lang === 'ja'
       ? `あなたはユーザーのリクエストを関数名に対応付けるアシスタントです。\n${basePrompt}`
@@ -130,7 +165,10 @@ async function callSelectFunction(
       contents: [{ role: 'user', parts: [{ text: `${prompt}\n${text}` }] }],
       generationConfig: { maxOutputTokens: 10, temperature: 0 },
     });
-    return result.response.text().trim();
+    const raw = result.response.text().trim();
+    const matched = extractFunctionName(raw);
+    if (matched) return matched;
+    return fallbackSelectFunction(text);
   } catch (err) {
     console.error('Failed to call selectFunction', err);
     return fallbackSelectFunction(text);
@@ -280,16 +318,14 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                 return <SkillTree lang={props.lang} />;
             case 'interestGraph':
                 return <InterestGraph lang={props.lang} />;
-            case 'personalityRadar':
-                return <PersonalityRadar lang={props.lang} />;
             case 'otherSiteLinks':
                 return <OtherSiteLinks />;
             case 'contactInfo':
                 return (
                     <div>
                         {props.lang === 'en'
-                            ? 'Contact: example@example.com'
-                            : '連絡先: example@example.com'}
+                            ? 'Contact: kotamatakanori2@gmail.com'
+                            : '連絡先: kotamatakanori2@gmail.com'}
                     </div>
                 );
             case 'portfolioSummary':
@@ -304,8 +340,8 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                 return (
                     <div>
                         {props.lang === 'en'
-                            ? 'Takanori Kotama is a fourth-year CS student in Nagoya University\'s Information Systems program. He received the 2024 Student Paper Contest Encouragement Award and expects to graduate in March 2026.'
-                            : '名古屋大学情報学部情報システム専攻の4年生です。2024年の学生論文コンテストで奨励賞を受賞し、2026年3月に学士取得予定です。'}
+                            ? 'Takanori Kotama is a CS student in Nagoya University\'s Information Systems program, graduating in March 2026 and advancing to graduate school. He received the 2024 Student Paper Contest Encouragement Award.'
+                            : '名古屋大学情報学部情報システム専攻の学部生です。2024年の学生論文コンテストで奨励賞を受賞し、2026年3月に学士取得予定。同大学大学院へ進学予定です。'}
                     </div>
                 );
             case 'briefIntro':
@@ -320,6 +356,8 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                 return <ThesisSummary lang={props.lang} />;
             case 'fusepThesisSummary':
                 return <FusepThesisSummary lang={props.lang} />;
+            case 'graduationThesis':
+                return <GraduationThesisSummary lang={props.lang} />;
             case 'favoriteLanguage':
                 return (
                     <div>
@@ -328,6 +366,12 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                             : '好きなプログラミング言語は Python です。読みやすく豊富なライブラリがあります。'}
                     </div>
                 );
+            case 'majorProjects':
+                return <MajorProjects lang={props.lang} />;
+            case 'contributions':
+                return <Contributions lang={props.lang} />;
+            case 'researchWorks':
+                return <ResearchWorks lang={props.lang} />;
             default:
                 return null;
         }

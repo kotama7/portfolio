@@ -29,7 +29,7 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
     '- bioGraph: returns the biography graph.\n' +
     '- skillTree: returns the skill hierarchy.\n' +
     '- interestGraph: returns an interest graph.\n' +
-    '- personalityRadar: shows a personality radar chart.\n' +
+
     '- contactInfo: returns contact information.\n' +
     '- portfolioSummary: gives a summary of the portfolio.\n' +
     '- otherSiteLinks: returns links to other sites.\n' +
@@ -37,6 +37,9 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
     '- favoriteLanguage: tells my favorite programming language.\n' +
     '- thesisSummary: returns the Encouragement Award thesis summary.\n' +
     '- fusepThesisSummary: returns the FuSEP thesis summary.\n' +
+    '- majorProjects: returns a list of major projects.\n' +
+    '- contributions: returns open-source contributions.\n' +
+    '- researchWorks: returns research works and publications.\n' +
     'Respond with only the function name that best matches the user\'s request.';
   const prompt =
     lang === 'ja'
@@ -60,8 +63,7 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
       { keyword: 'スキル', func: 'skillTree' },
       { keyword: 'interest', func: 'interestGraph' },
       { keyword: '興味', func: 'interestGraph' },
-      { keyword: 'personality', func: 'personalityRadar' },
-      { keyword: '性格', func: 'personalityRadar' },
+
       { keyword: 'contact', func: 'contactInfo' },
       { keyword: '連絡', func: 'contactInfo' },
       { keyword: 'portfolio', func: 'portfolioSummary' },
@@ -80,6 +82,15 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
       { keyword: '論文要約', func: 'thesisSummary' },
       { keyword: 'fusep', func: 'fusepThesisSummary' },
       { keyword: '夏研', func: 'fusepThesisSummary' },
+      { keyword: 'project', func: 'majorProjects' },
+      { keyword: 'プロジェクト', func: 'majorProjects' },
+      { keyword: 'contribution', func: 'contributions' },
+      { keyword: 'コントリビューション', func: 'contributions' },
+      { keyword: 'oss', func: 'contributions' },
+      { keyword: 'research', func: 'researchWorks' },
+      { keyword: '研究', func: 'researchWorks' },
+      { keyword: 'publication', func: 'researchWorks' },
+      { keyword: '功績', func: 'researchWorks' },
     ];
     const matched = fallbackMap.find(({ keyword }) =>
       normalized.includes(keyword)
@@ -99,19 +110,19 @@ exports.autoReply = functions.https.onRequest((req, res) => {
   const replies = {
     ja: [
       `
-    名古屋大学情報学部コンピュータ科学科情報システム専攻4年の樹神宇徳です。\n
+    名古屋大学情報学部コンピュータ科学科情報システム専攻の樹神宇徳です。2026年3月に卒業予定で、同大学大学院へ進学予定です。\n
     高エントロピー合金やGNNを用いた材料研究、HPC 活用に興味があります。\n
       `,
       `
-    2026年3月卒業予定で、2024年には学生論文コンテストで奨励賞を受賞しました。
+    2026年3月卒業・大学院進学予定で、2024年には学生論文コンテストで奨励賞を受賞しました。
       `,
     ],
     en: [
       `
-    I am Takanori Kotama, a fourth-year Computer Science student in Nagoya University's Information Systems program. My work centers on high-entropy alloys and GNNs for materials science with an interest in HPC.
+    I am Takanori Kotama, a Computer Science student in Nagoya University's Information Systems program, graduating in March 2026 and advancing to graduate school. My work centers on high-entropy alloys and GNNs for materials science with an interest in HPC.
       `,
       `
-    I expect to graduate in March 2026 and won the Encouragement Award at the 2024 Nagoya University Student Paper Contest.
+    I graduate in March 2026 and will be advancing to graduate school. I won the Encouragement Award at the 2024 Nagoya University Student Paper Contest.
       `,
     ],
   };
@@ -127,14 +138,14 @@ exports.profileInfo = functions.https.onRequest((req, res) => {
 
   const details = {
     summary:
-      'Takanori Kotama is a fourth-year undergraduate in the Information Systems program at Nagoya University. ' +
+      'Takanori Kotama is an undergraduate in the Information Systems program at Nagoya University, graduating in March 2026 and advancing to graduate school. ' +
       'His interests include high-entropy alloys, graph neural networks for materials science and HPC-driven discovery. ' +
       'He joined the FuSEP Summer Researcher Program at USTC and interned at Panasonic applying AI to manufacturing. ' +
-      'He plans to participate in the RIKEN R-CCS HPC internship in 2025 and previously served as vice-president of the app development group "jack".',
+      'He participated in the RIKEN R-CCS HPC internship in 2025 and previously served as vice-president of the app development group "jack".',
     award:
       'Encouragement Award at the 2024 Nagoya University Student Paper Contest for the paper "A quantitative definition of青春 using large language models."',
     qualifications:
-      'Bachelor of Science in Information Systems expected in March 2026 from Nagoya University.',
+      'Bachelor of Science in Information Systems expected in March 2026 from Nagoya University. Advancing to graduate school at Nagoya University.',
     lab:
       'Affiliated with the Faculty of Informatics at Nagoya University.'
   };
@@ -156,19 +167,19 @@ exports.briefIntro = functions.https.onRequest((req, res) => {
   const intros = {
     ja: [
       `
-    名古屋大学情報学部コンピュータ科学科情報システム専攻4年の樹神宇徳です。\n
+    名古屋大学情報学部コンピュータ科学科情報システム専攻の樹神宇徳です。2026年3月に卒業予定で、同大学大学院へ進学予定です。\n
     高エントロピー合金やGNNを用いた材料研究、HPC 活用に興味があります。\n
       `,
       `
-    2026年3月卒業予定で、2024年の学生論文コンテストで奨励賞を受賞しました。
+    2026年3月卒業・大学院進学予定で、2024年の学生論文コンテストで奨励賞を受賞しました。
       `,
     ],
     en: [
       `
-    I'm Takanori Kotama, a fourth-year Computer Science student in Nagoya University's Information Systems program. My work centers on high-entropy alloys and GNNs with a focus on HPC.
+    I'm Takanori Kotama, a Computer Science student in Nagoya University's Information Systems program, graduating in March 2026 and advancing to graduate school. My work centers on high-entropy alloys and GNNs with a focus on HPC.
       `,
       `
-    I expect to graduate in March 2026 and won the Encouragement Award at the 2024 Nagoya University Student Paper Contest.
+    I graduate in March 2026 and will be advancing to graduate school. I won the Encouragement Award at the 2024 Nagoya University Student Paper Contest.
       `
     ]
   };
@@ -226,7 +237,8 @@ exports.otherSiteLinks = functions.https.onRequest((req, res) => {
     github: 'https://github.com/kotama7',
     qiita: 'https://qiita.com/kotama7',
     x: 'https://x.com/kotama8',
-    linkedin: 'https://www.linkedin.com/in/takanori-kotama-b785b52a4/'
+    linkedin: 'https://www.linkedin.com/in/takanori-kotama-b785b52a4/',
+    orcid: 'https://orcid.org/0009-0001-0749-5486'
   });
 });
 
@@ -238,4 +250,42 @@ exports.favoriteLanguage = functions.https.onRequest((req, res) => {
     en: 'My favorite programming language is Python because of its readability and rich ecosystem.'
   };
   res.json({ message: messages[lang] || messages.en });
+});
+
+// Return major projects
+exports.majorProjects = functions.https.onRequest((req, res) => {
+  const lang = (req.body.lang || 'en').toLowerCase();
+  const projects = {
+    en: [
+      { name: 'AI-Scientist-v2-HPC', description: 'HPC-optimized adaptation of AI Scientist v2 with Singularity containers and BFTS for automated scientific paper generation.', url: 'https://github.com/kotama7/AI-Scientist-v2-HPC', language: 'Python', stars: 17 },
+      { name: 'HPC-AutoResearch', description: 'Framework for automated research workflows in HPC environments using BFTS tree search, Singularity containers, and LLM integration.', url: 'https://github.com/kotama7/HPC-AutoResearch', language: 'Python', stars: 3 },
+      { name: 'seisyun_information_entropy', description: "Computational framework measuring 'youth' through linguistic analysis using BERT and information theory.", url: 'https://github.com/kotama7/seisyun_information_entropy', language: 'Python', stars: 2 },
+      { name: 'portfolio', description: 'Chat-UI portfolio website built with React and TypeScript.', url: 'https://github.com/kotama7/portfolio', language: 'TypeScript', stars: 1 },
+    ],
+    ja: [
+      { name: 'AI-Scientist-v2-HPC', description: 'AI Scientist v2のHPC特化版。Singularityコンテナ+BFTSによる自動科学論文生成。', url: 'https://github.com/kotama7/AI-Scientist-v2-HPC', language: 'Python', stars: 17 },
+      { name: 'HPC-AutoResearch', description: 'BFTS木探索・Singularityコンテナ・LLM統合によるHPC環境での自動研究ワークフローフレームワーク。', url: 'https://github.com/kotama7/HPC-AutoResearch', language: 'Python', stars: 3 },
+      { name: 'seisyun_information_entropy', description: 'BERTと情報理論を用いた「青春」の定量分析フレームワーク。', url: 'https://github.com/kotama7/seisyun_information_entropy', language: 'Python', stars: 2 },
+      { name: 'portfolio', description: 'React+TypeScriptで構築したチャットUIポートフォリオサイト。', url: 'https://github.com/kotama7/portfolio', language: 'TypeScript', stars: 1 },
+    ],
+  };
+  res.json({ projects: projects[lang] || projects.en });
+});
+
+// Return open-source contributions
+exports.contributions = functions.https.onRequest((req, res) => {
+  const lang = (req.body.lang || 'en').toLowerCase();
+  const items = {
+    en: [
+      { name: 'SakanaAI/AI-Scientist-v2', role: 'Fork + HPC extension', description: 'Extended the BFTS-based automated scientific discovery framework for HPC environments with Singularity container support.', url: 'https://github.com/SakanaAI/AI-Scientist-v2' },
+      { name: 'SakanaAI/ShinkaEvolve', role: 'Fork', description: 'Open-ended and sample-efficient program evolution research.', url: 'https://github.com/SakanaAI/ShinkaEvolve' },
+      { name: 'jack-app', role: 'Member / Vice-President', description: 'Contributed to multiple projects as vice-president of the app development group jack.', url: 'https://github.com/jack-app' },
+    ],
+    ja: [
+      { name: 'SakanaAI/AI-Scientist-v2', role: 'Fork + HPC拡張', description: 'BFTSベースの自動科学発見フレームワークをHPC環境向けに拡張。Singularityコンテナ対応。', url: 'https://github.com/SakanaAI/AI-Scientist-v2' },
+      { name: 'SakanaAI/ShinkaEvolve', role: 'Fork', description: 'オープンエンドかつサンプル効率の高いプログラム進化研究。', url: 'https://github.com/SakanaAI/ShinkaEvolve' },
+      { name: 'jack-app', role: 'メンバー / 副代表', description: 'アプリ開発団体jackの副代表として複数プロジェクトに貢献。', url: 'https://github.com/jack-app' },
+    ],
+  };
+  res.json({ contributions: items[lang] || items.en });
 });

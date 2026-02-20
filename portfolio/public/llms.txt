@@ -1,0 +1,42 @@
+# Takanori Kotama - Portfolio
+
+> This is the personal portfolio of Takanori Kotama, a Computer Science student at Nagoya University.
+
+This site provides a chat-based UI to explore my profile, skills, research, and projects.
+
+## API for LLM Agents
+
+A unified JSON endpoint is available for programmatic access to all portfolio data.
+
+### Endpoint
+
+GET https://fir-939f3.web.app/agent
+
+### Parameters
+
+- `lang` (optional): `en` (default) or `ja`
+- `section` (optional): filter by section name
+
+### Available Sections
+
+- `profile`: Name, affiliation, graduation, awards, contact, ORCID
+- `bio`: Career and education timeline
+- `skills`: Programming languages, frameworks, tools, HPC, spoken languages
+- `interests`: Research interests and hobbies
+- `theses`: Summaries of published theses (Encouragement Award, FuSEP, Graduation)
+- `projects`: Major GitHub projects with descriptions and stars
+- `contributions`: Open-source contributions
+- `research`: Research works and publications (sourced from ORCID)
+- `links`: GitHub, Qiita, X, LinkedIn, ORCID profile URLs
+- `contact`: Email address
+
+### Examples
+
+Fetch all data in English:
+GET /agent
+
+Fetch skills in Japanese:
+GET /agent?section=skills&lang=ja
+
+Fetch research works only:
+GET /agent?section=research

@@ -1,3 +1,7 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
+
+# LLM agent discovery
+# https://llmstxt.org
+LLMs-Txt: /llms.txt

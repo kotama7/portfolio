@@ -16,14 +16,57 @@ if (!getApps().length) {
 const ai = getAI(app, { backend: new VertexAIBackend() });
 const model = getGenerativeModel(ai, { model: 'gemini-1.5-pro' });
 
+// --- Security helpers ---
+const ALLOWED_ORIGINS = [
+  'https://fir-939f3.web.app',
+  'https://fir-939f3.firebaseapp.com',
+];
+if (process.env.FUNCTIONS_EMULATOR) {
+  ALLOWED_ORIGINS.push('http://localhost:3000', 'http://localhost:5000');
+}
+
+function setCors(req, res) {
+  const origin = req.headers.origin || '';
+  if (ALLOWED_ORIGINS.includes(origin)) {
+    res.set('Access-Control-Allow-Origin', origin);
+  }
+  res.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.set('Access-Control-Allow-Headers', 'Content-Type');
+  res.set('Access-Control-Max-Age', '3600');
+}
+
+function handlePreflight(req, res) {
+  if (req.method === 'OPTIONS') {
+    setCors(req, res);
+    res.status(204).send('');
+    return true;
+  }
+  return false;
+}
+
+function rejectMethod(req, res, allowed) {
+  if (!allowed.includes(req.method)) {
+    setCors(req, res);
+    res.status(405).json({ error: 'Method not allowed' });
+    return true;
+  }
+  return false;
+}
+
+const MAX_INPUT_LENGTH = 500;
+
 exports.selectFunction = functions.https.onRequest(async (req, res) => {
-  const text = req.body.text || '';
+  if (handlePreflight(req, res)) return;
+  if (rejectMethod(req, res, ['POST'])) return;
+  setCors(req, res);
+
+  const text = typeof req.body.text === 'string' ? req.body.text.slice(0, MAX_INPUT_LENGTH) : '';
   if (!text) {
     res.status(400).json({ error: 'No text provided' });
     return;
   }
 
-  const lang = (req.body.lang || 'en').toLowerCase();
+  const lang = (req.body.lang || 'en').toLowerCase() === 'ja' ? 'ja' : 'en';
   const basePrompt =
     'Possible functions include:\n' +
     '- bioGraph: returns the biography graph.\n' +
@@ -105,7 +148,11 @@ exports.selectFunction = functions.https.onRequest(async (req, res) => {
 
 // Automatically reply to the initial prompt shown in the chat UI
 exports.autoReply = functions.https.onRequest((req, res) => {
-  const lang = (req.body.lang || 'en').toLowerCase();
+  if (handlePreflight(req, res)) return;
+  if (rejectMethod(req, res, ['GET', 'POST'])) return;
+  setCors(req, res);
+
+  const lang = (req.body.lang || 'en').toLowerCase() === 'ja' ? 'ja' : 'en';
 
   const replies = {
     ja: [
@@ -134,7 +181,11 @@ exports.autoReply = functions.https.onRequest((req, res) => {
 
 // Provide profile details such as life summary, awards, qualifications and lab
 exports.profileInfo = functions.https.onRequest((req, res) => {
-  const query = (req.body.query || '').toLowerCase();
+  if (handlePreflight(req, res)) return;
+  if (rejectMethod(req, res, ['GET', 'POST'])) return;
+  setCors(req, res);
+
+  const query = (typeof req.body.query === 'string' ? req.body.query : '').toLowerCase();
 
   const details = {
     summary:
@@ -164,6 +215,9 @@ exports.profileInfo = functions.https.onRequest((req, res) => {
 
 // Return a brief self-introduction
 exports.briefIntro = functions.https.onRequest((req, res) => {
+  if (handlePreflight(req, res)) return;
+  if (rejectMethod(req, res, ['GET', 'POST'])) return;
+  setCors(req, res);
   const intros = {
     ja: [
       `
@@ -192,6 +246,9 @@ exports.briefIntro = functions.https.onRequest((req, res) => {
 
 // Return a summary of the Encouragement Award thesis
 exports.thesisSummary = functions.https.onRequest((req, res) => {
+  if (handlePreflight(req, res)) return;
+  if (rejectMethod(req, res, ['GET', 'POST'])) return;
+  setCors(req, res);
   const lang = (req.body.lang || 'en').toLowerCase();
 
   const summaries = {
@@ -211,6 +268,9 @@ exports.thesisSummary = functions.https.onRequest((req, res) => {
 
 // Return a summary of the FuSEP thesis
 exports.fusepThesisSummary = functions.https.onRequest((req, res) => {
+  if (handlePreflight(req, res)) return;
+  if (rejectMethod(req, res, ['GET', 'POST'])) return;
+  setCors(req, res);
   const lang = (req.body.lang || 'en').toLowerCase();
 
   const summaries = {
@@ -233,6 +293,10 @@ exports.fusepThesisSummary = functions.https.onRequest((req, res) => {
 
 // Return external links to other profiles
 exports.otherSiteLinks = functions.https.onRequest((req, res) => {
+  if (handlePreflight(req, res)) return;
+  if (rejectMethod(req, res, ['GET'])) return;
+  setCors(req, res);
+
   res.json({
     github: 'https://github.com/kotama7',
     qiita: 'https://qiita.com/kotama7',
@@ -244,6 +308,9 @@ exports.otherSiteLinks = functions.https.onRequest((req, res) => {
 
 // Return favorite programming language
 exports.favoriteLanguage = functions.https.onRequest((req, res) => {
+  if (handlePreflight(req, res)) return;
+  if (rejectMethod(req, res, ['GET', 'POST'])) return;
+  setCors(req, res);
   const lang = (req.body.lang || 'en').toLowerCase();
   const messages = {
     ja: '好きなプログラミング言語は Python です。読みやすく豊富なライブラリがあります。',
@@ -254,6 +321,9 @@ exports.favoriteLanguage = functions.https.onRequest((req, res) => {
 
 // Return major projects
 exports.majorProjects = functions.https.onRequest((req, res) => {
+  if (handlePreflight(req, res)) return;
+  if (rejectMethod(req, res, ['GET', 'POST'])) return;
+  setCors(req, res);
   const lang = (req.body.lang || 'en').toLowerCase();
   const projects = {
     en: [
@@ -272,8 +342,170 @@ exports.majorProjects = functions.https.onRequest((req, res) => {
   res.json({ projects: projects[lang] || projects.en });
 });
 
+// Unified endpoint for LLM agents
+// GET/POST ?lang=en|ja&section=profile|bio|skills|interests|theses|projects|contributions|research|links|contact
+// If section is omitted, returns all sections.
+exports.agent = functions.https.onRequest((req, res) => {
+  if (handlePreflight(req, res)) return;
+  if (rejectMethod(req, res, ['GET', 'POST'])) return;
+  setCors(req, res);
+  const params = req.method === 'GET' ? req.query : req.body;
+  const lang = ((params && params.lang) || 'en').toLowerCase();
+  const section = params && params.section ? params.section.toLowerCase() : null;
+
+  const profile = {
+    name: 'Takanori Kotama',
+    affiliation: lang === 'ja'
+      ? '名古屋大学情報学部コンピュータ科学科情報システム専攻'
+      : 'Faculty of Informatics, Nagoya University (Information Systems)',
+    graduation: '2026-03',
+    nextStep: lang === 'ja' ? '同大学大学院へ進学予定' : 'Advancing to graduate school at Nagoya University',
+    award: lang === 'ja'
+      ? '2024年 名古屋大学学生論文コンテスト 奨励賞'
+      : 'Encouragement Award at the 2024 Nagoya University Student Paper Contest',
+    contact: 'kotamatakanori2@gmail.com',
+    orcid: 'https://orcid.org/0009-0001-0749-5486',
+  };
+
+  const bio = [
+    { year: 2003, event: lang === 'ja' ? '日本で出生' : 'Born in Japan' },
+    { year: 2022, event: lang === 'ja' ? '名古屋大学情報学部入学' : 'Enrolled at Nagoya University (CS & Information Systems)' },
+    { year: '2022-present', event: lang === 'ja' ? 'アプリ開発団体jack副代表' : 'Vice-President of app-development group "jack"' },
+    { year: '2023-2024', event: lang === 'ja' ? '名大祭Webチーフ' : 'Web Chief at Nagoya University Festival' },
+    { year: '2024-03', event: lang === 'ja' ? 'JENESYS 2024 韓国交流プログラム参加' : 'JENESYS 2024 Korea Exchange participant' },
+    { year: '2024-summer', event: lang === 'ja' ? 'パナソニック AIインターンシップ' : 'AI Internship at Panasonic' },
+    { year: '2024-07-08', event: lang === 'ja' ? 'USTC FuSEP夏季研究プログラム' : 'FuSEP Summer Researcher at USTC' },
+    { year: 2024, event: lang === 'ja' ? '学生論文コンテスト奨励賞受賞' : 'Encouragement Award at Student Paper Contest' },
+    { year: '2025-07-12', event: lang === 'ja' ? '理化学研究所R-CCS HPCインターン' : 'HPC Internship at RIKEN R-CCS AI for Science Team' },
+    { year: '2026-03', event: lang === 'ja' ? '学士取得予定・大学院進学' : 'Expected B.S. degree, advancing to graduate school' },
+  ];
+
+  const skills = [
+    { category: lang === 'ja' ? 'プログラミング' : 'Programming', items: ['Python', 'JavaScript'] },
+    { category: lang === 'ja' ? 'フレームワーク・ライブラリ' : 'Frameworks & Libraries', items: ['TensorFlow 1.x', 'OpenSpiel', 'LightGBM'] },
+    { category: lang === 'ja' ? 'ツール' : 'Tooling', items: ['Docker', 'CMake', 'MPI', 'CUDA'] },
+    { category: 'HPC', items: [
+      lang === 'ja' ? '並列化' : 'Parallelization',
+      lang === 'ja' ? '分散学習' : 'Distributed training',
+      lang === 'ja' ? 'GPUアクセラレーション' : 'GPU acceleration',
+    ]},
+    { category: lang === 'ja' ? '言語' : 'Languages', items: [
+      lang === 'ja' ? '日本語（母語）' : 'Japanese (Native)',
+      lang === 'ja' ? '英語（上級）' : 'English (advanced)',
+      lang === 'ja' ? '中国語（中級）' : 'Chinese (intermediate)',
+    ]},
+  ];
+
+  const interests = {
+    research: lang === 'ja'
+      ? ['高エントロピー合金', 'GNNによる材料科学', 'AI駆動の科学的発見', 'LLMによる研究自動化', 'HPC', '強化学習・ゲーム理論']
+      : ['High-entropy alloys', 'Graph Neural Networks for materials science', 'AI-driven scientific discovery', 'LLM-driven research automation', 'HPC', 'Reinforcement learning & game theory'],
+    hobbies: lang === 'ja'
+      ? ['写真', '旅行']
+      : ['Photography', 'Travel'],
+  };
+
+  const theses = [
+    {
+      title: lang === 'ja'
+        ? '大規模言語モデルを用いた青春の定量的定義'
+        : 'A quantitative definition of youth using large language models',
+      label: lang === 'ja' ? '奨励賞論文' : 'Encouragement Award Thesis',
+      summary: lang === 'ja'
+        ? '文章の意外性・ポジティブさ・文法流暢性を情報エントロピーとして統合し「青春情報エントロピー」を提案。日本語BERTとLlama-3-ELYZA-JP-8Bで検証し有意な弱い正相関(r=0.333, p=0.035)を確認。'
+        : 'Proposes "Youth Information Entropy" integrating surprise, positivity and fluency. Validated with Japanese BERT and Llama-3-ELYZA-JP-8B showing weak but significant positive correlation (r=0.333, p=0.035).',
+    },
+    {
+      title: lang === 'ja'
+        ? 'Nb-Mo-Ta-W系高エントロピー合金の機械学習ポテンシャル'
+        : 'Machine-learning potential for Nb-Mo-Ta-W high-entropy alloys',
+      label: 'FuSEP',
+      summary: lang === 'ja'
+        ? 'CrysEnergyModelを開発。CrystalGNN+FractionFNN+ConcatFNNで結晶エネルギーを予測。テストRMSE 0.00139eV、低エネルギーでは0.00054eV。'
+        : 'Developed CrysEnergyModel using CrystalGNN+FractionFNN+ConcatFNN. Achieved test RMSE of 0.00139 eV (0.00054 eV for low-energy data).',
+    },
+    {
+      title: lang === 'ja'
+        ? 'HPC-AutoResearch: HPC環境における自律的研究フレームワーク'
+        : 'HPC-AutoResearch: Autonomous research framework in HPC environments',
+      label: lang === 'ja' ? '卒業論文' : 'Graduation Thesis',
+      summary: lang === 'ja'
+        ? 'BFTS木探索・Singularityコンテナ・LLM統合によるHPC環境での自動研究ワークフローフレームワーク。'
+        : 'Framework for automated research workflows in HPC environments using BFTS tree search, Singularity containers, and LLM integration.',
+    },
+  ];
+
+  const projects = [
+    { name: 'AI-Scientist-v2-HPC', language: 'Python', stars: 17, url: 'https://github.com/kotama7/AI-Scientist-v2-HPC',
+      description: lang === 'ja' ? 'AI Scientist v2のHPC特化版。Singularityコンテナ+BFTSによる自動科学論文生成。' : 'HPC-optimized adaptation of AI Scientist v2 with Singularity containers and BFTS for automated scientific paper generation.' },
+    { name: 'HPC-AutoResearch', language: 'Python', stars: 3, url: 'https://github.com/kotama7/HPC-AutoResearch',
+      description: lang === 'ja' ? 'BFTS木探索・Singularityコンテナ・LLM統合によるHPC環境での自動研究ワークフロー。' : 'Framework for automated research workflows in HPC environments using BFTS tree search, Singularity containers, and LLM integration.' },
+    { name: 'seisyun_information_entropy', language: 'Python', stars: 2, url: 'https://github.com/kotama7/seisyun_information_entropy',
+      description: lang === 'ja' ? 'BERTと情報理論を用いた「青春」の定量分析フレームワーク。' : "Computational framework measuring 'youth' through linguistic analysis using BERT and information theory." },
+    { name: 'portfolio', language: 'TypeScript', stars: 1, url: 'https://github.com/kotama7/portfolio',
+      description: lang === 'ja' ? 'React+TypeScriptで構築したチャットUIポートフォリオサイト。' : 'Chat-UI portfolio website built with React and TypeScript.' },
+  ];
+
+  const contribs = [
+    { name: 'SakanaAI/AI-Scientist-v2', role: lang === 'ja' ? 'Fork + HPC拡張' : 'Fork + HPC extension', url: 'https://github.com/SakanaAI/AI-Scientist-v2',
+      description: lang === 'ja' ? 'BFTSベースの自動科学発見フレームワークをHPC環境向けに拡張。' : 'Extended the BFTS-based automated scientific discovery framework for HPC environments with Singularity container support.' },
+    { name: 'SakanaAI/ShinkaEvolve', role: 'Fork', url: 'https://github.com/SakanaAI/ShinkaEvolve',
+      description: lang === 'ja' ? 'オープンエンドかつサンプル効率の高いプログラム進化研究。' : 'Open-ended and sample-efficient program evolution research.' },
+    { name: 'jack-app', role: lang === 'ja' ? 'メンバー / 副代表' : 'Member / Vice-President', url: 'https://github.com/jack-app',
+      description: lang === 'ja' ? 'アプリ開発団体jackの副代表として複数プロジェクトに貢献。' : 'Contributed to multiple projects as vice-president of the app development group jack.' },
+  ];
+
+  const researchWorks = [
+    {
+      title: 'Proposal of The AI Scientist v2 for High Performance Computing with Local Large Language Models',
+      type: lang === 'ja' ? 'ポスター発表' : 'Conference Poster',
+      date: '2026-01',
+      venue: 'HPC Asia 2026',
+      url: 'https://www.sca-hpcasia2026.jp/data/poster/post213.pdf',
+    },
+  ];
+
+  const links = {
+    github: 'https://github.com/kotama7',
+    qiita: 'https://qiita.com/kotama7',
+    x: 'https://x.com/kotama8',
+    linkedin: 'https://www.linkedin.com/in/takanori-kotama-b785b52a4/',
+    orcid: 'https://orcid.org/0009-0001-0749-5486',
+  };
+
+  const sections = {
+    profile,
+    bio,
+    skills,
+    interests,
+    theses,
+    projects,
+    contributions: contribs,
+    research: researchWorks,
+    links,
+    contact: { email: 'kotamatakanori2@gmail.com' },
+  };
+
+  if (section) {
+    if (Object.prototype.hasOwnProperty.call(sections, section)) {
+      res.json({ section, data: sections[section] });
+    } else {
+      res.status(400).json({
+        error: 'Unknown section',
+        available: Object.keys(sections),
+      });
+    }
+    return;
+  }
+
+  res.json(sections);
+});
+
 // Return open-source contributions
 exports.contributions = functions.https.onRequest((req, res) => {
+  if (handlePreflight(req, res)) return;
+  if (rejectMethod(req, res, ['GET', 'POST'])) return;
+  setCors(req, res);
   const lang = (req.body.lang || 'en').toLowerCase();
   const items = {
     en: [

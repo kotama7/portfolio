@@ -65,8 +65,8 @@ const FUNC_MESSAGES: Record<string, { en: string; ja: string }> = {
     ja: '研究では主にPython、Web開発ではJS/TSを使用しています。技術スキルの内訳をご覧ください。',
   },
   interestGraph: {
-    en: 'My research interests center on autonomous research frameworks in HPC environments, with additional work in AI-driven scientific discovery.',
-    ja: 'HPC環境での自律的研究フレームワークを中心に、AI駆動の科学的発見にも取り組んでいます。',
+    en: 'My research interests center on ARI (Autonomous Research Infrastructure) — a general-purpose autonomous research platform for HPC environments — with additional work in AI-driven scientific discovery.',
+    ja: 'HPC環境向け汎用自律研究基盤ARI（Autonomous Research Infrastructure）を中心に、AI駆動の科学的発見にも取り組んでいます。',
   },
 
   contactInfo: {
@@ -82,8 +82,8 @@ const FUNC_MESSAGES: Record<string, { en: string; ja: string }> = {
     ja: '各プラットフォームで活動しています。ぜひつながってください。',
   },
   profileInfo: {
-    en: 'I am Takanori Kotama, a CS student at Nagoya University researching autonomous research frameworks in HPC environments. Here is a detailed profile.',
-    ja: '名古屋大学情報学部の樹神宇徳です。HPC環境における自律的研究フレームワークを研究しています。詳しいプロフィールをご覧ください。',
+    en: 'I am Takanori Kotama, a first-year M.S. student at Nagoya University Graduate School of Informatics, researching autonomous research infrastructure for HPC environments. Here is a detailed profile.',
+    ja: '名古屋大学大学院情報学研究科M1の樹神宇徳です。HPC環境向け汎用自律研究基盤ARIを研究しています。詳しいプロフィールをご覧ください。',
   },
   briefIntro: {
     en: 'Nice to meet you! Let me introduce myself briefly.',
@@ -114,13 +114,13 @@ const FUNC_MESSAGES: Record<string, { en: string; ja: string }> = {
     ja: 'AI駆動の科学的発見やHPC分野を中心に、オープンソースプロジェクトに貢献しています。',
   },
   researchWorks: {
-    en: 'Here are my research publications. I presented a poster at HPC Asia 2026 on adapting AI Scientist v2 for HPC environments.',
-    ja: 'HPC Asia 2026でAI Scientist v2のHPC環境適用に関するポスター発表を行いました。研究業績の一覧です。',
+    en: 'Here are my research publications. Recent highlights include a student talk at ATAT 2026 (National Taiwan University), a talk at the 203rd IPSJ HPC SIG, and a poster at HPC Asia 2026.',
+    ja: 'ATAT 2026（国立台湾大学）での学生講演、第203回情処HPC研究会での口頭発表、HPC Asia 2026でのポスター発表などの研究業績です。',
   },
 
   greeting: {
-    en: 'Hello! Welcome to my portfolio. I am Takanori Kotama, a CS student at Nagoya University. Feel free to ask about my research, projects, skills, or anything else!',
-    ja: 'こんにちは！名古屋大学情報学部の樹神宇徳です。研究やプロジェクト、スキルなど何でも聞いてください！',
+    en: 'Hello! Welcome to my portfolio. I am Takanori Kotama, a first-year M.S. student at Nagoya University Graduate School of Informatics. Feel free to ask about my research, projects, skills, or anything else!',
+    ja: 'こんにちは！名古屋大学大学院情報学研究科M1の樹神宇徳です。研究やプロジェクト、スキルなど何でも聞いてください！',
   },
   thankYou: {
     en: "You're welcome! If you'd like to know more about a specific topic, feel free to ask anytime.",
@@ -139,20 +139,20 @@ const FUNC_MESSAGES: Record<string, { en: string; ja: string }> = {
     ja: 'このポートフォリオはReact・TypeScript・Firebaseで構築されたチャット型サイトです。Gemini AIが自然言語を理解し、適切な情報にルーティングしています。ソースコードはGitHubで公開しています！',
   },
   qualifications: {
-    en: 'Here is my educational background. I am graduating from Nagoya University in March 2026 and advancing to graduate school.',
-    ja: '学歴の一覧です。2026年3月に名古屋大学を卒業し、同大学大学院に進学予定です。',
+    en: 'Here is my educational background. I received my B.S. from Nagoya University in March 2026 and am currently enrolled in the M.S. program at Nagoya University Graduate School of Informatics.',
+    ja: '学歴の一覧です。2026年3月に名古屋大学情報学部を卒業し、同年4月より大学院情報学研究科修士課程に在学中です。',
   },
   workExperience: {
-    en: 'I have gained hands-on experience through internships at Panasonic, USTC, and RIKEN R-CCS, spanning AI, materials science, and HPC.',
-    ja: 'パナソニック・USTC・理化学研究所R-CCSでのインターンを通じて、AI・材料科学・HPCの実務経験を積んできました。',
+    en: 'I have gained hands-on experience through internships at AIxtal, Panasonic, USTC, and RIKEN R-CCS, spanning process informatics, AI, materials science, and HPC.',
+    ja: 'AIxtal・パナソニック・USTC・理化学研究所R-CCSでのインターンを通じて、プロセスインフォマティクス・AI・材料科学・HPCの実務経験を積んできました。',
   },
   awards: {
     en: 'I received the Encouragement Award for a paper that quantifies "youth" using information theory and large language models.',
     ja: '情報理論と大規模言語モデルを用いて「青春」を定量化した論文で奨励賞を受賞しました。',
   },
   futureGoals: {
-    en: 'I will be advancing to graduate school in April 2026 to deepen my research on autonomous research frameworks in HPC environments.',
-    ja: '2026年4月に大学院に進学し、HPC環境における自律的研究フレームワークの研究をさらに深めていく予定です。',
+    en: 'I am currently pursuing my M.S. at Nagoya University, focusing on ARI (Autonomous Research Infrastructure) for HPC environments. My mid-term goals include applying for JSPS DC1, submitting papers to NeurIPS/SC, and developing self-improving AI research systems.',
+    ja: '現在は名古屋大学大学院でHPC向けARI（Autonomous Research Infrastructure）の研究に取り組んでいます。中期目標は学振DC1取得・NeurIPS/SC等への論文投稿、長期的には自己改善するAIシステムの研究者または起業家を目指しています。',
   },
   spokenLanguages: {
     en: 'I speak three languages — Japanese, English, and Chinese — which has helped me collaborate in international research environments.',
@@ -440,23 +440,23 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                     <div>
                         {props.lang === 'en' ? (
                             <>
-                                <p><strong>Takanori Kotama</strong> — Computer Science, Nagoya University (Information Systems)</p>
+                                <p><strong>Takanori Kotama</strong> — Graduate School of Informatics, Information Systems, Nagoya University (M1)</p>
                                 <ul>
-                                    <li>Graduating March 2026, advancing to graduate school at Nagoya University</li>
-                                    <li>Research: Autonomous research frameworks in HPC environments (HPC-AutoResearch)</li>
+                                    <li>B.S. from Nagoya University, March 2026; enrolled in M.S. program April 2026</li>
+                                    <li>Research: General-purpose autonomous research infrastructure for HPC environments using LLMs (ARI: Autonomous Research Infrastructure)</li>
                                     <li>Award: Encouragement Award at the 2024 Nagoya University Student Paper Contest</li>
-                                    <li>Experience: Internships at Panasonic (AI), USTC FuSEP (materials science), and RIKEN R-CCS (HPC). Research part-timer at RIKEN R-CCS since November 2025</li>
+                                    <li>Experience: Internships at AIxtal (2023–present), Panasonic (AI), USTC FuSEP (materials science), and RIKEN R-CCS (HPC). Research part-timer at RIKEN R-CCS since November 2025</li>
                                     <li>Vice-President of app development group "jack" (2022-2024)</li>
                                 </ul>
                             </>
                         ) : (
                             <>
-                                <p><strong>樹神 宇徳（こたま たかのり）</strong> — 名古屋大学情報学部コンピュータ科学科情報システム専攻</p>
+                                <p><strong>樹神 宇徳（こたま たかのり）</strong> — 名古屋大学大学院 情報学研究科 情報システム学専攻 修士課程 M1</p>
                                 <ul>
-                                    <li>2026年3月卒業予定、同大学大学院へ進学予定</li>
-                                    <li>研究テーマ：HPC環境における自律的研究フレームワーク（HPC-AutoResearch）</li>
+                                    <li>2026年4月 大学院修士課程 入学（2026年3月学部卒業）</li>
+                                    <li>研究テーマ：HPC環境向けLLMを用いた汎用自律研究基盤（ARI: Autonomous Research Infrastructure）</li>
                                     <li>受賞：2024年 名古屋大学学生論文コンテスト 奨励賞</li>
-                                    <li>経験：パナソニック（AI）、USTC FuSEP（材料科学）、理化学研究所R-CCS（HPC）でインターン。2025年11月より理化学研究所R-CCSで研究パートタイマー</li>
+                                    <li>経験：AIxtal（2023年〜）、パナソニック（AI）、USTC FuSEP（材料科学）、理化学研究所R-CCS（HPC）でインターン。2025年11月より理化学研究所R-CCSで研究パートタイマー</li>
                                     <li>アプリ開発団体「jack」副代表（2022-2024）</li>
                                 </ul>
                             </>
@@ -467,8 +467,8 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                 return (
                     <div>
                         {props.lang === 'en'
-                            ? 'I am Takanori Kotama, a Computer Science student at Nagoya University majoring in Information Systems. My research focuses on building autonomous research frameworks for HPC environments. I have interned at Panasonic, USTC, and RIKEN R-CCS, and I will be advancing to graduate school in April 2026.'
-                            : '名古屋大学情報学部コンピュータ科学科情報システム専攻の樹神宇徳です。HPC環境における自律的研究フレームワークの構築を研究しています。パナソニック・USTC・理化学研究所R-CCSでのインターン経験があり、2026年4月に大学院へ進学予定です。'}
+                            ? 'I am Takanori Kotama, a first-year M.S. student at Nagoya University Graduate School of Informatics (Information Systems). My research focuses on ARI (Autonomous Research Infrastructure) — a general-purpose autonomous research platform for HPC environments. I have interned at AIxtal, Panasonic, USTC, and RIKEN R-CCS, and I received my B.S. from Nagoya University in March 2026.'
+                            : '名古屋大学大学院情報学研究科情報システム学専攻M1の樹神宇徳です。HPC環境向け汎用自律研究基盤ARI（Autonomous Research Infrastructure）の研究に取り組んでいます。AIxtal・パナソニック・USTC・理化学研究所R-CCSでのインターン経験があり、2026年3月に学部を卒業しました。'}
                     </div>
                 );
             case 'thesisSummary':
@@ -498,6 +498,7 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                     <div>
                         {props.lang === 'en' ? (
                             <ul>
+                                <li><strong>AIxtal Inc. — AI Intern</strong> (Apr 2023–present)<br />Process informatics, manufacturing AI, and digital twin research at a Nagoya University spin-off focused on semiconductor crystal growth process optimization.</li>
                                 <li><strong>Panasonic — AI Intern</strong> (Summer 2024)<br />Applied machine learning models to manufacturing process optimization and data analysis.</li>
                                 <li><strong>USTC FuSEP — Summer Researcher</strong> (Jul–Aug 2024)<br />Developed CrysEnergyModel, a GNN-based machine-learning potential for predicting crystal energies of Nb-Mo-Ta-W high-entropy alloys. Achieved test RMSE of 0.00139 eV.</li>
                                 <li><strong>RIKEN R-CCS — HPC Intern</strong> (Sep 2025)<br />Worked with the AI for Science team. Extended AI Scientist v2 for HPC environments with Singularity container support and local LLM integration.</li>
@@ -505,6 +506,7 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                             </ul>
                         ) : (
                             <ul>
+                                <li><strong>株式会社AIxtal — AIインターン</strong>（2023年4月–現在）<br />名古屋大学発スタートアップにてプロセスインフォマティクス・製造AI・デジタルツインに従事（半導体結晶成長プロセス最適化）。</li>
                                 <li><strong>パナソニック — AIインターン</strong>（2024年夏）<br />機械学習モデルを製造プロセスの最適化・データ分析に適用。</li>
                                 <li><strong>USTC FuSEP — 夏季研究員</strong>（2024年7–8月）<br />Nb-Mo-Ta-W系高エントロピー合金の結晶エネルギーを予測するGNNベースの機械学習ポテンシャル CrysEnergyModel を開発。テストRMSE 0.00139 eV を達成。</li>
                                 <li><strong>理化学研究所R-CCS — HPCインターン</strong>（2025年9月）<br />AI for Scienceチームに所属。AI Scientist v2をHPC環境向けに拡張し、Singularityコンテナ対応とローカルLLM統合を実装。</li>
@@ -536,20 +538,20 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                     <div>
                         {props.lang === 'en' ? (
                             <>
-                                <p>I will be advancing to graduate school at Nagoya University starting April 2026. My goals include:</p>
+                                <p>I am currently enrolled in the M.S. program at Nagoya University Graduate School of Informatics (April 2026–). My goals include:</p>
                                 <ul>
-                                    <li>Deepening research on HPC-AutoResearch — making autonomous scientific discovery more scalable and reliable in large-scale HPC environments</li>
-                                    <li>Publishing research at top-tier venues in HPC and AI for Science</li>
-                                    <li>Contributing to open-source tools that democratize AI-driven research automation</li>
+                                    <li><strong>Short-term:</strong> Research on ARI — LLM × HPC autonomous research AI</li>
+                                    <li><strong>Mid-term:</strong> Applying for JSPS DC1 fellowship, submitting papers to NeurIPS / SC and other top venues</li>
+                                    <li><strong>Long-term:</strong> Becoming a researcher or entrepreneur building self-improving AI systems</li>
                                 </ul>
                             </>
                         ) : (
                             <>
-                                <p>2026年4月から名古屋大学大学院に進学予定です。以下の目標を掲げています：</p>
+                                <p>現在、名古屋大学大学院情報学研究科修士課程に在学中（2026年4月〜）です。以下の目標を掲げています：</p>
                                 <ul>
-                                    <li>HPC-AutoResearchの研究深化 — 大規模HPC環境での自律的科学発見をよりスケーラブルかつ信頼性の高いものに</li>
-                                    <li>HPCおよびAI for Science分野のトップカンファレンスでの研究発表</li>
-                                    <li>AI駆動の研究自動化を広く活用可能にするオープンソースツールへの貢献</li>
+                                    <li><strong>短期：</strong>LLM×HPC分野での自律研究AI（ARI）の研究推進</li>
+                                    <li><strong>中期：</strong>学振DC1取得・NeurIPS/SC等のトップ会議への論文投稿</li>
+                                    <li><strong>長期：</strong>自己改善するAIシステムの研究者・または起業家</li>
                                 </ul>
                             </>
                         )}

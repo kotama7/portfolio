@@ -217,19 +217,19 @@ exports.autoReply = functions.https.onRequest((req, res) => {
   const replies = {
     ja: [
       `
-    名古屋大学情報学部コンピュータ科学科情報システム専攻の樹神宇徳です。2026年3月に卒業予定で、同大学大学院へ進学予定です。\n
-    研究テーマはHPC環境における自律的研究フレームワーク（HPC-AutoResearch）です。\n
+    名古屋大学大学院情報学研究科情報システム学専攻の修士1年生（M1）の樹神宇徳です。2026年3月に学部を卒業し、同年4月に大学院に進学しました。\n
+    研究テーマはHPC環境向けLLMを用いた汎用自律研究基盤（ARI: Autonomous Research Infrastructure）の構築です。\n
       `,
       `
-    2026年3月卒業・大学院進学予定で、2024年には学生論文コンテストで奨励賞を受賞しました。
+    2026年4月より名古屋大学大学院に在学中です。2024年には学生論文コンテストで奨励賞を受賞しました。
       `,
     ],
     en: [
       `
-    I am Takanori Kotama, a Computer Science student in Nagoya University's Information Systems program, graduating in March 2026 and advancing to graduate school. My research focuses on autonomous research frameworks in HPC environments (HPC-AutoResearch).
+    I am Takanori Kotama, a first-year M.S. student at Nagoya University Graduate School of Informatics (Information Systems). I received my B.S. in March 2026 and enrolled in the M.S. program in April 2026. My research focuses on ARI (Autonomous Research Infrastructure) — a general-purpose autonomous research platform for HPC environments.
       `,
       `
-    I graduate in March 2026 and will be advancing to graduate school. I won the Encouragement Award at the 2024 Nagoya University Student Paper Contest.
+    I enrolled in the M.S. program at Nagoya University in April 2026. I won the Encouragement Award at the 2024 Nagoya University Student Paper Contest.
       `,
     ],
   };
@@ -249,16 +249,16 @@ exports.profileInfo = functions.https.onRequest((req, res) => {
 
   const details = {
     summary:
-      'Takanori Kotama is an undergraduate in the Information Systems program at Nagoya University, graduating in March 2026 and advancing to graduate school. ' +
-      'His research focuses on autonomous research frameworks in HPC environments (HPC-AutoResearch). ' +
-      'He joined the FuSEP Summer Researcher Program at USTC and interned at Panasonic applying AI to manufacturing. ' +
-      'He participated in the RIKEN R-CCS HPC internship in September 2025 and has been working as a research part-timer at RIKEN R-CCS since November 2025. He previously served as vice-president of the app development group "jack" until 2024.',
+      'Takanori Kotama is a first-year M.S. student in the Graduate School of Informatics (Information Systems) at Nagoya University. ' +
+      'He received his B.S. from Nagoya University in March 2026 and enrolled in the M.S. program in April 2026. ' +
+      'His research focuses on ARI (Autonomous Research Infrastructure) — a general-purpose autonomous research platform for HPC environments using LLMs. ' +
+      'He has interned at AIxtal Inc. (2023–present), USTC FuSEP, Panasonic, and RIKEN R-CCS, and has been a research part-timer at RIKEN R-CCS since November 2025. He previously served as vice-president of the app development group "jack" until 2024.',
     award:
-      'Encouragement Award at the 2024 Nagoya University Student Paper Contest for the paper "A quantitative definition of青春 using large language models."',
+      'Encouragement Award at the 2024 Nagoya University Student Paper Contest for the paper "A quantitative definition of 青春 using large language models."',
     qualifications:
-      'Bachelor of Science in Information Systems expected in March 2026 from Nagoya University. Advancing to graduate school at Nagoya University.',
+      'Bachelor of Science in Information Systems from Nagoya University (March 2026). Currently enrolled in the M.S. program at Nagoya University Graduate School of Informatics (April 2026–present).',
     lab:
-      'Affiliated with the Faculty of Informatics at Nagoya University.'
+      'Affiliated with the Graduate School of Informatics at Nagoya University.'
   };
 
   if (!query) {
@@ -281,19 +281,19 @@ exports.briefIntro = functions.https.onRequest((req, res) => {
   const intros = {
     ja: [
       `
-    名古屋大学情報学部コンピュータ科学科情報システム専攻の樹神宇徳です。2026年3月に卒業予定で、同大学大学院へ進学予定です。\n
-    研究テーマはHPC環境における自律的研究フレームワーク（HPC-AutoResearch）です。\n
+    名古屋大学大学院情報学研究科情報システム学専攻M1の樹神宇徳です。2026年3月に学部を卒業し、同年4月に大学院に進学しました。\n
+    研究テーマはHPC環境向けLLMを用いた汎用自律研究基盤（ARI: Autonomous Research Infrastructure）の構築です。\n
       `,
       `
-    2026年3月卒業・大学院進学予定で、2024年の学生論文コンテストで奨励賞を受賞しました。
+    2026年4月より名古屋大学大学院に在学中です。2024年の学生論文コンテストで奨励賞を受賞しました。
       `,
     ],
     en: [
       `
-    I'm Takanori Kotama, a Computer Science student in Nagoya University's Information Systems program, graduating in March 2026 and advancing to graduate school. My research focuses on autonomous research frameworks in HPC environments (HPC-AutoResearch).
+    I'm Takanori Kotama, a first-year M.S. student at Nagoya University Graduate School of Informatics (Information Systems). I received my B.S. in March 2026 and enrolled in April 2026. My research focuses on ARI (Autonomous Research Infrastructure) — a general-purpose autonomous research platform for HPC environments.
       `,
       `
-    I graduate in March 2026 and will be advancing to graduate school. I won the Encouragement Award at the 2024 Nagoya University Student Paper Contest.
+    I enrolled in the M.S. program at Nagoya University in April 2026. I won the Encouragement Award at the 2024 Nagoya University Student Paper Contest.
       `
     ]
   };
@@ -388,12 +388,14 @@ exports.majorProjects = functions.https.onRequest((req, res) => {
   const lang = (req.body.lang || 'en').toLowerCase();
   const projects = {
     en: [
+      { name: 'ARI', description: 'Autonomous Research Infrastructure — fully general autonomous research platform for any scientific domain and any computing environment (PC to supercomputer). BFTS/MCP/local-LLM support. MIT license.', url: 'https://github.com/kotama7/ARI', language: 'Python', stars: 0 },
       { name: 'AI-Scientist-v2-HPC', description: 'HPC-optimized adaptation of AI Scientist v2 with Singularity containers and BFTS for automated scientific paper generation.', url: 'https://github.com/kotama7/AI-Scientist-v2-HPC', language: 'Python', stars: 17 },
       { name: 'HPC-AutoResearch', description: 'Framework for automated research workflows in HPC environments using BFTS tree search, Singularity containers, and LLM integration.', url: 'https://github.com/kotama7/HPC-AutoResearch', language: 'Python', stars: 3 },
       { name: 'seisyun_information_entropy', description: "Computational framework measuring 'youth' through linguistic analysis using BERT and information theory.", url: 'https://github.com/kotama7/seisyun_information_entropy', language: 'Python', stars: 2 },
       { name: 'portfolio', description: 'Chat-UI portfolio website built with React and TypeScript.', url: 'https://github.com/kotama7/portfolio', language: 'TypeScript', stars: 1 },
     ],
     ja: [
+      { name: 'ARI', description: 'あらゆる科学分野・あらゆる計算環境（PC〜スパコン）で動く完全汎用自律研究基盤。BFTS・MCP対応・ローカルLLM対応。MITライセンス。', url: 'https://github.com/kotama7/ARI', language: 'Python', stars: 0 },
       { name: 'AI-Scientist-v2-HPC', description: 'AI Scientist v2のHPC特化版。Singularityコンテナ+BFTSによる自動科学論文生成。', url: 'https://github.com/kotama7/AI-Scientist-v2-HPC', language: 'Python', stars: 17 },
       { name: 'HPC-AutoResearch', description: 'BFTS木探索・Singularityコンテナ・LLM統合によるHPC環境での自動研究ワークフローフレームワーク。', url: 'https://github.com/kotama7/HPC-AutoResearch', language: 'Python', stars: 3 },
       { name: 'seisyun_information_entropy', description: 'BERTと情報理論を用いた「青春」の定量分析フレームワーク。', url: 'https://github.com/kotama7/seisyun_information_entropy', language: 'Python', stars: 2 },
@@ -417,13 +419,16 @@ exports.agent = functions.https.onRequest((req, res) => {
   const profile = {
     name: 'Takanori Kotama',
     affiliation: lang === 'ja'
-      ? '名古屋大学情報学部コンピュータ科学科情報システム専攻'
-      : 'Faculty of Informatics, Nagoya University (Information Systems)',
-    graduation: '2026-03',
-    nextStep: lang === 'ja' ? '同大学大学院へ進学予定' : 'Advancing to graduate school at Nagoya University',
-    award: lang === 'ja'
-      ? '2024年 名古屋大学学生論文コンテスト 奨励賞'
-      : 'Encouragement Award at the 2024 Nagoya University Student Paper Contest',
+      ? '名古屋大学大学院 情報学研究科 情報システム学専攻 修士課程 M1'
+      : 'Graduate School of Informatics, Information Systems, Nagoya University (M.S. 1st year)',
+    bsDegree: '2026-03',
+    msEnrolled: '2026-04',
+    research: lang === 'ja'
+      ? 'HPC環境向けLLMを用いた汎用自律研究基盤（ARI: Autonomous Research Infrastructure）'
+      : 'ARI (Autonomous Research Infrastructure) — general-purpose autonomous research platform for HPC environments using LLMs',
+    awards: lang === 'ja'
+      ? ['2024年 名古屋大学学生論文コンテスト 奨励賞']
+      : ['Encouragement Award at the 2024 Nagoya University Student Paper Contest'],
     contact: 'kotamatakanori2@gmail.com',
     orcid: 'https://orcid.org/0009-0001-0749-5486',
   };
@@ -433,13 +438,15 @@ exports.agent = functions.https.onRequest((req, res) => {
     { year: 2022, event: lang === 'ja' ? '名古屋大学情報学部入学' : 'Enrolled at Nagoya University (CS & Information Systems)' },
     { year: '2022-2024', event: lang === 'ja' ? 'アプリ開発団体jack副代表' : 'Vice-President of app-development group "jack"' },
     { year: '2023-2024', event: lang === 'ja' ? '名大祭Webチーフ' : 'Web Chief at Nagoya University Festival' },
+    { year: '2023-present', event: lang === 'ja' ? '株式会社AIxtal AIインターンシップ（プロセスインフォマティクス・製造AI）' : 'AI Internship at AIxtal Inc. (process informatics, manufacturing AI)' },
     { year: '2024-03', event: lang === 'ja' ? 'JENESYS 2024 韓国交流プログラム参加' : 'JENESYS 2024 Korea Exchange participant' },
     { year: '2024-summer', event: lang === 'ja' ? 'パナソニック AIインターンシップ' : 'AI Internship at Panasonic' },
     { year: '2024-07-08', event: lang === 'ja' ? 'USTC FuSEP夏季研究プログラム' : 'FuSEP Summer Researcher at USTC' },
     { year: 2024, event: lang === 'ja' ? '学生論文コンテスト奨励賞受賞' : 'Encouragement Award at Student Paper Contest' },
     { year: '2025-09', event: lang === 'ja' ? '理化学研究所R-CCS HPCインターン' : 'HPC Internship at RIKEN R-CCS AI for Science Team' },
     { year: '2025-11-present', event: lang === 'ja' ? '理化学研究所R-CCS 研究パートタイマー' : 'Research Part-timer at RIKEN R-CCS AI for Science Team' },
-    { year: '2026-03', event: lang === 'ja' ? '学士取得予定・大学院進学' : 'Expected B.S. degree, advancing to graduate school' },
+    { year: '2026-03', event: lang === 'ja' ? '名古屋大学学士課程修了（学士号取得）' : 'Received B.S. degree from Nagoya University' },
+    { year: '2026-04', event: lang === 'ja' ? '名古屋大学大学院情報学研究科 修士課程 入学' : 'Enrolled in M.S. program at Nagoya University Graduate School of Informatics' },
   ];
 
   const skills = [
@@ -495,6 +502,8 @@ exports.agent = functions.https.onRequest((req, res) => {
   ];
 
   const projects = [
+    { name: 'ARI', language: 'Python', stars: 0, url: 'https://github.com/kotama7/ARI',
+      description: lang === 'ja' ? 'あらゆる科学分野・あらゆる計算環境（PC〜スパコン）で動く完全汎用自律研究基盤。BFTS・MCP対応・ローカルLLM対応。MITライセンス。' : 'Autonomous Research Infrastructure — fully general autonomous research platform for any scientific domain and computing environment (PC to supercomputer). BFTS/MCP/local-LLM support. MIT license.' },
     { name: 'AI-Scientist-v2-HPC', language: 'Python', stars: 17, url: 'https://github.com/kotama7/AI-Scientist-v2-HPC',
       description: lang === 'ja' ? 'AI Scientist v2のHPC特化版。Singularityコンテナ+BFTSによる自動科学論文生成。' : 'HPC-optimized adaptation of AI Scientist v2 with Singularity containers and BFTS for automated scientific paper generation.' },
     { name: 'HPC-AutoResearch', language: 'Python', stars: 3, url: 'https://github.com/kotama7/HPC-AutoResearch',
@@ -515,6 +524,29 @@ exports.agent = functions.https.onRequest((req, res) => {
   ];
 
   const researchWorks = [
+    {
+      title: lang === 'ja'
+        ? 'ATAT 2026 学生講演（タイトル公開前）'
+        : 'Student Talk at ATAT 2026 (title TBA)',
+      type: lang === 'ja' ? '学生講演' : 'Student Speaker',
+      date: '2026-03',
+      venue: lang === 'ja'
+        ? 'ATAT 2026（高性能科学計算における先進的トピックと自動チューニング国際会議）、国立台湾大学'
+        : 'ATAT 2026 (Conference on Advanced Topics and Auto Tuning in High-Performance Scientific Computing), National Taiwan University',
+    },
+    {
+      title: lang === 'ja'
+        ? 'HPC-AutoResearch：AI Scientist v2に基づくフェーズ分離実行と階層記憶によるHPC向け自律研究システム'
+        : 'HPC-AutoResearch: An Autonomous Research System for HPC Based on AI Scientist v2 with Phase-Separated Execution and Hierarchical Memory',
+      type: lang === 'ja' ? '口頭発表' : 'Conference Talk',
+      date: '2026-03',
+      venue: lang === 'ja'
+        ? '第203回情処HPC研究会・第17回量子ソフトウェア研究会 合同研究発表会（北海道大学）'
+        : '203rd IPSJ HPC SIG / 17th Quantum Software SIG Joint Workshop, Hokkaido University',
+      authors: lang === 'ja'
+        ? '樹神 宇徳（名古屋大／理研）, 林 俊一郎（名古屋大）, 椋木 大地（名古屋大）, 横田 理央（理研）, 大島 聡史（九大）, 星野 哲也（名古屋大）, 片桐 孝洋（名古屋大）'
+        : 'Takanori Kotama (Nagoya U. / RIKEN), Shunichiro Hayashi (Nagoya U.), Daichi Mukunoki (Nagoya U.), Rio Yokota (RIKEN), Satoshi Ohshima (Kyushu U.), Tetsuya Hoshino (Nagoya U.), Takahiro Katagiri (Nagoya U.)',
+    },
     {
       title: 'Proposal of The AI Scientist v2 for High Performance Computing with Local Large Language Models',
       type: lang === 'ja' ? 'ポスター発表' : 'Conference Poster',

@@ -1,5 +1,12 @@
 [
   {
+    "name": "ARI",
+    "description": "Autonomous Research Infrastructure — a fully general autonomous research platform that works across any scientific domain and any computing environment (PC to supercomputer). Supports BFTS, MCP, and local LLMs. MIT license.",
+    "url": "https://github.com/kotama7/ARI",
+    "language": "Python",
+    "stars": 0
+  },
+  {
     "name": "AI-Scientist-v2-HPC",
     "description": "HPC-optimized adaptation of AI Scientist v2 with Singularity containers and BFTS for automated scientific paper generation.",
     "url": "https://github.com/kotama7/AI-Scientist-v2-HPC",

@@ -1,5 +1,12 @@
 [
   {
+    "name": "ARI",
+    "description": "Autonomous Research Infrastructure — あらゆる科学分野・あらゆる計算環境（PC〜スパコン）で動く完全汎用自律研究基盤。BFTS・MCP対応・ローカルLLM対応。MITライセンス。",
+    "url": "https://github.com/kotama7/ARI",
+    "language": "Python",
+    "stars": 0
+  },
+  {
     "name": "AI-Scientist-v2-HPC",
     "description": "AI Scientist v2のHPC特化版。Singularityコンテナ+BFTSによる自動科学論文生成。",
     "url": "https://github.com/kotama7/AI-Scientist-v2-HPC",

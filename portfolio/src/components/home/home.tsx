@@ -114,8 +114,8 @@ const FUNC_MESSAGES: Record<string, { en: string; ja: string }> = {
     ja: 'AI駆動の科学的発見やHPC分野を中心に、オープンソースプロジェクトに貢献しています。',
   },
   researchWorks: {
-    en: 'Here are my research publications. Recent highlights include a student talk at ATAT 2026 (National Taiwan University), a talk at the 203rd IPSJ HPC SIG, and a poster at HPC Asia 2026.',
-    ja: 'ATAT 2026（国立台湾大学）での学生講演、第203回情処HPC研究会での口頭発表、HPC Asia 2026でのポスター発表などの研究業績です。',
+    en: 'Here are my research publications. Recent highlights include a first-author arXiv preprint, a conference talk at ATAT 2026 (National Taiwan University), a talk at the 203rd IPSJ HPC SIG, and a poster at HPC Asia 2026.',
+    ja: '筆頭著者のarXivプレプリント、ATAT 2026（国立台湾大学）での国際会議口頭発表、第203回情処HPC研究会での口頭発表、HPC Asia 2026でのポスター発表などの研究業績です。',
   },
 
   greeting: {
@@ -151,8 +151,8 @@ const FUNC_MESSAGES: Record<string, { en: string; ja: string }> = {
     ja: '情報理論と大規模言語モデルを用いて「青春」を定量化した論文で奨励賞を受賞しました。',
   },
   futureGoals: {
-    en: 'I am currently pursuing my M.S. at Nagoya University, focusing on ARI (Autonomous Research Infrastructure) for HPC environments. My mid-term goals include applying for JSPS DC1, submitting papers to NeurIPS/SC, and developing self-improving AI research systems.',
-    ja: '現在は名古屋大学大学院でHPC向けARI（Autonomous Research Infrastructure）の研究に取り組んでいます。中期目標は学振DC1取得・NeurIPS/SC等への論文投稿、長期的には自己改善するAIシステムの研究者または起業家を目指しています。',
+    en: 'I am currently pursuing my M.S. at Nagoya University, focusing on ARI (Autonomous Research Infrastructure) for HPC environments. My mid-term goal is to deepen this research and keep publishing at international conferences and in peer-reviewed venues, with the long-term aim of becoming a researcher or entrepreneur building self-improving AI research systems.',
+    ja: '現在は名古屋大学大学院でHPC向けARI（Autonomous Research Infrastructure）の研究に取り組んでいます。中期的にはこの自律研究基盤ARIの研究を深め、国際会議・査読論文として継続的に成果を発表していくこと、長期的には自己改善するAI研究システムの研究者または起業家を目指しています。',
   },
   spokenLanguages: {
     en: 'I speak three languages — Japanese, English, and Chinese — which has helped me collaborate in international research environments.',
@@ -443,10 +443,11 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                                 <p><strong>Takanori Kotama</strong> — Graduate School of Informatics, Information Systems, Nagoya University (M1)</p>
                                 <ul>
                                     <li>B.S. from Nagoya University, March 2026; enrolled in M.S. program April 2026</li>
+                                    <li>Lab: Information Technology Center, Katagiri–Hoshino Laboratory (advisor: Prof. Takahiro Katagiri)</li>
                                     <li>Research: General-purpose autonomous research infrastructure for HPC environments using LLMs (ARI: Autonomous Research Infrastructure)</li>
                                     <li>Award: Encouragement Award at the 2024 Nagoya University Student Paper Contest</li>
-                                    <li>Experience: Internships at AIxtal (2023–present), Panasonic (AI), USTC FuSEP (materials science), and RIKEN R-CCS (HPC). Research part-timer at RIKEN R-CCS since November 2025</li>
-                                    <li>Vice-President of app development group "jack" (2022-2024)</li>
+                                    <li>Experience: Part-time Data Scientist at AIxtal (2023–present), AI internship at Panasonic Connect (Sep 2024), USTC FuSEP (materials science), and RIKEN R-CCS (HPC). Research part-timer at RIKEN R-CCS since November 2025</li>
+                                    <li>App development group "jack": member since 2022, Vice-President 2023–2025</li>
                                 </ul>
                             </>
                         ) : (
@@ -454,10 +455,11 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                                 <p><strong>樹神 宇徳（こたま たかのり）</strong> — 名古屋大学大学院 情報学研究科 情報システム学専攻 修士課程 M1</p>
                                 <ul>
                                     <li>2026年4月 大学院修士課程 入学（2026年3月学部卒業）</li>
+                                    <li>所属：情報基盤センター 片桐・星野研究室（主指導：片桐 孝洋 教授）</li>
                                     <li>研究テーマ：HPC環境向けLLMを用いた汎用自律研究基盤（ARI: Autonomous Research Infrastructure）</li>
                                     <li>受賞：2024年 名古屋大学学生論文コンテスト 奨励賞</li>
-                                    <li>経験：AIxtal（2023年〜）、パナソニック（AI）、USTC FuSEP（材料科学）、理化学研究所R-CCS（HPC）でインターン。2025年11月より理化学研究所R-CCSで研究パートタイマー</li>
-                                    <li>アプリ開発団体「jack」副代表（2022-2024）</li>
+                                    <li>経験：アイクリスタル株式会社でPart-timeデータサイエンティスト（2023年〜）、パナソニック コネクトでAIインターン（2024年9月）、USTC FuSEP（材料科学）、理化学研究所R-CCS（HPC）。2025年11月より理化学研究所R-CCSで研究パートタイマー</li>
+                                    <li>アプリ開発団体「jack」：2022年より在籍、2023〜2025年 副代表</li>
                                 </ul>
                             </>
                         )}
@@ -467,8 +469,8 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                 return (
                     <div>
                         {props.lang === 'en'
-                            ? 'I am Takanori Kotama, a first-year M.S. student at Nagoya University Graduate School of Informatics (Information Systems). My research focuses on ARI (Autonomous Research Infrastructure) — a general-purpose autonomous research platform for HPC environments. I have interned at AIxtal, Panasonic, USTC, and RIKEN R-CCS, and I received my B.S. from Nagoya University in March 2026.'
-                            : '名古屋大学大学院情報学研究科情報システム学専攻M1の樹神宇徳です。HPC環境向け汎用自律研究基盤ARI（Autonomous Research Infrastructure）の研究に取り組んでいます。AIxtal・パナソニック・USTC・理化学研究所R-CCSでのインターン経験があり、2026年3月に学部を卒業しました。'}
+                            ? 'I am Takanori Kotama, a first-year M.S. student at Nagoya University Graduate School of Informatics (Information Systems), in the Katagiri–Hoshino Laboratory at the Information Technology Center (advisor: Prof. Takahiro Katagiri). My research focuses on ARI (Autonomous Research Infrastructure) — a general-purpose autonomous research platform for HPC environments. I have interned at AIxtal, Panasonic, USTC, and RIKEN R-CCS, and I received my B.S. from Nagoya University in March 2026.'
+                            : '名古屋大学大学院情報学研究科情報システム学専攻M1の樹神宇徳です。情報基盤センター 片桐・星野研究室（主指導：片桐孝洋教授）に所属し、HPC環境向け汎用自律研究基盤ARI（Autonomous Research Infrastructure）の研究に取り組んでいます。アイクリスタル・パナソニック・USTC・理化学研究所R-CCSでのインターン経験があり、2026年3月に学部を卒業しました。'}
                     </div>
                 );
             case 'thesisSummary':
@@ -498,16 +500,16 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                     <div>
                         {props.lang === 'en' ? (
                             <ul>
-                                <li><strong>AIxtal Inc. — AI Intern</strong> (Apr 2023–present)<br />Process informatics, manufacturing AI, and digital twin research at a Nagoya University spin-off focused on semiconductor crystal growth process optimization.</li>
-                                <li><strong>Panasonic — AI Intern</strong> (Summer 2024)<br />Applied machine learning models to manufacturing process optimization and data analysis.</li>
+                                <li><strong>AIxtal Corporation — Part-time Data Scientist</strong> (Apr 2023–present)<br />Process informatics (physics simulation × ML and mathematical optimization) for manufacturing process optimization at a Nagoya University spin-off.</li>
+                                <li><strong>Panasonic Connect — AI Intern</strong> (Sep 2024)<br />OJT internship (Sep 2–13, 2024): AI technology development for manufacturing-site AI solutions, with hands-on AI development and data analysis.</li>
                                 <li><strong>USTC FuSEP — Summer Researcher</strong> (Jul–Aug 2024)<br />Developed CrysEnergyModel, a GNN-based machine-learning potential for predicting crystal energies of Nb-Mo-Ta-W high-entropy alloys. Achieved test RMSE of 0.00139 eV.</li>
                                 <li><strong>RIKEN R-CCS — HPC Intern</strong> (Sep 2025)<br />Worked with the AI for Science team. Extended AI Scientist v2 for HPC environments with Singularity container support and local LLM integration.</li>
                                 <li><strong>RIKEN R-CCS — Research Part-timer</strong> (Nov 2025–present)<br />Continuing research on autonomous scientific discovery frameworks in large-scale HPC environments.</li>
                             </ul>
                         ) : (
                             <ul>
-                                <li><strong>株式会社AIxtal — AIインターン</strong>（2023年4月–現在）<br />名古屋大学発スタートアップにてプロセスインフォマティクス・製造AI・デジタルツインに従事（半導体結晶成長プロセス最適化）。</li>
-                                <li><strong>パナソニック — AIインターン</strong>（2024年夏）<br />機械学習モデルを製造プロセスの最適化・データ分析に適用。</li>
+                                <li><strong>アイクリスタル株式会社 — Part-timeデータサイエンティスト</strong>（2023年4月–現在）<br />名古屋大学発スタートアップにて、製造プロセス最適化に向けたプロセスインフォマティクス（物理シミュレーション×ML・数理最適化）に従事。</li>
+                                <li><strong>パナソニック コネクト — AIインターン</strong>（2024年9月）<br />OJTインターン（2024年9月2〜13日）。生産現場向けAIソリューションに関するAI技術開発（AI開発・データ分析スキルの習得）に従事。</li>
                                 <li><strong>USTC FuSEP — 夏季研究員</strong>（2024年7–8月）<br />Nb-Mo-Ta-W系高エントロピー合金の結晶エネルギーを予測するGNNベースの機械学習ポテンシャル CrysEnergyModel を開発。テストRMSE 0.00139 eV を達成。</li>
                                 <li><strong>理化学研究所R-CCS — HPCインターン</strong>（2025年9月）<br />AI for Scienceチームに所属。AI Scientist v2をHPC環境向けに拡張し、Singularityコンテナ対応とローカルLLM統合を実装。</li>
                                 <li><strong>理化学研究所R-CCS — 研究パートタイマー</strong>（2025年11月–現在）<br />大規模HPC環境における自律的科学発見フレームワークの研究を継続。</li>
@@ -523,12 +525,16 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                                 <p><strong>Encouragement Award</strong> — 2024 Nagoya University Student Paper Contest</p>
                                 <p>Paper: "A quantitative definition of youth using large language models"</p>
                                 <p>Proposed "Youth Information Entropy," a novel metric that integrates surprise, positivity, and grammatical fluency using information theory. Validated with Japanese BERT and Llama-3-ELYZA-JP-8B, demonstrating a significant positive correlation (r=0.333, p=0.035).</p>
+                                <p style={{ marginTop: '1em' }}><strong>BFT Inc. Corporate Award</strong> — JPHacks 2023 (Nagoya Block)</p>
+                                <p>CalmEngine (2023): an app that analyzes GitHub commit history with a dLSTM-based anomaly detector to visualize engineers' stress levels.</p>
                             </>
                         ) : (
                             <>
                                 <p><strong>奨励賞</strong> — 2024年 名古屋大学学生論文コンテスト</p>
                                 <p>論文：「大規模言語モデルを用いた青春の定量的定義」</p>
                                 <p>情報理論を用いて意外性・ポジティブさ・文法流暢性を統合した新指標「青春情報エントロピー」を提案。日本語BERTとLlama-3-ELYZA-JP-8Bで検証し、有意な正相関（r=0.333, p=0.035）を確認しました。</p>
+                                <p style={{ marginTop: '1em' }}><strong>株式会社BFT 企業賞</strong> — JPHacks 2023 名古屋ブロック</p>
+                                <p>CalmEngine（2023）：GitHubのコミット履歴をdLSTM異常検知で分析し、エンジニアのストレス値を可視化するアプリ。</p>
                             </>
                         )}
                     </div>
@@ -541,7 +547,7 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                                 <p>I am currently enrolled in the M.S. program at Nagoya University Graduate School of Informatics (April 2026–). My goals include:</p>
                                 <ul>
                                     <li><strong>Short-term:</strong> Research on ARI — LLM × HPC autonomous research AI</li>
-                                    <li><strong>Mid-term:</strong> Applying for JSPS DC1 fellowship, submitting papers to NeurIPS / SC and other top venues</li>
+                                    <li><strong>Mid-term:</strong> Deepening ARI research and continuously publishing at international conferences and in peer-reviewed venues</li>
                                     <li><strong>Long-term:</strong> Becoming a researcher or entrepreneur building self-improving AI systems</li>
                                 </ul>
                             </>
@@ -550,7 +556,7 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                                 <p>現在、名古屋大学大学院情報学研究科修士課程に在学中（2026年4月〜）です。以下の目標を掲げています：</p>
                                 <ul>
                                     <li><strong>短期：</strong>LLM×HPC分野での自律研究AI（ARI）の研究推進</li>
-                                    <li><strong>中期：</strong>学振DC1取得・NeurIPS/SC等のトップ会議への論文投稿</li>
+                                    <li><strong>中期：</strong>自律研究基盤ARIの研究を深め、国際会議・査読論文として継続的に成果を発表</li>
                                     <li><strong>長期：</strong>自己改善するAIシステムの研究者・または起業家</li>
                                 </ul>
                             </>
@@ -580,14 +586,14 @@ export default function Home(props: { lang: 'en' | 'ja' }) {
                     <div>
                         {props.lang === 'en' ? (
                             <ul>
-                                <li><strong>Research & ML:</strong> Python, PyTorch, TensorFlow 1.x, NumPy, ASE, OpenSpiel, LightGBM</li>
+                                <li><strong>Research & ML:</strong> Python, PyTorch, NumPy, ASE, OpenSpiel, LightGBM, TensorFlow (JPHacks 2023)</li>
                                 <li><strong>HPC:</strong> MPI (MPI4py), CUDA, Singularity/Apptainer containers, SLURM job scheduling</li>
                                 <li><strong>Web Development:</strong> React, TypeScript, Firebase (Hosting, Cloud Functions, AI)</li>
                                 <li><strong>DevOps & Tools:</strong> Docker, CMake, Git, GitHub Actions</li>
                             </ul>
                         ) : (
                             <ul>
-                                <li><strong>研究・ML：</strong> Python, PyTorch, TensorFlow 1.x, NumPy, ASE, OpenSpiel, LightGBM</li>
+                                <li><strong>研究・ML：</strong> Python, PyTorch, NumPy, ASE, OpenSpiel, LightGBM, TensorFlow (JPHacks 2023)</li>
                                 <li><strong>HPC：</strong> MPI (MPI4py), CUDA, Singularity/Apptainerコンテナ, SLURMジョブスケジューリング</li>
                                 <li><strong>Web開発：</strong> React, TypeScript, Firebase (Hosting, Cloud Functions, AI)</li>
                                 <li><strong>DevOps・ツール：</strong> Docker, CMake, Git, GitHub Actions</li>

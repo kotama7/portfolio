@@ -7,6 +7,9 @@ export interface SiteLink {
 
 const links: SiteLink[] = [
   { name: 'GitHub', url: 'https://github.com/kotama7' },
+  { name: 'researchmap', url: 'https://researchmap.jp/kotama_takanori' },
+  { name: 'Speaker Deck', url: 'https://speakerdeck.com/kotama7' },
+  { name: 'ResearchGate', url: 'https://www.researchgate.net/profile/Takanori-Kotama' },
   { name: 'Qiita', url: 'https://qiita.com/kotama7' },
   { name: 'Zenn', url: 'https://zenn.dev/kotama' },
   { name: 'X', url: 'https://x.com/kotama8' },

@@ -12,40 +12,40 @@
     "cardDetailedText": "Enrolled at Nagoya University as a Computer Science and Information Systems major."
   },
   {
-    "title": "2022–2024",
-    "cardTitle": "Vice-President",
+    "title": "2022–2025",
+    "cardTitle": "Vice-President (2023–2025)",
     "cardSubtitle": "App-development group \u201cjack\u201d",
-    "cardDetailedText": "Leads projects turning sensor streams into fast surrogate simulations for industry partners."
+    "cardDetailedText": "Member since April 2022; Vice-President from April 2023 to March 2025. Organized the group's Lightning Talk events."
   },
   {
-    "title": "2023–2024",
+    "title": "2023",
     "cardTitle": "Web Chief",
-    "cardSubtitle": "Nagoya University Festival Executive Committee",
-    "cardDetailedText": "Built and maintained the official festival website."
+    "cardSubtitle": "64th Nagoya University Festival (Meidaisai) Executive Committee",
+    "cardDetailedText": "Web Chief of the 64th Nagoya University Festival (Jun 8–11, 2023; theme: Amatsukaze). Built and operated the official website, including the omikuji (fortune) page and campus map."
   },
   {
     "title": "Apr 2023–present",
-    "cardTitle": "AI Internship",
-    "cardSubtitle": "AIxtal Inc.",
-    "cardDetailedText": "Process informatics, manufacturing AI, and digital twin research at a Nagoya University spin-off focused on semiconductor crystal growth process optimization."
+    "cardTitle": "Part-time Data Scientist",
+    "cardSubtitle": "AIxtal Corporation",
+    "cardDetailedText": "Process informatics (physics simulation × ML and mathematical optimization) for manufacturing process optimization at a Nagoya University spin-off."
   },
   {
     "title": "Mar 2024",
-    "cardTitle": "JENESYS 2024 Korea Exchange",
-    "cardSubtitle": "Participant",
-    "cardDetailedText": "Represented Nagoya University in a cultural and academic exchange program."
+    "cardTitle": "JENESYS 2024 Korea",
+    "cardSubtitle": "NIIED Korea–Japan Student Exchange Program",
+    "cardDetailedText": "Participated in the 2024 Korea–Japan Academic, Cultural and Youth Exchange University Student Invitation Program (hosted by NIIED, Korea), Mar 10–16, 2024."
   },
   {
-    "title": "Summer 2024",
+    "title": "Sep 2024",
     "cardTitle": "AI Internship",
-    "cardSubtitle": "Panasonic",
-    "cardDetailedText": "Analyzed large-scale production data to streamline manufacturing workflows with AI."
+    "cardSubtitle": "Panasonic Connect Co., Ltd. (Connect Company)",
+    "cardDetailedText": "OJT internship (Sep 2–13, 2024) developing AI solutions for manufacturing sites — hands-on AI development and data analysis."
   },
   {
     "title": "Jul–Aug 2024",
     "cardTitle": "FuSEP Summer Researcher",
     "cardSubtitle": "University of Science and Technology of China (USTC)",
-    "cardDetailedText": "Developed a GNN that achieved near-benchmark accuracy in predicting formation energies of Mb-Nb-Ta-W high-entropy alloys."
+    "cardDetailedText": "Developed a GNN that achieved near-benchmark accuracy in predicting formation energies of Nb-Mo-Ta-W high-entropy alloys."
   },
   {
     "title": "2024",

@@ -252,13 +252,13 @@ exports.profileInfo = functions.https.onRequest((req, res) => {
       'Takanori Kotama is a first-year M.S. student in the Graduate School of Informatics (Information Systems) at Nagoya University. ' +
       'He received his B.S. from Nagoya University in March 2026 and enrolled in the M.S. program in April 2026. ' +
       'His research focuses on ARI (Autonomous Research Infrastructure) — a general-purpose autonomous research platform for HPC environments using LLMs. ' +
-      'He has interned at AIxtal Inc. (2023–present), USTC FuSEP, Panasonic, and RIKEN R-CCS, and has been a research part-timer at RIKEN R-CCS since November 2025. He previously served as vice-president of the app development group "jack" until 2024.',
+      'He has worked as a part-time data scientist at AIxtal Corporation (2023–present) and interned at Panasonic Connect (Sep 2024), USTC FuSEP, and RIKEN R-CCS, and has been a research part-timer at RIKEN R-CCS since November 2025. He was a member of the app development group "jack" from 2022 and its vice-president from 2023 to 2025.',
     award:
-      'Encouragement Award at the 2024 Nagoya University Student Paper Contest for the paper "A quantitative definition of 青春 using large language models."',
+      'Encouragement Award at the 2024 Nagoya University Student Paper Contest for the paper "A quantitative definition of 青春 using large language models." BFT Inc. Corporate Award at JPHacks 2023 (Nagoya Block) for CalmEngine.',
     qualifications:
-      'Bachelor of Science in Information Systems from Nagoya University (March 2026). Currently enrolled in the M.S. program at Nagoya University Graduate School of Informatics (April 2026–present).',
+      'Bachelor of Science in Information Systems from Nagoya University (March 2026). Currently enrolled in the M.S. program at Nagoya University Graduate School of Informatics (April 2026–present). Applied Information Technology Engineer Examination (passed, Spring 2024). TOEIC L&R 790 (Sep 2024). TOEFL iBT 76 (May 2025).',
     lab:
-      'Affiliated with the Graduate School of Informatics at Nagoya University.'
+      'Information Technology Center, Katagiri–Hoshino Laboratory at Nagoya University (advisor: Prof. Takahiro Katagiri; members include Assoc. Prof. Tetsuya Hoshino and Assistant Prof. Daichi Mukunoki).'
   };
 
   if (!query) {
@@ -359,6 +359,9 @@ exports.otherSiteLinks = functions.https.onRequest((req, res) => {
 
   res.json({
     github: 'https://github.com/kotama7',
+    researchmap: 'https://researchmap.jp/kotama_takanori',
+    speakerdeck: 'https://speakerdeck.com/kotama7',
+    researchgate: 'https://www.researchgate.net/profile/Takanori-Kotama',
     qiita: 'https://qiita.com/kotama7',
     zenn: 'https://zenn.dev/kotama7',
     x: 'https://x.com/kotama8',
@@ -421,26 +424,30 @@ exports.agent = functions.https.onRequest((req, res) => {
     affiliation: lang === 'ja'
       ? '名古屋大学大学院 情報学研究科 情報システム学専攻 修士課程 M1'
       : 'Graduate School of Informatics, Information Systems, Nagoya University (M.S. 1st year)',
+    lab: lang === 'ja'
+      ? '情報基盤センター 片桐・星野研究室（主指導：片桐 孝洋 教授）'
+      : 'Information Technology Center, Katagiri–Hoshino Laboratory (advisor: Prof. Takahiro Katagiri)',
     bsDegree: '2026-03',
     msEnrolled: '2026-04',
     research: lang === 'ja'
       ? 'HPC環境向けLLMを用いた汎用自律研究基盤（ARI: Autonomous Research Infrastructure）'
       : 'ARI (Autonomous Research Infrastructure) — general-purpose autonomous research platform for HPC environments using LLMs',
     awards: lang === 'ja'
-      ? ['2024年 名古屋大学学生論文コンテスト 奨励賞']
-      : ['Encouragement Award at the 2024 Nagoya University Student Paper Contest'],
+      ? ['2024年 名古屋大学学生論文コンテスト 奨励賞', 'JPHacks 2023 名古屋ブロック 株式会社BFT 企業賞（CalmEngine）']
+      : ['Encouragement Award at the 2024 Nagoya University Student Paper Contest', 'BFT Inc. Corporate Award at JPHacks 2023 (Nagoya Block) for CalmEngine'],
     contact: 'kotamatakanori2@gmail.com',
     orcid: 'https://orcid.org/0009-0001-0749-5486',
+    researchmap: 'https://researchmap.jp/kotama_takanori',
   };
 
   const bio = [
     { year: 2003, event: lang === 'ja' ? '日本で出生' : 'Born in Japan' },
     { year: 2022, event: lang === 'ja' ? '名古屋大学情報学部入学' : 'Enrolled at Nagoya University (CS & Information Systems)' },
-    { year: '2022-2024', event: lang === 'ja' ? 'アプリ開発団体jack副代表' : 'Vice-President of app-development group "jack"' },
-    { year: '2023-2024', event: lang === 'ja' ? '名大祭Webチーフ' : 'Web Chief at Nagoya University Festival' },
-    { year: '2023-present', event: lang === 'ja' ? '株式会社AIxtal AIインターンシップ（プロセスインフォマティクス・製造AI）' : 'AI Internship at AIxtal Inc. (process informatics, manufacturing AI)' },
-    { year: '2024-03', event: lang === 'ja' ? 'JENESYS 2024 韓国交流プログラム参加' : 'JENESYS 2024 Korea Exchange participant' },
-    { year: '2024-summer', event: lang === 'ja' ? 'パナソニック AIインターンシップ' : 'AI Internship at Panasonic' },
+    { year: '2022-2025', event: lang === 'ja' ? 'アプリ開発団体jack（2022年加入・2023〜2025年 副代表）：Lightning Talk企画運営' : 'App-development group "jack" (member since 2022, Vice-President 2023–2025): organized Lightning Talk events' },
+    { year: '2023', event: lang === 'ja' ? '第64回名大祭 Webチーフ（おみくじページ・キャンパスマップ等を担当）' : 'Web Chief of the 64th Nagoya University Festival (built the omikuji page, campus map, etc.)' },
+    { year: '2023-present', event: lang === 'ja' ? 'アイクリスタル株式会社 Part-timeデータサイエンティスト（プロセスインフォマティクス）' : 'Part-time Data Scientist at AIxtal Corporation (process informatics)' },
+    { year: '2024-03', event: lang === 'ja' ? 'JENESYS 2024 韓国（2024 韓・日学術文化及び青少年交流 大学生招聘研修、NIIED主催、3月10〜16日）' : 'JENESYS 2024 Korea (2024 Korea–Japan Academic, Cultural and Youth Exchange Program, hosted by NIIED, Mar 10–16)' },
+    { year: '2024-09', event: lang === 'ja' ? 'パナソニック コネクト AIインターンシップ（生産現場向けAIソリューション、9月2〜13日）' : 'AI Internship at Panasonic Connect (manufacturing-site AI solutions, Sep 2–13)' },
     { year: '2024-07-08', event: lang === 'ja' ? 'USTC FuSEP夏季研究プログラム' : 'FuSEP Summer Researcher at USTC' },
     { year: 2024, event: lang === 'ja' ? '学生論文コンテスト奨励賞受賞' : 'Encouragement Award at Student Paper Contest' },
     { year: '2025-09', event: lang === 'ja' ? '理化学研究所R-CCS HPCインターン' : 'HPC Internship at RIKEN R-CCS AI for Science Team' },
@@ -451,7 +458,7 @@ exports.agent = functions.https.onRequest((req, res) => {
 
   const skills = [
     { category: lang === 'ja' ? 'プログラミング' : 'Programming', items: ['Python', 'JavaScript'] },
-    { category: lang === 'ja' ? 'フレームワーク・ライブラリ' : 'Frameworks & Libraries', items: ['TensorFlow 1.x', 'OpenSpiel', 'LightGBM'] },
+    { category: lang === 'ja' ? 'フレームワーク・ライブラリ' : 'Frameworks & Libraries', items: ['PyTorch', 'OpenSpiel', 'LightGBM', 'TensorFlow (JPHacks 2023)'] },
     { category: lang === 'ja' ? 'ツール' : 'Tooling', items: ['Docker', 'CMake', 'MPI', 'CUDA'] },
     { category: 'HPC', items: [
       lang === 'ja' ? '並列化' : 'Parallelization',
@@ -460,7 +467,7 @@ exports.agent = functions.https.onRequest((req, res) => {
     ]},
     { category: lang === 'ja' ? '言語' : 'Languages', items: [
       lang === 'ja' ? '日本語（母語）' : 'Japanese (Native)',
-      lang === 'ja' ? '英語（上級）' : 'English (advanced)',
+      lang === 'ja' ? '英語（上級、TOEFL iBT 76・TOEIC 790）' : 'English (advanced, TOEFL iBT 76, TOEIC 790)',
       lang === 'ja' ? '中国語（中級）' : 'Chinese (intermediate)',
     ]},
   ];
@@ -519,20 +526,32 @@ exports.agent = functions.https.onRequest((req, res) => {
       description: lang === 'ja' ? 'BFTSベースの自動科学発見フレームワークをHPC環境向けに拡張。' : 'Extended the BFTS-based automated scientific discovery framework for HPC environments with Singularity container support.' },
     { name: 'SakanaAI/ShinkaEvolve', role: 'Fork', url: 'https://github.com/SakanaAI/ShinkaEvolve',
       description: lang === 'ja' ? 'オープンエンドかつサンプル効率の高いプログラム進化研究。' : 'Open-ended and sample-efficient program evolution research.' },
-    { name: 'jack-app', role: lang === 'ja' ? 'メンバー / 副代表' : 'Member / Vice-President', url: 'https://github.com/jack-app',
-      description: lang === 'ja' ? 'アプリ開発団体jackの副代表として複数プロジェクトに貢献。' : 'Contributed to multiple projects as vice-president of the app development group jack.' },
+    { name: 'jack-app', role: lang === 'ja' ? 'メンバー（2022年〜）／副代表（2023〜2025年）' : 'Member (2022–) / Vice-President (2023–2025)', url: 'https://github.com/jack-app',
+      description: lang === 'ja' ? 'アプリ開発団体jack。副代表としてLightning Talkイベントを企画・運営。' : 'App development group jack. As Vice-President, organized the Lightning Talk events.' },
   ];
 
   const researchWorks = [
     {
-      title: lang === 'ja'
-        ? 'ATAT 2026 学生講演（タイトル公開前）'
-        : 'Student Talk at ATAT 2026 (title TBA)',
-      type: lang === 'ja' ? '学生講演' : 'Student Speaker',
+      title: 'HPC-AutoResearch: An HPC-Native Framework for Autonomous LLM-Driven Experimentation',
+      type: lang === 'ja' ? '国際会議口頭発表' : 'Conference Talk',
       date: '2026-03',
       venue: lang === 'ja'
-        ? 'ATAT 2026（高性能科学計算における先進的トピックと自動チューニング国際会議）、国立台湾大学'
-        : 'ATAT 2026 (Conference on Advanced Topics and Auto Tuning in High-Performance Scientific Computing), National Taiwan University',
+        ? 'ATAT 2026（高性能科学計算における先進的トピックと自動チューニング国際会議）、国立台湾大学、2026年3月20〜21日（発表済）'
+        : 'ATAT 2026 (Conference on Advanced Topics and Auto Tuning in High-Performance Scientific Computing), National Taiwan University, Mar 20–21 2026 (presented)',
+      authors: lang === 'ja'
+        ? '樹神 宇徳（名古屋大／理研）, 林 俊一郎（名古屋大）, 椋木 大地（名古屋大）, 横田 理央（理研）, 大島 聡史（九大）, 星野 哲也（名古屋大）, 片桐 孝洋（名古屋大）'
+        : 'Takanori Kotama (Nagoya U. / RIKEN), Shun-ichiro Hayashi (Nagoya U.), Daichi Mukunoki (Nagoya U.), Rio Yokota (RIKEN), Satoshi Ohshima (Kyushu U.), Tetsuya Hoshino (Nagoya U.), Takahiro Katagiri (Nagoya U.)',
+      url: 'https://ncts.ntu.edu.tw/events_2_detail.php?nid=546',
+    },
+    {
+      title: 'Crystal Fractional Graph Neural Network for Energy Prediction of High-Entropy Alloys',
+      type: lang === 'ja' ? 'プレプリント（arXiv）' : 'Preprint (arXiv)',
+      date: '2026-04',
+      venue: 'arXiv:2605.08103 · DOI 10.48550/arXiv.2605.08103 · physics.comp-ph (primary), cond-mat.mtrl-sci, cs.AI',
+      authors: lang === 'ja'
+        ? '樹神 宇徳（名古屋大、筆頭著者）, Yang Huang（USTC）'
+        : 'Takanori Kotama (Nagoya U., 1st author), Yang Huang (USTC)',
+      url: 'https://arxiv.org/abs/2605.08103',
     },
     {
       title: lang === 'ja'
@@ -545,7 +564,7 @@ exports.agent = functions.https.onRequest((req, res) => {
         : '203rd IPSJ HPC SIG / 17th Quantum Software SIG Joint Workshop, Hokkaido University',
       authors: lang === 'ja'
         ? '樹神 宇徳（名古屋大／理研）, 林 俊一郎（名古屋大）, 椋木 大地（名古屋大）, 横田 理央（理研）, 大島 聡史（九大）, 星野 哲也（名古屋大）, 片桐 孝洋（名古屋大）'
-        : 'Takanori Kotama (Nagoya U. / RIKEN), Shunichiro Hayashi (Nagoya U.), Daichi Mukunoki (Nagoya U.), Rio Yokota (RIKEN), Satoshi Ohshima (Kyushu U.), Tetsuya Hoshino (Nagoya U.), Takahiro Katagiri (Nagoya U.)',
+        : 'Takanori Kotama (Nagoya U. / RIKEN), Shun-ichiro Hayashi (Nagoya U.), Daichi Mukunoki (Nagoya U.), Rio Yokota (RIKEN), Satoshi Ohshima (Kyushu U.), Tetsuya Hoshino (Nagoya U.), Takahiro Katagiri (Nagoya U.)',
     },
     {
       title: 'Proposal of The AI Scientist v2 for High Performance Computing with Local Large Language Models',
@@ -558,6 +577,9 @@ exports.agent = functions.https.onRequest((req, res) => {
 
   const links = {
     github: 'https://github.com/kotama7',
+    researchmap: 'https://researchmap.jp/kotama_takanori',
+    speakerdeck: 'https://speakerdeck.com/kotama7',
+    researchgate: 'https://www.researchgate.net/profile/Takanori-Kotama',
     qiita: 'https://qiita.com/kotama7',
     zenn: 'https://zenn.dev/kotama7',
     x: 'https://x.com/kotama8',
@@ -603,12 +625,12 @@ exports.contributions = functions.https.onRequest((req, res) => {
     en: [
       { name: 'SakanaAI/AI-Scientist-v2', role: 'Fork + HPC extension', description: 'Extended the BFTS-based automated scientific discovery framework for HPC environments with Singularity container support.', url: 'https://github.com/SakanaAI/AI-Scientist-v2' },
       { name: 'SakanaAI/ShinkaEvolve', role: 'Fork', description: 'Open-ended and sample-efficient program evolution research.', url: 'https://github.com/SakanaAI/ShinkaEvolve' },
-      { name: 'jack-app', role: 'Member / Vice-President', description: 'Contributed to multiple projects as vice-president of the app development group jack.', url: 'https://github.com/jack-app' },
+      { name: 'jack-app', role: 'Member (2022–) / Vice-President (2023–2025)', description: 'App development group jack. As Vice-President, organized the Lightning Talk events.', url: 'https://github.com/jack-app' },
     ],
     ja: [
       { name: 'SakanaAI/AI-Scientist-v2', role: 'Fork + HPC拡張', description: 'BFTSベースの自動科学発見フレームワークをHPC環境向けに拡張。Singularityコンテナ対応。', url: 'https://github.com/SakanaAI/AI-Scientist-v2' },
       { name: 'SakanaAI/ShinkaEvolve', role: 'Fork', description: 'オープンエンドかつサンプル効率の高いプログラム進化研究。', url: 'https://github.com/SakanaAI/ShinkaEvolve' },
-      { name: 'jack-app', role: 'メンバー / 副代表', description: 'アプリ開発団体jackの副代表として複数プロジェクトに貢献。', url: 'https://github.com/jack-app' },
+      { name: 'jack-app', role: 'メンバー（2022年〜）／副代表（2023〜2025年）', description: 'アプリ開発団体jack。副代表としてLightning Talkイベントを企画・運営。', url: 'https://github.com/jack-app' },
     ],
   };
   res.json({ contributions: items[lang] || items.en });

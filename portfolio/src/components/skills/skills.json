@@ -9,9 +9,10 @@
   {
     "title": "Frameworks & Libraries",
     "children": [
-      { "title": "TensorFlow 1.x" },
+      { "title": "PyTorch" },
       { "title": "OpenSpiel" },
-      { "title": "LightGBM" }
+      { "title": "LightGBM" },
+      { "title": "TensorFlow (JPHacks 2023)" }
     ]
   },
   {
@@ -35,7 +36,7 @@
     "title": "Languages",
     "children": [
       { "title": "Japanese (Native)" },
-      { "title": "English (advanced – TOEFL in progress)" },
+      { "title": "English (advanced – TOEFL iBT 76, TOEIC 790)" },
       { "title": "Chinese (intermediate)" }
     ]
   },
